@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Zmanim Watch.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Zmanim.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5B050D3E1CAB6F550062A60E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B11C2681CCDBF3C00125028</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B3C0EB31BFCDC56005FB04C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B6FE7171CBE93A6002A09CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BC272A41C347020002B0654</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BFCC6121D5CBF8C00ACC3E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

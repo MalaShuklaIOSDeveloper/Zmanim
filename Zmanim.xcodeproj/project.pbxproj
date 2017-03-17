@@ -1,0 +1,1130 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BFEEA287A287F1A2075F3C7 /* Pods_Zmanim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738DA7F1A32D3888BB1D1911 /* Pods_Zmanim.framework */; };
+		3961054E126466B9C0CC2D5D /* Pods_Zmanim_Watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36358C193763CD6778947949 /* Pods_Zmanim_Watch.framework */; };
+		5B20A9331D65062700E634E2 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20A9321D65062700E634E2 /* Ad.swift */; };
+		5B23685B1E47BBF200EE73E4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685A1E47BBF200EE73E4 /* UIViewController.swift */; };
+		5B23685D1E47BC2600EE73E4 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */; };
+		5B23685F1E47BC4700EE73E4 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685E1E47BC4700EE73E4 /* UIImageView.swift */; };
+		5B2368611E47BC8C00EE73E4 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2368601E47BC8C00EE73E4 /* UITableView.swift */; };
+		5B2368631E47CD9500EE73E4 /* ZmanimArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2368621E47CD9500EE73E4 /* ZmanimArray.swift */; };
+		5B2368641E47CD9500EE73E4 /* ZmanimArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2368621E47CD9500EE73E4 /* ZmanimArray.swift */; };
+		5B2368661E47D0EE00EE73E4 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2368651E47D0EE00EE73E4 /* LocationModel.swift */; };
+		5B259E0C1D5CCB9300A5E838 /* Annex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */; };
+		5B259E0F1D5CCB9300A5E838 /* Morg Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */; };
+		5B259E111D5CCB9300A5E838 /* Rubin Shul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */; };
+		5B259E131D5CCB9300A5E838 /* Sky Caf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */; };
+		5B2BAF001C30A9BF00669AB9 /* Annex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */; };
+		5B2BAF041C30A9BF00669AB9 /* Rubin Shul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */; };
+		5B2BAF061C30A9BF00669AB9 /* Sky Caf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */; };
+		5B3A86A61D24254500860C8D /* LocationsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3A86A51D24254500860C8D /* LocationsMap.swift */; };
+		5B3B6EF71E2C15220042F61B /* ZmanimEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B6EF61E2C15220042F61B /* ZmanimEnums.swift */; };
+		5B3B6EF81E2C158E0042F61B /* ZmanimEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B6EF61E2C15220042F61B /* ZmanimEnums.swift */; };
+		5B3B6EFB1E2C607D0042F61B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B6EFA1E2C607D0042F61B /* Date.swift */; };
+		5B3B6EFC1E2C61E20042F61B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B6EFA1E2C607D0042F61B /* Date.swift */; };
+		5B3C0EB81BFCDC56005FB04C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */; };
+		5B3C0EBD1BFCDC56005FB04C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0EBB1BFCDC56005FB04C /* Main.storyboard */; };
+		5B3C0EBF1BFCDC56005FB04C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0EBE1BFCDC56005FB04C /* Assets.xcassets */; };
+		5B3C0EC21BFCDC56005FB04C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3C0EC01BFCDC56005FB04C /* LaunchScreen.storyboard */; };
+		5B3C0ECD1BFCE51E005FB04C /* Zmanim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C0ECC1BFCE51E005FB04C /* Zmanim.swift */; };
+		5B419F551D197FA20018F1C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419F531D197FA20018F1C7 /* Constants.swift */; };
+		5B419F561D197FA20018F1C7 /* ZmanimDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419F541D197FA20018F1C7 /* ZmanimDataServices.swift */; };
+		5B419F581D19DD3E0018F1C7 /* ZmanimViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419F571D19DD3E0018F1C7 /* ZmanimViewModel.swift */; };
+		5B4455BE1D257FA800B19A6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4455BD1D257FA800B19A6E /* MapKit.framework */; };
+		5B4455C51D257FB100B19A6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4455C41D257FB100B19A6E /* CoreLocation.framework */; };
+		5B47564E1C9B393B00927935 /* LocalZmanim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47564D1C9B393B00927935 /* LocalZmanim.swift */; };
+		5B4AF58C1CB1EDE0001F0CB6 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4AF58B1CB1EDE0001F0CB6 /* About.swift */; };
+		5B58170C1D93358D00874C24 /* Selichos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B58170B1D93358D00874C24 /* Selichos.swift */; };
+		5B5889401D21B9070060022C /* LocalZmanimModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B58893F1D21B9070060022C /* LocalZmanimModel.swift */; };
+		5B5E52421D301F5D002C1D2A /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E52411D301F5D002C1D2A /* Description.swift */; };
+		5B61452D1C029FF1007530F7 /* YU.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B61452C1C029FF1007530F7 /* YU.jpg */; };
+		5B61452F1C02A07A007530F7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61452E1C02A07A007530F7 /* Location.swift */; };
+		5B86C40D1D454E0200E4CDA6 /* Morg Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */; };
+		5B95EA091C2AE8D000647230 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95EA081C2AE8D000647230 /* Main.swift */; };
+		5B9A177D1D2EB5B300588091 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A177C1D2EB5B300588091 /* MainViewModel.swift */; };
+		5B9BAC921D32BC1600E445CA /* AnimatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9BAC911D32BC1600E445CA /* AnimatedController.swift */; };
+		5BB3F8F81D26C1C5002F61E9 /* CalloutDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB3F8F71D26C1C5002F61E9 /* CalloutDetail.swift */; };
+		5BBAFC341D35993100A70878 /* Zman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAFC331D35993100A70878 /* Zman.swift */; };
+		5BBB62C01D10FB0200EFACAC /* ZmanimModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62BF1D10FB0200EFACAC /* ZmanimModel.swift */; };
+		5BBB62C21D11059400EFACAC /* ZmanimDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62C11D11059400EFACAC /* ZmanimDataSource.swift */; };
+		5BCC11DC1D6A0474005B6379 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC11DB1D6A0474005B6379 /* SectionHeader.swift */; };
+		5BCC11E41D6CF5B8005B6379 /* Fischel Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */; };
+		5BCC11E61D6CF5C4005B6379 /* Glueck Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E51D6CF5C4005B6379 /* Glueck Beis.jpg */; };
+		5BCC11E81D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E71D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg */; };
+		5BCC11EA1D6CF600005B6379 /* Zysman 101.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E91D6CF600005B6379 /* Zysman 101.jpg */; };
+		5BCC11EC1D6CF636005B6379 /* Glueck 303.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11EB1D6CF636005B6379 /* Glueck 303.jpg */; };
+		5BCC11EE1D6CF644005B6379 /* Glueck 2 Lobby.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11ED1D6CF644005B6379 /* Glueck 2 Lobby.jpg */; };
+		5BCC11F01D6CF667005B6379 /* Morg Lounge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */; };
+		5BCC11F21D6D0152005B6379 /* Muss Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */; };
+		5BFBF8E21D709FEC00CEE8F4 /* Watch Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFBF8E11D709FEC00CEE8F4 /* Watch Extensions.swift */; };
+		5BFCC60B1D5B9B1500ACC3E3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC60A1D5B9B1500ACC3E3 /* Helpers.swift */; };
+		5BFCC6191D5CBF8C00ACC3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCC6181D5CBF8C00ACC3E3 /* Assets.xcassets */; };
+		5BFCC6201D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5BFCC61F1D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BFCC6271D5CBF8C00ACC3E3 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC6261D5CBF8C00ACC3E3 /* ExtensionDelegate.swift */; };
+		5BFCC6291D5CBF8C00ACC3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCC6281D5CBF8C00ACC3E3 /* Assets.xcassets */; };
+		5BFCC62D1D5CBF8C00ACC3E3 /* Zmanim Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5BFCC6131D5CBF8C00ACC3E3 /* Zmanim Watch.app */; };
+		5BFCC6361D5CBFD100ACC3E3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCC6351D5CBFD100ACC3E3 /* Interface.storyboard */; };
+		5BFCC63C1D5CC07C00ACC3E3 /* LocationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC6371D5CC07C00ACC3E3 /* LocationInterfaceController.swift */; };
+		5BFCC63D1D5CC07C00ACC3E3 /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC6381D5CC07C00ACC3E3 /* MainInterfaceController.swift */; };
+		5BFCC63E1D5CC07C00ACC3E3 /* TextRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC6391D5CC07C00ACC3E3 /* TextRowController.swift */; };
+		5BFCC63F1D5CC07C00ACC3E3 /* TextSubtitleRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC63A1D5CC07C00ACC3E3 /* TextSubtitleRowController.swift */; };
+		5BFCC6401D5CC07C00ACC3E3 /* ZmanimInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC63B1D5CC07C00ACC3E3 /* ZmanimInterfaceController.swift */; };
+		5BFCC6411D5CC0F200ACC3E3 /* ZmanimModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62BF1D10FB0200EFACAC /* ZmanimModel.swift */; };
+		5BFCC6421D5CC0F800ACC3E3 /* ZmanimDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419F541D197FA20018F1C7 /* ZmanimDataServices.swift */; };
+		5BFCC6431D5CC0FB00ACC3E3 /* ZmanimDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62C11D11059400EFACAC /* ZmanimDataSource.swift */; };
+		5BFCC6441D5CC10000ACC3E3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419F531D197FA20018F1C7 /* Constants.swift */; };
+		5BFCC64E1D5CC4AD00ACC3E3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC60A1D5B9B1500ACC3E3 /* Helpers.swift */; };
+		5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */; };
+		E6EB4402882A35BE6C9B8FD2 /* Pods_Zmanim_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6703486E7BF74D34643FF1 /* Pods_Zmanim_Watch_Extension.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5BFCC6211D5CBF8C00ACC3E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B3C0EAC1BFCDC56005FB04C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BFCC61E1D5CBF8C00ACC3E3;
+			remoteInfo = "Zmanim Watch Extension";
+		};
+		5BFCC62B1D5CBF8C00ACC3E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B3C0EAC1BFCDC56005FB04C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BFCC6121D5CBF8C00ACC3E3;
+			remoteInfo = "Zmanim Watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5B050D4F1CAB6F560062A60E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BC272C71C347021002B0654 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5BFCC62D1D5CBF8C00ACC3E3 /* Zmanim Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFCC6311D5CBF8C00ACC3E3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5BFCC6201D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0BE8446B2C4583FFC697A506 /* Pods-Zmanim Watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim Watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim Watch Extension/Pods-Zmanim Watch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		2CCE5E5E48C967A037525941 /* Pods-Zmanim Watch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim Watch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim Watch/Pods-Zmanim Watch.debug.xcconfig"; sourceTree = "<group>"; };
+		36358C193763CD6778947949 /* Pods_Zmanim_Watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zmanim_Watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC4889FEA4AD296E3F3DF0 /* Pods-Zmanim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim.release.xcconfig"; sourceTree = "<group>"; };
+		5B20A9321D65062700E634E2 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ad.swift; path = Views/Ad.swift; sourceTree = "<group>"; };
+		5B23685A1E47BBF200EE73E4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Extensions/UIViewController.swift; sourceTree = "<group>"; };
+		5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertController.swift; path = Extensions/UIAlertController.swift; sourceTree = "<group>"; };
+		5B23685E1E47BC4700EE73E4 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = Extensions/UIImageView.swift; sourceTree = "<group>"; };
+		5B2368601E47BC8C00EE73E4 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableView.swift; path = Extensions/UITableView.swift; sourceTree = "<group>"; };
+		5B2368621E47CD9500EE73E4 /* ZmanimArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimArray.swift; path = Extensions/ZmanimArray.swift; sourceTree = "<group>"; };
+		5B2368651E47D0EE00EE73E4 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationModel.swift; path = Extensions/LocationModel.swift; sourceTree = "<group>"; };
+		5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Annex.jpg; sourceTree = "<group>"; };
+		5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rubin Shul.jpg"; sourceTree = "<group>"; };
+		5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sky Caf.jpg"; sourceTree = "<group>"; };
+		5B3A86A51D24254500860C8D /* LocationsMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsMap.swift; path = "View Controllers/LocationsMap.swift"; sourceTree = "<group>"; };
+		5B3B6EF61E2C15220042F61B /* ZmanimEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimEnums.swift; sourceTree = "<group>"; };
+		5B3B6EFA1E2C607D0042F61B /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Extensions/Date.swift; sourceTree = "<group>"; };
+		5B3C0EB41BFCDC56005FB04C /* Zmanim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmanim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Zmanim/AppDelegate.swift; sourceTree = "<group>"; };
+		5B3C0EBC1BFCDC56005FB04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B3C0EBE1BFCDC56005FB04C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B3C0EC11BFCDC56005FB04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5B3C0EC31BFCDC56005FB04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B3C0ECC1BFCE51E005FB04C /* Zmanim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zmanim.swift; path = "View Controllers/Zmanim.swift"; sourceTree = "<group>"; };
+		5B419F531D197FA20018F1C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
+		5B419F541D197FA20018F1C7 /* ZmanimDataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimDataServices.swift; sourceTree = SOURCE_ROOT; };
+		5B419F571D19DD3E0018F1C7 /* ZmanimViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimViewModel.swift; path = "View Models/ZmanimViewModel.swift"; sourceTree = "<group>"; };
+		5B4455BD1D257FA800B19A6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5B4455C41D257FB100B19A6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5B47564D1C9B393B00927935 /* LocalZmanim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZmanim.swift; path = "View Controllers/LocalZmanim.swift"; sourceTree = "<group>"; };
+		5B4AF58B1CB1EDE0001F0CB6 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = "View Controllers/About.swift"; sourceTree = "<group>"; };
+		5B58170B1D93358D00874C24 /* Selichos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Selichos.swift; path = "View Controllers/Selichos.swift"; sourceTree = "<group>"; };
+		5B58893F1D21B9070060022C /* LocalZmanimModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZmanimModel.swift; path = "View Models/LocalZmanimModel.swift"; sourceTree = "<group>"; };
+		5B5E52411D301F5D002C1D2A /* Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Description.swift; path = Cells/Description.swift; sourceTree = "<group>"; };
+		5B61452C1C029FF1007530F7 /* YU.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = YU.jpg; sourceTree = "<group>"; };
+		5B61452E1C02A07A007530F7 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = "View Controllers/Location.swift"; sourceTree = "<group>"; };
+		5B6FE71A1CBE93A6002A09CA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Beis.jpg"; sourceTree = "<group>"; };
+		5B95EA081C2AE8D000647230 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Main.swift; path = "View Controllers/Main.swift"; sourceTree = "<group>"; };
+		5B9A177C1D2EB5B300588091 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = "View Models/MainViewModel.swift"; sourceTree = "<group>"; };
+		5B9BAC911D32BC1600E445CA /* AnimatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedController.swift; sourceTree = "<group>"; };
+		5BB3F8F71D26C1C5002F61E9 /* CalloutDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalloutDetail.swift; path = Views/CalloutDetail.swift; sourceTree = "<group>"; };
+		5BBAFC331D35993100A70878 /* Zman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zman.swift; path = Cells/Zman.swift; sourceTree = "<group>"; };
+		5BBB62BF1D10FB0200EFACAC /* ZmanimModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimModel.swift; sourceTree = SOURCE_ROOT; };
+		5BBB62C11D11059400EFACAC /* ZmanimDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimDataSource.swift; sourceTree = SOURCE_ROOT; };
+		5BCC11DB1D6A0474005B6379 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeader.swift; path = Views/SectionHeader.swift; sourceTree = "<group>"; };
+		5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fischel Beis.jpg"; sourceTree = "<group>"; };
+		5BCC11E51D6CF5C4005B6379 /* Glueck Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Glueck Beis.jpg"; sourceTree = "<group>"; };
+		5BCC11E71D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sefardi Beit Midrash.jpg"; sourceTree = "<group>"; };
+		5BCC11E91D6CF600005B6379 /* Zysman 101.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Zysman 101.jpg"; sourceTree = "<group>"; };
+		5BCC11EB1D6CF636005B6379 /* Glueck 303.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Glueck 303.jpg"; sourceTree = "<group>"; };
+		5BCC11ED1D6CF644005B6379 /* Glueck 2 Lobby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Glueck 2 Lobby.jpg"; sourceTree = "<group>"; };
+		5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Lounge.jpg"; sourceTree = "<group>"; };
+		5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muss Beis.jpg"; sourceTree = "<group>"; };
+		5BFBF8E11D709FEC00CEE8F4 /* Watch Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Watch Extensions.swift"; sourceTree = "<group>"; };
+		5BFCC60A1D5B9B1500ACC3E3 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		5BFCC6131D5CBF8C00ACC3E3 /* Zmanim Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zmanim Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFCC6181D5CBF8C00ACC3E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BFCC61A1D5CBF8C00ACC3E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BFCC61F1D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Zmanim Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFCC6261D5CBF8C00ACC3E3 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		5BFCC6281D5CBF8C00ACC3E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BFCC62A1D5CBF8C00ACC3E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BFCC6351D5CBFD100ACC3E3 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		5BFCC6371D5CC07C00ACC3E3 /* LocationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInterfaceController.swift; sourceTree = "<group>"; };
+		5BFCC6381D5CC07C00ACC3E3 /* MainInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInterfaceController.swift; sourceTree = "<group>"; };
+		5BFCC6391D5CC07C00ACC3E3 /* TextRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextRowController.swift; sourceTree = "<group>"; };
+		5BFCC63A1D5CC07C00ACC3E3 /* TextSubtitleRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSubtitleRowController.swift; sourceTree = "<group>"; };
+		5BFCC63B1D5CC07C00ACC3E3 /* ZmanimInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimInterfaceController.swift; sourceTree = "<group>"; };
+		5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Extensions/URL.swift; sourceTree = "<group>"; };
+		738DA7F1A32D3888BB1D1911 /* Pods_Zmanim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zmanim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80D5EBF3D9E0E871718BB81C /* Pods-Zmanim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim.debug.xcconfig"; sourceTree = "<group>"; };
+		9F85E272A6B67A72D5127D61 /* Pods-Zmanim Watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim Watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim Watch Extension/Pods-Zmanim Watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		CE6703486E7BF74D34643FF1 /* Pods_Zmanim_Watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zmanim_Watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFBDAC98C2AA0047E1C22959 /* Pods-Zmanim Watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim Watch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim Watch/Pods-Zmanim Watch.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32EBC0CF364C1017DDF732FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3961054E126466B9C0CC2D5D /* Pods_Zmanim_Watch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B3C0EB11BFCDC56005FB04C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B4455C51D257FB100B19A6E /* CoreLocation.framework in Frameworks */,
+				5B4455BE1D257FA800B19A6E /* MapKit.framework in Frameworks */,
+				2BFEEA287A287F1A2075F3C7 /* Pods_Zmanim.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFCC61C1D5CBF8C00ACC3E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6EB4402882A35BE6C9B8FD2 /* Pods_Zmanim_Watch_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B2BAEF71C30A9BF00669AB9 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */,
+				5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */,
+				5BCC11ED1D6CF644005B6379 /* Glueck 2 Lobby.jpg */,
+				5BCC11EB1D6CF636005B6379 /* Glueck 303.jpg */,
+				5BCC11E51D6CF5C4005B6379 /* Glueck Beis.jpg */,
+				5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */,
+				5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */,
+				5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */,
+				5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */,
+				5BCC11E71D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg */,
+				5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */,
+				5BCC11E91D6CF600005B6379 /* Zysman 101.jpg */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		5B3B6EF91E2C17710042F61B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */,
+				5B3B6EFA1E2C607D0042F61B /* Date.swift */,
+				5B23685A1E47BBF200EE73E4 /* UIViewController.swift */,
+				5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */,
+				5B23685E1E47BC4700EE73E4 /* UIImageView.swift */,
+				5B2368601E47BC8C00EE73E4 /* UITableView.swift */,
+				5B2368621E47CD9500EE73E4 /* ZmanimArray.swift */,
+				5B2368651E47D0EE00EE73E4 /* LocationModel.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5B3C0EAB1BFCDC56005FB04C = {
+			isa = PBXGroup;
+			children = (
+				5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */,
+				5BBB62BF1D10FB0200EFACAC /* ZmanimModel.swift */,
+				5B3B6EF61E2C15220042F61B /* ZmanimEnums.swift */,
+				5B419F541D197FA20018F1C7 /* ZmanimDataServices.swift */,
+				5BBB62C11D11059400EFACAC /* ZmanimDataSource.swift */,
+				5B419F531D197FA20018F1C7 /* Constants.swift */,
+				5BFCC60A1D5B9B1500ACC3E3 /* Helpers.swift */,
+				5B3C0EB61BFCDC56005FB04C /* Zmanim */,
+				5BFCC64B1D5CC2A500ACC3E3 /* Watch */,
+				5B6FE7191CBE93A6002A09CA /* Frameworks */,
+				5B3C0EB51BFCDC56005FB04C /* Products */,
+				C6C898CE79A2DAAC272E6E88 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		5B3C0EB51BFCDC56005FB04C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B3C0EB41BFCDC56005FB04C /* Zmanim.app */,
+				5BFCC6131D5CBF8C00ACC3E3 /* Zmanim Watch.app */,
+				5BFCC61F1D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B3C0EB61BFCDC56005FB04C /* Zmanim */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC60C1D5BB89000ACC3E3 /* View Controllers */,
+				5BFCC60D1D5BB8B000ACC3E3 /* View Models */,
+				5BFCC60E1D5BB8C000ACC3E3 /* Table View Cells */,
+				5BFCC60F1D5BB8D000ACC3E3 /* Views */,
+				5B3B6EF91E2C17710042F61B /* Extensions */,
+				5BFCC6101D5BB8E800ACC3E3 /* More */,
+			);
+			path = Zmanim;
+			sourceTree = "<group>";
+		};
+		5B3C0EC91BFCDCFD005FB04C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5B2BAEF71C30A9BF00669AB9 /* Locations */,
+				5B61452C1C029FF1007530F7 /* YU.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		5B6FE7191CBE93A6002A09CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B4455C41D257FB100B19A6E /* CoreLocation.framework */,
+				5B4455BD1D257FA800B19A6E /* MapKit.framework */,
+				5B6FE71A1CBE93A6002A09CA /* NotificationCenter.framework */,
+				738DA7F1A32D3888BB1D1911 /* Pods_Zmanim.framework */,
+				36358C193763CD6778947949 /* Pods_Zmanim_Watch.framework */,
+				CE6703486E7BF74D34643FF1 /* Pods_Zmanim_Watch_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BFCC60C1D5BB89000ACC3E3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B95EA081C2AE8D000647230 /* Main.swift */,
+				5B3C0ECC1BFCE51E005FB04C /* Zmanim.swift */,
+				5B58170B1D93358D00874C24 /* Selichos.swift */,
+				5B61452E1C02A07A007530F7 /* Location.swift */,
+				5B47564D1C9B393B00927935 /* LocalZmanim.swift */,
+				5B4AF58B1CB1EDE0001F0CB6 /* About.swift */,
+				5B3A86A51D24254500860C8D /* LocationsMap.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5BFCC60D1D5BB8B000ACC3E3 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B9A177C1D2EB5B300588091 /* MainViewModel.swift */,
+				5B419F571D19DD3E0018F1C7 /* ZmanimViewModel.swift */,
+				5B58893F1D21B9070060022C /* LocalZmanimModel.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		5BFCC60E1D5BB8C000ACC3E3 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BBAFC331D35993100A70878 /* Zman.swift */,
+				5B5E52411D301F5D002C1D2A /* Description.swift */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		5BFCC60F1D5BB8D000ACC3E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BB3F8F71D26C1C5002F61E9 /* CalloutDetail.swift */,
+				5B20A9321D65062700E634E2 /* Ad.swift */,
+				5BCC11DB1D6A0474005B6379 /* SectionHeader.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5BFCC6101D5BB8E800ACC3E3 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				5B9BAC911D32BC1600E445CA /* AnimatedController.swift */,
+				5B3C0EBB1BFCDC56005FB04C /* Main.storyboard */,
+				5B3C0EC01BFCDC56005FB04C /* LaunchScreen.storyboard */,
+				5B3C0EC31BFCDC56005FB04C /* Info.plist */,
+				5B3C0EBE1BFCDC56005FB04C /* Assets.xcassets */,
+				5B3C0EC91BFCDCFD005FB04C /* Images */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		5BFCC6141D5CBF8C00ACC3E3 /* Zmanim Watch */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6351D5CBFD100ACC3E3 /* Interface.storyboard */,
+				5BFCC6181D5CBF8C00ACC3E3 /* Assets.xcassets */,
+				5BFCC61A1D5CBF8C00ACC3E3 /* Info.plist */,
+			);
+			path = "Zmanim Watch";
+			sourceTree = "<group>";
+		};
+		5BFCC6231D5CBF8C00ACC3E3 /* Zmanim Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6481D5CC27000ACC3E3 /* Interface Controllers */,
+				5BFCC6491D5CC27A00ACC3E3 /* Row Controllers */,
+				5BFCC64A1D5CC28600ACC3E3 /* More */,
+			);
+			path = "Zmanim Watch Extension";
+			sourceTree = "<group>";
+		};
+		5BFCC6481D5CC27000ACC3E3 /* Interface Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6381D5CC07C00ACC3E3 /* MainInterfaceController.swift */,
+				5BFCC63B1D5CC07C00ACC3E3 /* ZmanimInterfaceController.swift */,
+				5BFCC6371D5CC07C00ACC3E3 /* LocationInterfaceController.swift */,
+			);
+			name = "Interface Controllers";
+			sourceTree = "<group>";
+		};
+		5BFCC6491D5CC27A00ACC3E3 /* Row Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6391D5CC07C00ACC3E3 /* TextRowController.swift */,
+				5BFCC63A1D5CC07C00ACC3E3 /* TextSubtitleRowController.swift */,
+			);
+			name = "Row Controllers";
+			sourceTree = "<group>";
+		};
+		5BFCC64A1D5CC28600ACC3E3 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6261D5CBF8C00ACC3E3 /* ExtensionDelegate.swift */,
+				5BFBF8E11D709FEC00CEE8F4 /* Watch Extensions.swift */,
+				5BFCC6281D5CBF8C00ACC3E3 /* Assets.xcassets */,
+				5BFCC62A1D5CBF8C00ACC3E3 /* Info.plist */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		5BFCC64B1D5CC2A500ACC3E3 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCC6141D5CBF8C00ACC3E3 /* Zmanim Watch */,
+				5BFCC6231D5CBF8C00ACC3E3 /* Zmanim Watch Extension */,
+			);
+			name = Watch;
+			sourceTree = "<group>";
+		};
+		C6C898CE79A2DAAC272E6E88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80D5EBF3D9E0E871718BB81C /* Pods-Zmanim.debug.xcconfig */,
+				45FC4889FEA4AD296E3F3DF0 /* Pods-Zmanim.release.xcconfig */,
+				2CCE5E5E48C967A037525941 /* Pods-Zmanim Watch.debug.xcconfig */,
+				DFBDAC98C2AA0047E1C22959 /* Pods-Zmanim Watch.release.xcconfig */,
+				9F85E272A6B67A72D5127D61 /* Pods-Zmanim Watch Extension.debug.xcconfig */,
+				0BE8446B2C4583FFC697A506 /* Pods-Zmanim Watch Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B3C0EB31BFCDC56005FB04C /* Zmanim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B3C0EC61BFCDC56005FB04C /* Build configuration list for PBXNativeTarget "Zmanim" */;
+			buildPhases = (
+				3D2997CA1FF759CAEBD7F8EF /* [CP] Check Pods Manifest.lock */,
+				5B3C0EB01BFCDC56005FB04C /* Sources */,
+				5B3C0EB11BFCDC56005FB04C /* Frameworks */,
+				5B3C0EB21BFCDC56005FB04C /* Resources */,
+				5BC272C71C347021002B0654 /* Embed Watch Content */,
+				5B050D4F1CAB6F560062A60E /* Embed App Extensions */,
+				30BE970FC0648A47D84A83CC /* [CP] Embed Pods Frameworks */,
+				E6A420ED1AE2E6139550DAD4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BFCC62C1D5CBF8C00ACC3E3 /* PBXTargetDependency */,
+			);
+			name = Zmanim;
+			productName = Zmanim;
+			productReference = 5B3C0EB41BFCDC56005FB04C /* Zmanim.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5BFCC6121D5CBF8C00ACC3E3 /* Zmanim Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BFCC6321D5CBF8C00ACC3E3 /* Build configuration list for PBXNativeTarget "Zmanim Watch" */;
+			buildPhases = (
+				1CC2C1C5EFF41EE50CB7D22A /* [CP] Check Pods Manifest.lock */,
+				5BFCC6111D5CBF8C00ACC3E3 /* Resources */,
+				5BFCC6311D5CBF8C00ACC3E3 /* Embed App Extensions */,
+				32EBC0CF364C1017DDF732FC /* Frameworks */,
+				02A6BDA0BCCB2733395FFA97 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BFCC6221D5CBF8C00ACC3E3 /* PBXTargetDependency */,
+			);
+			name = "Zmanim Watch";
+			productName = "Zmanim Watch";
+			productReference = 5BFCC6131D5CBF8C00ACC3E3 /* Zmanim Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		5BFCC61E1D5CBF8C00ACC3E3 /* Zmanim Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BFCC62E1D5CBF8C00ACC3E3 /* Build configuration list for PBXNativeTarget "Zmanim Watch Extension" */;
+			buildPhases = (
+				079ABCB5FCED259FD035E0B2 /* [CP] Check Pods Manifest.lock */,
+				5BFCC61B1D5CBF8C00ACC3E3 /* Sources */,
+				5BFCC61C1D5CBF8C00ACC3E3 /* Frameworks */,
+				5BFCC61D1D5CBF8C00ACC3E3 /* Resources */,
+				B4C66180EC952F92CAAB762E /* [CP] Embed Pods Frameworks */,
+				BF08CC1D264B778AF40678CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Zmanim Watch Extension";
+			productName = "Zmanim Watch Extension";
+			productReference = 5BFCC61F1D5CBF8C00ACC3E3 /* Zmanim Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B3C0EAC1BFCDC56005FB04C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Natanel Niazoff";
+				TargetAttributes = {
+					5B3C0EB31BFCDC56005FB04C = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = LWC7S9F6VV;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					5BFCC6121D5CBF8C00ACC3E3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = LWC7S9F6VV;
+						ProvisioningStyle = Automatic;
+					};
+					5BFCC61E1D5CBF8C00ACC3E3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = LWC7S9F6VV;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5B3C0EAF1BFCDC56005FB04C /* Build configuration list for PBXProject "Zmanim" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B3C0EAB1BFCDC56005FB04C;
+			productRefGroup = 5B3C0EB51BFCDC56005FB04C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B3C0EB31BFCDC56005FB04C /* Zmanim */,
+				5BFCC6121D5CBF8C00ACC3E3 /* Zmanim Watch */,
+				5BFCC61E1D5CBF8C00ACC3E3 /* Zmanim Watch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B3C0EB21BFCDC56005FB04C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BCC11E61D6CF5C4005B6379 /* Glueck Beis.jpg in Resources */,
+				5BCC11E41D6CF5B8005B6379 /* Fischel Beis.jpg in Resources */,
+				5B2BAF041C30A9BF00669AB9 /* Rubin Shul.jpg in Resources */,
+				5B86C40D1D454E0200E4CDA6 /* Morg Beis.jpg in Resources */,
+				5B2BAF061C30A9BF00669AB9 /* Sky Caf.jpg in Resources */,
+				5BCC11EC1D6CF636005B6379 /* Glueck 303.jpg in Resources */,
+				5B3C0EC21BFCDC56005FB04C /* LaunchScreen.storyboard in Resources */,
+				5BCC11EA1D6CF600005B6379 /* Zysman 101.jpg in Resources */,
+				5BCC11EE1D6CF644005B6379 /* Glueck 2 Lobby.jpg in Resources */,
+				5B3C0EBF1BFCDC56005FB04C /* Assets.xcassets in Resources */,
+				5B3C0EBD1BFCDC56005FB04C /* Main.storyboard in Resources */,
+				5B61452D1C029FF1007530F7 /* YU.jpg in Resources */,
+				5BCC11F01D6CF667005B6379 /* Morg Lounge.jpg in Resources */,
+				5BCC11E81D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg in Resources */,
+				5B2BAF001C30A9BF00669AB9 /* Annex.jpg in Resources */,
+				5BCC11F21D6D0152005B6379 /* Muss Beis.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFCC6111D5CBF8C00ACC3E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BFCC6361D5CBFD100ACC3E3 /* Interface.storyboard in Resources */,
+				5BFCC6191D5CBF8C00ACC3E3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFCC61D1D5CBF8C00ACC3E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B259E0C1D5CCB9300A5E838 /* Annex.jpg in Resources */,
+				5B259E131D5CCB9300A5E838 /* Sky Caf.jpg in Resources */,
+				5B259E111D5CCB9300A5E838 /* Rubin Shul.jpg in Resources */,
+				5B259E0F1D5CCB9300A5E838 /* Morg Beis.jpg in Resources */,
+				5BFCC6291D5CBF8C00ACC3E3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02A6BDA0BCCB2733395FFA97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim Watch/Pods-Zmanim Watch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		079ABCB5FCED259FD035E0B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1CC2C1C5EFF41EE50CB7D22A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		30BE970FC0648A47D84A83CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D2997CA1FF759CAEBD7F8EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4C66180EC952F92CAAB762E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim Watch Extension/Pods-Zmanim Watch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF08CC1D264B778AF40678CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim Watch Extension/Pods-Zmanim Watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6A420ED1AE2E6139550DAD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B3C0EB01BFCDC56005FB04C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B23685B1E47BBF200EE73E4 /* UIViewController.swift in Sources */,
+				5B61452F1C02A07A007530F7 /* Location.swift in Sources */,
+				5B9BAC921D32BC1600E445CA /* AnimatedController.swift in Sources */,
+				5B9A177D1D2EB5B300588091 /* MainViewModel.swift in Sources */,
+				5B23685D1E47BC2600EE73E4 /* UIAlertController.swift in Sources */,
+				5B2368631E47CD9500EE73E4 /* ZmanimArray.swift in Sources */,
+				5BB3F8F81D26C1C5002F61E9 /* CalloutDetail.swift in Sources */,
+				5B419F561D197FA20018F1C7 /* ZmanimDataServices.swift in Sources */,
+				5B2368611E47BC8C00EE73E4 /* UITableView.swift in Sources */,
+				5B3B6EFB1E2C607D0042F61B /* Date.swift in Sources */,
+				5B5889401D21B9070060022C /* LocalZmanimModel.swift in Sources */,
+				5B3C0EB81BFCDC56005FB04C /* AppDelegate.swift in Sources */,
+				5BBAFC341D35993100A70878 /* Zman.swift in Sources */,
+				5B3C0ECD1BFCE51E005FB04C /* Zmanim.swift in Sources */,
+				5B5E52421D301F5D002C1D2A /* Description.swift in Sources */,
+				5B23685F1E47BC4700EE73E4 /* UIImageView.swift in Sources */,
+				5B3A86A61D24254500860C8D /* LocationsMap.swift in Sources */,
+				5B2368661E47D0EE00EE73E4 /* LocationModel.swift in Sources */,
+				5BBB62C21D11059400EFACAC /* ZmanimDataSource.swift in Sources */,
+				5B47564E1C9B393B00927935 /* LocalZmanim.swift in Sources */,
+				5B95EA091C2AE8D000647230 /* Main.swift in Sources */,
+				5BCC11DC1D6A0474005B6379 /* SectionHeader.swift in Sources */,
+				5BBB62C01D10FB0200EFACAC /* ZmanimModel.swift in Sources */,
+				5B419F551D197FA20018F1C7 /* Constants.swift in Sources */,
+				5B3B6EF71E2C15220042F61B /* ZmanimEnums.swift in Sources */,
+				5B20A9331D65062700E634E2 /* Ad.swift in Sources */,
+				5BFCC60B1D5B9B1500ACC3E3 /* Helpers.swift in Sources */,
+				5B58170C1D93358D00874C24 /* Selichos.swift in Sources */,
+				5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */,
+				5B419F581D19DD3E0018F1C7 /* ZmanimViewModel.swift in Sources */,
+				5B4AF58C1CB1EDE0001F0CB6 /* About.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFCC61B1D5CBF8C00ACC3E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BFCC63D1D5CC07C00ACC3E3 /* MainInterfaceController.swift in Sources */,
+				5BFCC63C1D5CC07C00ACC3E3 /* LocationInterfaceController.swift in Sources */,
+				5BFCC6271D5CBF8C00ACC3E3 /* ExtensionDelegate.swift in Sources */,
+				5B3B6EFC1E2C61E20042F61B /* Date.swift in Sources */,
+				5B3B6EF81E2C158E0042F61B /* ZmanimEnums.swift in Sources */,
+				5B2368641E47CD9500EE73E4 /* ZmanimArray.swift in Sources */,
+				5BFCC6431D5CC0FB00ACC3E3 /* ZmanimDataSource.swift in Sources */,
+				5BFCC6401D5CC07C00ACC3E3 /* ZmanimInterfaceController.swift in Sources */,
+				5BFCC6441D5CC10000ACC3E3 /* Constants.swift in Sources */,
+				5BFBF8E21D709FEC00CEE8F4 /* Watch Extensions.swift in Sources */,
+				5BFCC6411D5CC0F200ACC3E3 /* ZmanimModel.swift in Sources */,
+				5BFCC6421D5CC0F800ACC3E3 /* ZmanimDataServices.swift in Sources */,
+				5BFCC63E1D5CC07C00ACC3E3 /* TextRowController.swift in Sources */,
+				5BFCC64E1D5CC4AD00ACC3E3 /* Helpers.swift in Sources */,
+				5BFCC63F1D5CC07C00ACC3E3 /* TextSubtitleRowController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BFCC6221D5CBF8C00ACC3E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BFCC61E1D5CBF8C00ACC3E3 /* Zmanim Watch Extension */;
+			targetProxy = 5BFCC6211D5CBF8C00ACC3E3 /* PBXContainerItemProxy */;
+		};
+		5BFCC62C1D5CBF8C00ACC3E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BFCC6121D5CBF8C00ACC3E3 /* Zmanim Watch */;
+			targetProxy = 5BFCC62B1D5CBF8C00ACC3E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5B3C0EBB1BFCDC56005FB04C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B3C0EBC1BFCDC56005FB04C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5B3C0EC01BFCDC56005FB04C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B3C0EC11BFCDC56005FB04C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5B3C0EC41BFCDC56005FB04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B3C0EC51BFCDC56005FB04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5B3C0EC71BFCDC56005FB04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80D5EBF3D9E0E871718BB81C /* Pods-Zmanim.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWC7S9F6VV;
+				INFOPLIST_FILE = Zmanim/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5B3C0EC81BFCDC56005FB04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45FC4889FEA4AD296E3F3DF0 /* Pods-Zmanim.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWC7S9F6VV;
+				INFOPLIST_FILE = Zmanim/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5BFCC62F1D5CBF8C00ACC3E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F85E272A6B67A72D5127D61 /* Pods-Zmanim Watch Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Zmanim Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		5BFCC6301D5CBF8C00ACC3E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BE8446B2C4583FFC697A506 /* Pods-Zmanim Watch Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Zmanim Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		5BFCC6331D5CBF8C00ACC3E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CCE5E5E48C967A037525941 /* Pods-Zmanim Watch.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWC7S9F6VV;
+				IBSC_MODULE = Zmanim_Watch_Extension;
+				INFOPLIST_FILE = "Zmanim Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		5BFCC6341D5CBF8C00ACC3E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFBDAC98C2AA0047E1C22959 /* Pods-Zmanim Watch.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWC7S9F6VV;
+				IBSC_MODULE = Zmanim_Watch_Extension;
+				INFOPLIST_FILE = "Zmanim Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = zmanim.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B3C0EAF1BFCDC56005FB04C /* Build configuration list for PBXProject "Zmanim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B3C0EC41BFCDC56005FB04C /* Debug */,
+				5B3C0EC51BFCDC56005FB04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B3C0EC61BFCDC56005FB04C /* Build configuration list for PBXNativeTarget "Zmanim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B3C0EC71BFCDC56005FB04C /* Debug */,
+				5B3C0EC81BFCDC56005FB04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BFCC62E1D5CBF8C00ACC3E3 /* Build configuration list for PBXNativeTarget "Zmanim Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BFCC62F1D5CBF8C00ACC3E3 /* Debug */,
+				5BFCC6301D5CBF8C00ACC3E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BFCC6321D5CBF8C00ACC3E3 /* Build configuration list for PBXNativeTarget "Zmanim Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BFCC6331D5CBF8C00ACC3E3 /* Debug */,
+				5BFCC6341D5CBF8C00ACC3E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B3C0EAC1BFCDC56005FB04C /* Project object */;
+}
