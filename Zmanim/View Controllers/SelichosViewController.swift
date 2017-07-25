@@ -1,5 +1,5 @@
 //
-//  Selichos.swift
+//  SelichosViewController.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

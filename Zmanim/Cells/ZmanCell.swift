@@ -1,5 +1,5 @@
 //
-//  Zman.swift
+//  ZmanCell.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

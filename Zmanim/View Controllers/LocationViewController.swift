@@ -1,5 +1,5 @@
 //
-//  Location.swift
+//  LocationViewController.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

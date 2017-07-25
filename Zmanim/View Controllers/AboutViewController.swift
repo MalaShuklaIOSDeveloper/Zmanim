@@ -1,5 +1,5 @@
 //
-//  About.swift
+//  AboutViewController.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

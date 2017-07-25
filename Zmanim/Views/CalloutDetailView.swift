@@ -1,5 +1,5 @@
 //
-//  CalloutDetail.swift
+//  CalloutDetailView.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

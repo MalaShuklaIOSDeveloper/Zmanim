@@ -1,5 +1,5 @@
 //
-//  Description.swift
+//  DescriptionCell.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

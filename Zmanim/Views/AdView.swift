@@ -1,5 +1,5 @@
 //
-//  Ad.swift
+//  AdView.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

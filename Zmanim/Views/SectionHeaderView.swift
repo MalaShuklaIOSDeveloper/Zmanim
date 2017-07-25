@@ -1,5 +1,5 @@
 //
-//  SectionHeader.swift
+//  SectionHeaderView.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.

@@ -1,5 +1,5 @@
 //
-//  Main.swift
+//  MainViewController.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff.
