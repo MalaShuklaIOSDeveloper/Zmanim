@@ -19,6 +19,7 @@ private class Section {
         self.cells = cells
     }
 }
+
 private class Cell {
     let cell: UITableViewCell
     let height: CGFloat

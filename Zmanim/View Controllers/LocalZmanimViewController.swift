@@ -19,10 +19,10 @@ class LocalZmanimTableViewController: UITableViewController, LocalZmanimTableVie
     }
     var date: Date {
         get {
-            return ZmanimDataSource.dataSource.date
+            return Date()
         }
         set {
-            ZmanimDataSource.dataSource.date = newValue
+            
         }
     }
     var defaultSeparatorColor: UIColor!
@@ -57,12 +57,8 @@ class LocalZmanimTableViewController: UITableViewController, LocalZmanimTableVie
         viewModel = LocalZmanimViewModel(dataSource: self)
         viewModel.findNextLocalZman()
         
-        localZmanim = ZmanimDataSource.dataSource.localZmanim
-        
-        ZmanimDataSource.dataSource.delegate = self
         if localZmanim == nil {
             refreshControl?.beginRefreshing()
-            ZmanimDataSource.dataSource.fetchAndConfigureLocalZmanim()
         }
     }
     
@@ -121,25 +117,25 @@ class LocalZmanimTableViewController: UITableViewController, LocalZmanimTableVie
         if date.isToday {
             date = Date()
         }
-        ZmanimDataSource.dataSource.fetchAndConfigureLocalZmanim(for: date)
         setupHeaderLabelText()
     }
 }
 
-extension LocalZmanimTableViewController: ZmanimDataSourceDelegate {
-    func handleLocalZmanimFetchCompletion() {
-        refreshControl?.endRefreshing()
-        setupTableView()
-        localZmanim = ZmanimDataSource.dataSource.localZmanim
-    }
-    
-    func handleLocalZmanimFetchError(_ error: NSError) {
-        refreshControl?.endRefreshing()
-        switch error.code {
-        case Constants.ErrorCodes.NoNetwork:
-            tableView.setupErrorView(with: Constants.Alerts.Error.Network.Title, message: Constants.Alerts.Error.Network.Message)
-        default:
-            break
-        }
-    }
-}
+//extension LocalZmanimTableViewController: ZmanimDataSourceDelegate {
+//    func handleLocalZmanimFetchCompletion() {
+//        refreshControl?.endRefreshing()
+//        setupTableView()
+//        localZmanim = ZmanimDataSource.dataSource.localZmanim
+//    }
+//    
+//    func handleLocalZmanimFetchError(_ error: NSError) {
+//        refreshControl?.endRefreshing()
+//        switch error.code {
+//        case Constants.ErrorCodes.NoNetwork:
+//            tableView.setupErrorView(with: Constants.Alerts.Error.Network.Title, message: Constants.Alerts.Error.Network.Message)
+//        default:
+//            break
+//        }
+//    }
+//}
+

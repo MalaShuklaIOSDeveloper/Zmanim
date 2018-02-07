@@ -8,8 +8,8 @@
 
 import UIKit
 
-@objc protocol CalloutDetailViewDelegate {
-    @objc optional func didTouchUpInsideViewMoreWithLocation(_ location: Location)
+protocol CalloutDetailViewDelegate {
+    func didTouchUpInsideViewMoreWithLocation(_ location: Location)
 }
 
 class CalloutDetailView: UIView {
@@ -67,6 +67,6 @@ class CalloutDetailView: UIView {
     
     // MARK: IBActions
     @IBAction func viewMore(_ sender: UIButton) {
-        delegate?.didTouchUpInsideViewMoreWithLocation?(location)
+        //delegate?.didTouchUpInsideViewMoreWithLocation?(location)
     }
 }

@@ -113,8 +113,8 @@ class ZmanTableViewCell: UITableViewCell {
         triggerDateComponents.quarter = 1
         let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = Constants.Notifications.ZmanReminder.Title
-        notificationContent.body = "\(tefillah.title) at \(location.title!) starts in \(minutes) minutes at \(zman.date.shortTimeString)."
+//        notificationContent.title = Constants.Notifications.ZmanReminder.Title
+//        notificationContent.body = "\(tefillah.title) at \(location.title!) starts in \(minutes) minutes at \(zman.date.shortTimeString)."
         notificationContent.sound = .default()
         notificationAction.notificationRequest = UNNotificationRequest(identifier: "\(triggerDate.timeIntervalSinceReferenceDate)", content: notificationContent, trigger: notificationTrigger)
         return notificationAction

@@ -27,17 +27,17 @@ class LocationsMapViewController: UIViewController {
     // MARK: Properties
     let locationManager = CLLocationManager()
     
-    var locations = ZmanimDataSource.dataSource.locations {
+    var locations: [Location]? {
         willSet {
             if locations != nil {
-                mapView?.removeAnnotations(locations!)
+//                mapView?.removeAnnotations(locations!)
                 //mapView?.removeAnnotation(oneStopAdAnnotation)
             }
         }
         didSet {
             // before renders and mess up!?
             if locations != nil {
-                mapView?.addAnnotations(locations!)
+//                mapView?.addAnnotations(locations!)
                 //mapView?.addAnnotation(oneStopAdAnnotation)
             }
         }
@@ -49,10 +49,10 @@ class LocationsMapViewController: UIViewController {
     }
     var date: Date {
         get {
-            return ZmanimDataSource.dataSource.date
+            return Date()
         }
         set {
-            ZmanimDataSource.dataSource.date = newValue
+            
         }
     }
     var viewMore = false {
@@ -120,7 +120,7 @@ class LocationsMapViewController: UIViewController {
     }
     @IBOutlet weak var calloutDetailView: CalloutDetailView! {
         didSet {
-            calloutDetailView.delegate = self
+//            calloutDetailView.delegate = self
         }
     }
     @IBOutlet weak var adCalloutView: UIView!
@@ -142,7 +142,6 @@ class LocationsMapViewController: UIViewController {
         //oneStopAdAnnotationView.image = UIImage(named: Constants.Assets.Images.OneStopMap)
         //oneStopAdAnnotation.annotationView = oneStopAdAnnotationView
         
-        ZmanimDataSource.dataSource.delegate = self
         // TODO: if empty
         if locations == nil {
             refresh()
@@ -155,7 +154,6 @@ class LocationsMapViewController: UIViewController {
         if date.isToday {
             date = Date()
         }
-        ZmanimDataSource.dataSource.fetchAndConfigureZmanim(for: date)
     }
     
     // MARK: IBActions
@@ -198,7 +196,7 @@ class LocationsMapViewController: UIViewController {
     @IBAction func showYU(_ sender: UIButton) {
         sender.alpha = 1
         if locations != nil {
-            mapView.showAnnotations(locations!, animated: true)
+//            mapView.showAnnotations(locations!, animated: true)
         }
     }
     
@@ -240,7 +238,7 @@ extension LocationsMapViewController: MKMapViewDelegate {
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         if firstRendering {
             if locations != nil {
-                mapView.addAnnotations(locations!)
+//                mapView.addAnnotations(locations!)
                 
                 //oneStopAdAnnotation.annotationView?.frame = CGRect(x: 0, y: 0, width: 70, height: 40)
                 //oneStopAdAnnotation.annotationView?.canShowCallout = true
@@ -253,7 +251,7 @@ extension LocationsMapViewController: MKMapViewDelegate {
                 }
                 
                 //mapView.addAnnotation(oneStopAdAnnotation)
-                mapView.showAnnotations(locations!, animated: true)
+//                mapView.showAnnotations(locations!, animated: true)
             }
             firstRendering = false
         }
@@ -321,35 +319,36 @@ extension LocationsMapViewController: UITableViewDataSource {
     }
 }
 
-extension LocationsMapViewController: ZmanimDataSourceDelegate {
-    func handleZmanimFetchCompletion() {
-        activityIndicator.stopAnimating()
-        locations = ZmanimDataSource.dataSource.locations
-    }
-    
-    func handleZmanimFetchError(_ error: NSError) {
-        activityIndicator.stopAnimating()
-        switch error.code {
-        case Constants.ErrorCodes.NoNetwork:
-            presentAlertController(
-                title: Constants.Alerts.Error.Network.Title,
-                message: Constants.Alerts.Error.Network.Message,
-                preferredStyle: .alert,
-                withCancelAction: true,
-                cancelActionTitle: Constants.Alerts.Actions.OK)
-        default:
-            presentAlertController(
-                title: Constants.Alerts.Error.Title,
-                message: Constants.Alerts.Error.Message,
-                preferredStyle: .alert,
-                withCancelAction: true,
-                cancelActionTitle: Constants.Alerts.Actions.OK)
-        }
-    }
-}
+//extension LocationsMapViewController: ZmanimDataSourceDelegate {
+//    func handleZmanimFetchCompletion() {
+//        activityIndicator.stopAnimating()
+//        locations = ZmanimDataSource.dataSource.locations
+//    }
+//
+//    func handleZmanimFetchError(_ error: NSError) {
+//        activityIndicator.stopAnimating()
+//        switch error.code {
+//        case Constants.ErrorCodes.NoNetwork:
+//            presentAlertController(
+//                title: Constants.Alerts.Error.Network.Title,
+//                message: Constants.Alerts.Error.Network.Message,
+//                preferredStyle: .alert,
+//                withCancelAction: true,
+//                cancelActionTitle: Constants.Alerts.Actions.OK)
+//        default:
+//            presentAlertController(
+//                title: Constants.Alerts.Error.Title,
+//                message: Constants.Alerts.Error.Message,
+//                preferredStyle: .alert,
+//                withCancelAction: true,
+//                cancelActionTitle: Constants.Alerts.Actions.OK)
+//        }
+//    }
+//}
+//
+//extension LocationsMapViewController: CalloutDetailViewDelegate {
+//    func didTouchUpInsideViewMoreWithLocation(_ location: Location) {
+//        viewMore = !viewMore
+//    }
+//}
 
-extension LocationsMapViewController: CalloutDetailViewDelegate {
-    func didTouchUpInsideViewMoreWithLocation(_ location: Location) {
-        viewMore = !viewMore
-    }
-}

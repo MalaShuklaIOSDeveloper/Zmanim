@@ -4,30 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire-iOS.xcscheme</key>
+		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Alamofire-watchOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>DatePickerDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Zmanim Watch Extension.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Zmanim Watch.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-Zmanim.xcscheme</key>
 		<dict>
@@ -36,37 +21,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0C5FC02D15E7CF3CD79E634C8A2C9E30</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>173E4104E4F2CE5ECC896A154802C6D5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>184A1650DC0B648BD756068E60BF2C59</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>24C09059BD1831DCEDD75D70AFF73ABC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4D8199C20C1BE5F5BCDBC8F8CB4BF089</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F74C3AEE7864D433CFCB534D441F38B6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

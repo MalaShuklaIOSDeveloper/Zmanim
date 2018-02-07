@@ -22,9 +22,7 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
             setupNextButton()
             
             if zmanim == nil {
-                if !ZmanimDataSource.dataSource.isFetchingZmanim {
-                    ZmanimDataSource.dataSource.fetchAndConfigureZmanim(for: Date())
-                }
+                
             } else {
                 if zmanim!.isEmpty {
                     setupNoZmanimView()
@@ -34,9 +32,9 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
     }
     var date: Date {
         get {
-            return ZmanimDataSource.dataSource.date
+            return Date()
         } set {
-            ZmanimDataSource.dataSource.date = newValue
+            
         }
     }
     var nextZman: Zman?
@@ -78,9 +76,6 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
         for case let scrollView as UIScrollView in tableView.subviews {
             scrollView.delaysContentTouches = false
         }
-        
-        // TODO: set to nil after leaving
-        ZmanimDataSource.dataSource.delegate = self
 
         viewModel = ZmanimViewModel(dataSource: self)
         viewModel.findNextZman()
@@ -90,8 +85,6 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        ZmanimDataSource.dataSource.delegate = self
         
         // When returning to this view the selected row is deselected.
         deselectSelectedRow()
@@ -220,7 +213,6 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
         if date.isToday {
             date = Date()
         }
-        ZmanimDataSource.dataSource.fetchAndConfigureZmanim(for: date)
     }
     
     // TODO: change to global if needed
@@ -255,29 +247,29 @@ class ZmanimTableViewController: UITableViewController, ZmanimTableViewControlle
     }
 }
 
-extension ZmanimTableViewController: ZmanimDataSourceDelegate {
-    func handleZmanimFetchCompletion() {
-        refreshControl?.endRefreshing()
-        setupTableView()
-        zmanim = ZmanimDataSource.dataSource.zmanimForTefillah(tefillah)
-    }
-    
-    func handleZmanimFetchError(_ error: NSError) {
-        refreshControl?.endRefreshing()
-        switch error.code {
-        case Constants.ErrorCodes.NoNetwork:
-            if zmanim == nil {
-                // TODO: make reusable
-                tableView.setupErrorView(with: Constants.Alerts.Error.Network.Title, message: Constants.Alerts.Error.Network.Message)
-            } else {
-                // TODO: use will set
-                zmanim = nil
-            }
-        default:
-            break
-        }
-    }
-}
+//extension ZmanimTableViewController: ZmanimDataSourceDelegate {
+//    func handleZmanimFetchCompletion() {
+//        refreshControl?.endRefreshing()
+//        setupTableView()
+//        zmanim = ZmanimDataSource.dataSource.zmanimForTefillah(tefillah)
+//    }
+//
+//    func handleZmanimFetchError(_ error: NSError) {
+//        refreshControl?.endRefreshing()
+//        switch error.code {
+//        case Constants.ErrorCodes.NoNetwork:
+//            if zmanim == nil {
+//                // TODO: make reusable
+//                tableView.setupErrorView(with: Constants.Alerts.Error.Network.Title, message: Constants.Alerts.Error.Network.Message)
+//            } else {
+//                // TODO: use will set
+//                zmanim = nil
+//            }
+//        default:
+//            break
+//        }
+//    }
+//}
 
 extension ZmanimTableViewController: ZmanTableViewCellDelegate {
     func notifyButtonTappedInZmanCell(_ cell: ZmanTableViewCell) {

@@ -133,24 +133,24 @@ extension Date {
     }
     
     var zman: Zman? {
-        if let zmanim = ZmanimDataSource.dataSource.zmanim {
-            for zman in zmanim {
-                if zman.date as Date == self {
-                    return zman
-                }
-            }
-        }
+//        if let zmanim = ZmanimDataSource.dataSource.zmanim {
+//            for zman in zmanim {
+//                if zman.date as Date == self {
+//                    return zman
+//                }
+//            }
+//        }
         return nil
     }
     
     var localZman: LocalZman? {
-        if let localZmanim = ZmanimDataSource.dataSource.localZmanim {
-            for localZman in localZmanim {
-                if localZman.date as Date == self {
-                    return localZman
-                }
-            }
-        }
+//        if let localZmanim = ZmanimDataSource.dataSource.localZmanim {
+//            for localZman in localZmanim {
+//                if localZman.date as Date == self {
+//                    return localZman
+//                }
+//            }
+//        }
         return nil
     }
 }

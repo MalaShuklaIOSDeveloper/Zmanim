@@ -11,6 +11,10 @@ DatePickerDialog works on iOS 7, 8 and 9. It depends on the following Apple fram
 * Foundation
 * UIKit
 
+#### Swift Versions
+- Swift 3 (master)
+- Swift 2.3 (```swift_2.3``` branch)
+
 ## Installation
 #### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `DatePickerDialog` by adding it to your `Podfile`:
@@ -41,21 +45,32 @@ github "squimer/DatePickerDialog-iOS-Swift"
 ## Example
 
 ```swift
-import UIKit
-import DatePickerDialog
-
-class ViewController: UIViewController {
-	@IBOutlet weak var textField: UITextField!
-
-	// MARK: - IBActions
-	@IBAction func datePickerTapped(sender: AnyObject) {
+	func datePickerTapped() {
 		DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
 			(date) -> Void in
-			self.textField.text = "\(date)"
+			if let dt = date {
+                		let formatter = DateFormatter()
+                		formatter.dateFormat = "MM/dd/yyyy"
+                		self.textField.text = formatter.string(from: dt)
+            		}
 		}
 	}
-}
 ```
+
+## Dialog parameters
+- showCancelButton: Bool - default true
+- locale: Locale? - default nil
+
+Example without 'Cancel' button:
+``` swift
+DatePickerDialog(showCancelButton: false).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
+```
+
+Example with custom locale:
+``` swift
+DatePickerDialog(locale: Locale(identifier: "es_PY")).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
+```
+
 
 ## Show parameters
 
@@ -63,6 +78,8 @@ class ViewController: UIViewController {
 - doneButtonTitle: String
 - cancelButtonTitle: String
 - defaultDate: Date
+- minimumDate: Date
+- maximumDate: Date
 - datePickerMode: UIDatePickerMode **(Required)**
 - callback: ((date: Date) -> Void) **(Required)**
 
@@ -72,4 +89,4 @@ class ViewController: UIViewController {
 
 ## License
 
-This code is distributed under the terms and conditions of the [MIT license](LICENSE). 
+This code is distributed under the terms and conditions of the [MIT license](LICENSE).

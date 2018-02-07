@@ -10,6 +10,6 @@ import UIKit
 
 extension Location {
     var nextZman: Zman? {
-        return zmanim.findNextZman(with: ZmanimDataSource.dataSource.date)
+        return zmanim.findNextZman(with: Date())
     }
 }
