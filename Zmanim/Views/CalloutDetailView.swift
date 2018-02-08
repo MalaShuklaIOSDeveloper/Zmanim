@@ -35,12 +35,6 @@ class CalloutDetailView: UIView {
         }) {
             self.errorLabel.isHidden = false
         }
-        if let locationNextZman = location.nextZman {
-            hideNoMoreLabel()
-            nextZmanLabel.text = "\(locationNextZman.tefillah.title) at \(locationNextZman.date.shortTimeString)"
-        } else {
-            showNoMoreLabel()
-        }
         if location.zmanim.isEmpty {
             viewMoreButton.isHidden = true
         } else {

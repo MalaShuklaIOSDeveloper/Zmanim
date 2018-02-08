@@ -9,14 +9,6 @@
 import Foundation
 
 extension Date {
-    var isPastMidnightBeforeTwo: Bool {
-        return hour > 0 && hour < 2
-    }
-    
-    var yesterday: Date? {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self)
-    }
-    
     var shortDateString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

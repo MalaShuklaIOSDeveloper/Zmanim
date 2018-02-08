@@ -23,8 +23,8 @@ struct ZmanimAPIClient {
     private static let baseAPIURL = "http://zmanimapp.com:5000/api"
     
     // MARK: - Zmanim
-    /// Fetches zmanim from API and calls `completed` upon returning with result.
-    static func fetchZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
+    /// Fetches zmanim without location objects from API and calls `completed` upon returning with result.
+    private static func fetchRawZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
         var zmanim = Zmanim()
         for tefillah in Tefillah.allTefillos {
             let url = baseAPIURL.tefillos + "/\(tefillah.rawValue)"
@@ -48,6 +48,40 @@ struct ZmanimAPIClient {
                     completed(.failure(error))
                     return
                 }
+            }
+        }
+    }
+    
+    /// Fetches zmanim from API and calls `completed` upon returning with result.
+    static func fetchZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
+        fetchLocations { result in
+            switch result {
+            case .success(let locations):
+                fetchRawZmanim(for: date) { result in
+                    switch result {
+                    case .success(let zmanim):
+                        for tefillah in Tefillah.allTefillos {
+                            if let zmanim = zmanim[tefillah] {
+                                for zman in zmanim {
+                                    for (index, zmanLocation) in zman.locations.enumerated() {
+                                        for location in locations {
+                                            if zmanLocation.title.contains(location.title) {
+                                                // FIXME: Reference cycle
+                                                zman.locations[index] = location
+                                                location.zmanim.append(zman)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        completed(.success(zmanim))
+                    case .failure(let error):
+                        completed(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completed(.failure(error))
             }
         }
     }

@@ -15,11 +15,11 @@ enum Tefillah: String {
     var title: String {
         switch self {
         case .shacharis :
-            return Constants.Shacharis
+            return "Shacharis"
         case .mincha :
-            return Constants.Mincha
+            return "Mincha"
         case .maariv:
-            return Constants.Maariv
+            return "Maariv"
         }
     }
     

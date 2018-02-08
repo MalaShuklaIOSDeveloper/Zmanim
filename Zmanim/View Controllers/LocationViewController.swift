@@ -3,7 +3,7 @@
 //  Zmanim
 //
 //  Created by Natanel Niazoff.
-//  Copyright © 2017 Natanel Niazoff. All rights reserved.
+//  Copyright © 2018 Natanel Niazoff. All rights reserved.
 //
 
 import UIKit
@@ -30,46 +30,28 @@ private class Cell {
     }
 }
 
-//TODO: add navigation
 class LocationTableViewController: UITableViewController {
-    // MARK: Properties
     var location: Location!
-    fileprivate var sections = [Section]()
-    fileprivate var headerView: UIView! {
-        didSet {
-            if headerView != nil {
-                tableView.setup(headerView, with: Constants.Location.TableViewHeaderViewHeight, in: self)
-                imageView.setup(with: location, animated: true, activityIndicator: imageViewActivityIndicatorView) {
-                    let errorMessageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.imageView.bounds.width, height: self.imageView.bounds.height))
-                    errorMessageLabel.text = Constants.Alerts.Location.Error.Image.Message
-                    errorMessageLabel.textAlignment = .center
-                    errorMessageLabel.center = self.imageView.center
-                    self.imageView.addSubview(errorMessageLabel)
-                }
-            }
-        }
-    }
+    
+    private var sections = [Section]()
     
     // MARK: IBOutlets
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var imageViewActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageViewActivityIndicatorView: UIActivityIndicatorView!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        automaticallyAdjustsScrollViewInsets = false
-        tableView.estimatedRowHeight = Constants.Location.DefaultCellHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
         navigationItem.title = location.title
-        headerView = tableView.tableHeaderView!
+        tableView.tableHeaderView = nil
         
-        let descriptionCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.Location.DescriptionCellReuseIdentifier) as! DescriptionTableViewCell
+        let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell") as! DescriptionTableViewCell
         descriptionCell.descriptionLabel.text = location.directions
         
         var zmanimCells = [Cell]()
         for zman in location.zmanim {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.Location.SubtitleCellReuseIdentifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "subtitleCell")!
             cell.textLabel?.text = zman.date.shortTimeString
             cell.detailTextLabel?.text = zman.tefillah.title
             let zmanCell = Cell(cell: cell)
@@ -161,10 +143,5 @@ class LocationTableViewController: UITableViewController {
             let urlString = "\(Constants.URLs.GoogleMapsWithCoordinate)\(coordinate.latitude),\(coordinate.longitude)"
             URL.open(urlString)
         }
-    }
-    
-    // MARK: Scroll View Delegate
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        tableView.update(headerView, with: Constants.Location.TableViewHeaderViewHeight)
     }
 }
