@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        ZmanimDataStore.shared.setAsZmanimAPIObserver()
+        
         // Set the navigation bar to white application wide.
         UINavigationBar.appearance().barTintColor = UIColor.white
         

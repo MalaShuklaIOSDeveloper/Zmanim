@@ -11,16 +11,22 @@ import CoreLocation
 
 /// A type that represents a location 🕍 for minyan.
 class Location: Decodable {
+    /// The location's title.
     let title: String
+    /// The directions the location can be located at.
     let directions: String?
     
+    /// The latitude of the location.
     let latitude: Double
+    /// The longitude of the location.
     let longitude: Double
     
     var imageURL: URL?
     var image: UIImage?
     
+    /// `true` if location is recognized by the API and `false` if not. Default is `false`.
     var recognized = false
+    /// The current zmanim happening at the location.
     var zmanim: [Zman] = []
     
     init(title: String, directions: String? = nil, latitude: Double = 0, longitude: Double = 0, imageURL: URL? = nil, image: UIImage? = nil) {
@@ -39,6 +45,10 @@ class Location: Decodable {
         let coordinates = try container.nestedContainer(keyedBy: CoordinatesCodingKeys.self, forKey: .coordinates)
         self.latitude = try coordinates.decode(Double.self, forKey: .latitude)
         self.longitude = try coordinates.decode(Double.self, forKey: .longitude)
+        
+        if let locationUserInfo = decoder.userInfo[CodingUserInfo.key] as? CodingUserInfo {
+            self.recognized = locationUserInfo.recognized
+        }
     }
 }
 
@@ -49,12 +59,20 @@ extension Location {
         case coordinates
     }
     
+    /// A type that represents user info to pass to a decoder.
+    struct CodingUserInfo {
+        static let key = CodingUserInfoKey(rawValue: "locationCodingOptions")!
+        let recognized: Bool
+    }
+    
+    /// A decoder error.
     enum CoordinatesCodingKeys: String, CodingKey {
         case latitude, longitude
     }
 }
 
 extension Location {
+    /// The coordinate of the location composed of `latitude` and `longitude`.
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }

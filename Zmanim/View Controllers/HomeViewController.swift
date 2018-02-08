@@ -11,8 +11,6 @@ import SafariServices
 import DatePickerDialog
 
 class HomeTableViewController: UITableViewController {
-    var zmanim: [Zman]?
-    
     var date = Date()
     
     private var viewModel = HomeViewModel()
@@ -31,7 +29,6 @@ class HomeTableViewController: UITableViewController {
         
         tableView.rowHeight = Constants.Main.TableViewRowHeight
         clearsSelectionOnViewWillAppear = true
-        tableView.tableHeaderView = nil
         
         let titleIconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         titleIconImageView.image = UIImage(named: Constants.Assets.Images.TitleIcon)!

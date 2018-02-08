@@ -10,10 +10,14 @@ import Foundation
 
 /// A type that represents a zman 👨‍👨‍👦 for minyan.
 class Zman: Decodable {
+    /// The zman's tefillah.
     let tefillah: Tefillah
+    
+    /// The zman's date.
     let date: Date
+    
+    /// The locations a zman is taking place at.
     var locations: [Location]
-    var next = false
     
     init(tefillah: Tefillah, date: Date, locations: [Location]) {
         self.tefillah = tefillah
@@ -51,12 +55,14 @@ extension Zman {
         case time
     }
     
+    /// A type that represents user info to pass to a decoder.
     struct CodingUserInfo {
         static let key = CodingUserInfoKey(rawValue: "zmanCodingOptions")!
         let tefillah: Tefillah
         let date: Date
     }
     
+    /// A decoder error.
     enum DecodeError: Error {
         case notEnoughData
     }

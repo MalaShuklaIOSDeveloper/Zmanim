@@ -28,15 +28,20 @@ class ZmanimTableViewController: UITableViewController {
         
         setupRefreshControl()
         
-        ZmanimAPIClient.fetchZmanim(for: Date()) { result in
-            switch result {
-            case .success(let value):
-                self.zmanim = value[self.tefillah]
-                self.refreshControl?.endRefreshing()
-                self.setupTableView()
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+        if let tefillahZmanim = ZmanimDataStore.shared.zmanim(for: tefillah) {
+            zmanim = tefillahZmanim
+            setupTableView()
+            tableView.reloadData()
+        } else {
+            ZmanimAPIClient.fetchZmanim(for: Date()) { result in
+                switch result {
+                case .success(let value):
+                    self.zmanim = value[self.tefillah]
+                    self.setupTableView()
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
@@ -100,6 +105,7 @@ class ZmanimTableViewController: UITableViewController {
     // MARK: -
     
     func setupTableView() {
+        refreshControl?.endRefreshing()
         tableView.backgroundView = nil
         tableView.rowHeight = Constants.Zmanim.TableViewRowHeight
     }
