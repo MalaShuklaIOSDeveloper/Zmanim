@@ -29,6 +29,18 @@ class HomeViewModel {
         TefillahHomeItem(tefillah: .maariv),
         MoreHomeItem()
     ]
+    
+    func getZmanim() {
+        ZmanimAPIClient.fetchZmanim(for: Date())
+    }
+    
+    var numberOfSections: Int {
+        return 1
+    }
+    
+    func numberOfRows(in section: Int) -> Int {
+        return items.count
+    }
 }
 
 struct TefillahHomeItem: HomeItem {

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01F39659D57996B4873F11D3 /* Pods_Zmanim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B2977DC707CB35779507F0 /* Pods_Zmanim.framework */; };
 		5B23685B1E47BBF200EE73E4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685A1E47BBF200EE73E4 /* UIViewController.swift */; };
 		5B23685D1E47BC2600EE73E4 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */; };
 		5B23685F1E47BC4700EE73E4 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23685E1E47BC4700EE73E4 /* UIImageView.swift */; };
-		5B2368611E47BC8C00EE73E4 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2368601E47BC8C00EE73E4 /* UITableView.swift */; };
 		5B2BAF001C30A9BF00669AB9 /* Annex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */; };
 		5B2BAF041C30A9BF00669AB9 /* Rubin Shul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */; };
 		5B2BAF061C30A9BF00669AB9 /* Sky Caf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */; };
@@ -39,6 +39,7 @@
 		5B6305B22028C0170017094C /* Tefillah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305AB2028C0160017094C /* Tefillah.swift */; };
 		5B6305B32028C0170017094C /* LocationImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305AC2028C0160017094C /* LocationImages.swift */; };
 		5B6305B42028C0170017094C /* ZmanimDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305AD2028C0160017094C /* ZmanimDataStore.swift */; };
+		5B6305D8202D23810017094C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305D7202D23810017094C /* LocationViewModel.swift */; };
 		5B86C40D1D454E0200E4CDA6 /* Morg Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */; };
 		5B95EA091C2AE8D000647230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95EA081C2AE8D000647230 /* HomeViewController.swift */; };
 		5B9A177D1D2EB5B300588091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */; };
@@ -85,7 +86,6 @@
 		5B23685A1E47BBF200EE73E4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertController.swift; path = Extensions/UIAlertController.swift; sourceTree = "<group>"; };
 		5B23685E1E47BC4700EE73E4 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = Extensions/UIImageView.swift; sourceTree = "<group>"; };
-		5B2368601E47BC8C00EE73E4 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableView.swift; path = Extensions/UITableView.swift; sourceTree = "<group>"; };
 		5B2BAEF81C30A9BF00669AB9 /* Annex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Annex.jpg; sourceTree = "<group>"; };
 		5B2BAEFC1C30A9BF00669AB9 /* Rubin Shul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rubin Shul.jpg"; sourceTree = "<group>"; };
 		5B2BAEFE1C30A9BF00669AB9 /* Sky Caf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sky Caf.jpg"; sourceTree = "<group>"; };
@@ -110,12 +110,13 @@
 		5B6305A02028BF620017094C /* Zman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Zman.swift; path = Zmanim/Zman.swift; sourceTree = "<group>"; };
 		5B6305A22028BF9C0017094C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Zmanim/Location.swift; sourceTree = "<group>"; };
 		5B6305A62028BFC20017094C /* Shabbos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shabbos.swift; path = Zmanim/Shabbos.swift; sourceTree = "<group>"; };
-		5B6305A82028C0160017094C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Zmanim/Constants.swift; sourceTree = "<group>"; };
+		5B6305A82028C0160017094C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5B6305A92028C0160017094C /* LocalZman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZman.swift; path = Zmanim/LocalZman.swift; sourceTree = "<group>"; };
 		5B6305AA2028C0160017094C /* ZmanimAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimAPIClient.swift; path = Zmanim/ZmanimAPIClient.swift; sourceTree = "<group>"; };
 		5B6305AB2028C0160017094C /* Tefillah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tefillah.swift; path = Zmanim/Tefillah.swift; sourceTree = "<group>"; };
 		5B6305AC2028C0160017094C /* LocationImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationImages.swift; path = Zmanim/LocationImages.swift; sourceTree = "<group>"; };
 		5B6305AD2028C0160017094C /* ZmanimDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimDataStore.swift; path = Zmanim/ZmanimDataStore.swift; sourceTree = "<group>"; };
+		5B6305D7202D23810017094C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationViewModel.swift; path = "View Controllers/LocationViewModel.swift"; sourceTree = "<group>"; };
 		5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Beis.jpg"; sourceTree = "<group>"; };
 		5B95EA081C2AE8D000647230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = "View Models/HomeViewModel.swift"; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muss Beis.jpg"; sourceTree = "<group>"; };
 		5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Extensions/URL.swift; sourceTree = "<group>"; };
 		80D5EBF3D9E0E871718BB81C /* Pods-Zmanim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim.debug.xcconfig"; sourceTree = "<group>"; };
+		83B2977DC707CB35779507F0 /* Pods_Zmanim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zmanim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			files = (
 				5B4455C51D257FB100B19A6E /* CoreLocation.framework in Frameworks */,
 				5B4455BE1D257FA800B19A6E /* MapKit.framework in Frameworks */,
+				01F39659D57996B4873F11D3 /* Pods_Zmanim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +178,6 @@
 				5B23685A1E47BBF200EE73E4 /* UIViewController.swift */,
 				5B23685C1E47BC2600EE73E4 /* UIAlertController.swift */,
 				5B23685E1E47BC4700EE73E4 /* UIImageView.swift */,
-				5B2368601E47BC8C00EE73E4 /* UITableView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -192,7 +194,6 @@
 				5B6305AC2028C0160017094C /* LocationImages.swift */,
 				5B6305AA2028C0160017094C /* ZmanimAPIClient.swift */,
 				5B6305AD2028C0160017094C /* ZmanimDataStore.swift */,
-				5B6305A82028C0160017094C /* Constants.swift */,
 				5B3C0EB61BFCDC56005FB04C /* Zmanim */,
 				5B6FE7191CBE93A6002A09CA /* Frameworks */,
 				5B3C0EB51BFCDC56005FB04C /* Products */,
@@ -212,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFCC60C1D5BB89000ACC3E3 /* View Controllers */,
-				5BFCC60E1D5BB8C000ACC3E3 /* Table View Cells */,
+				5BFCC60E1D5BB8C000ACC3E3 /* Cells */,
 				5BFCC60F1D5BB8D000ACC3E3 /* Views */,
 				5B3B6EF91E2C17710042F61B /* Extensions */,
 				5BFCC6101D5BB8E800ACC3E3 /* More */,
@@ -234,6 +235,7 @@
 			children = (
 				5B4455C41D257FB100B19A6E /* CoreLocation.framework */,
 				5B4455BD1D257FA800B19A6E /* MapKit.framework */,
+				83B2977DC707CB35779507F0 /* Pods_Zmanim.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,6 +248,7 @@
 				5B3C0ECC1BFCE51E005FB04C /* ZmanimViewController.swift */,
 				5B419F571D19DD3E0018F1C7 /* ZmanimViewModel.swift */,
 				5B61452E1C02A07A007530F7 /* LocationViewController.swift */,
+				5B6305D7202D23810017094C /* LocationViewModel.swift */,
 				5B47564D1C9B393B00927935 /* LocalZmanimViewController.swift */,
 				5B58893F1D21B9070060022C /* LocalZmanimModel.swift */,
 				5B4AF58B1CB1EDE0001F0CB6 /* AboutViewController.swift */,
@@ -254,13 +257,13 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		5BFCC60E1D5BB8C000ACC3E3 /* Table View Cells */ = {
+		5BFCC60E1D5BB8C000ACC3E3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				5BBAFC331D35993100A70878 /* ZmanCell.swift */,
 				5B5E52411D301F5D002C1D2A /* DescriptionCell.swift */,
 			);
-			name = "Table View Cells";
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		5BFCC60F1D5BB8D000ACC3E3 /* Views */ = {
@@ -275,6 +278,7 @@
 		5BFCC6101D5BB8E800ACC3E3 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				5B6305A82028C0160017094C /* Constants.swift */,
 				5B9BAC911D32BC1600E445CA /* AnimatedController.swift */,
 				5B3C0EBB1BFCDC56005FB04C /* Main.storyboard */,
 				5B3C0EC01BFCDC56005FB04C /* LaunchScreen.storyboard */,
@@ -390,12 +394,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -451,7 +453,7 @@
 				5B23685D1E47BC2600EE73E4 /* UIAlertController.swift in Sources */,
 				5BB3F8F81D26C1C5002F61E9 /* CalloutDetailView.swift in Sources */,
 				5B6305B12028C0170017094C /* ZmanimAPIClient.swift in Sources */,
-				5B2368611E47BC8C00EE73E4 /* UITableView.swift in Sources */,
+				5B6305D8202D23810017094C /* LocationViewModel.swift in Sources */,
 				5B3B6EFB1E2C607D0042F61B /* Date.swift in Sources */,
 				5B5889401D21B9070060022C /* LocalZmanimModel.swift in Sources */,
 				5B3C0EB81BFCDC56005FB04C /* AppDelegate.swift in Sources */,

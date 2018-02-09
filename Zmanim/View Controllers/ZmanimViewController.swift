@@ -9,138 +9,86 @@
 import UIKit
 
 class ZmanimTableViewController: UITableViewController {
+    var viewModelData: ZmanimViewModelData!
+    private var viewModel: ZmanimViewModel!
     
-    var viewModel = ZmanimViewModel()
+    private struct Constants {
+        static let tableViewRowHeight: CGFloat = 52
+    }
     
-    var tefillah = Tefillah.shacharis
-    
-    var zmanim: [Zman]?
-    
-    var date = Date()
+    private enum SegueIdentifier: String {
+        case showLocation
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = tefillah.title
+        viewModel = ZmanimViewModel(data: viewModelData)
+        
+        navigationItem.title = viewModel.tefillah.title
+        tableView.rowHeight = Constants.tableViewRowHeight
         clearsSelectionOnViewWillAppear = true
-        setupTableView()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(didRefresh), for: .valueChanged)
+        refreshControl?.beginRefreshing()
         
-        setupRefreshControl()
-        
-        if let tefillahZmanim = ZmanimDataStore.shared.zmanim(for: tefillah) {
-            zmanim = tefillahZmanim
-            setupTableView()
-            tableView.reloadData()
-        } else {
-            ZmanimAPIClient.fetchZmanim(for: Date()) { result in
-                switch result {
-                case .success(let value):
-                    self.zmanim = value[self.tefillah]
-                    self.setupTableView()
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
-            }
+        viewModel.getZmanim {
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
     }
     
     // MARK: - Table View
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return zmanim?.count ?? 0
+        return viewModel.numberOfSections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return zmanim![section].locations.count
+        return viewModel.numberOfRows(in: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "zmanCell") as! ZmanTableViewCell
-        let zman = zmanim![indexPath.section]
-        let location = zman.locations[indexPath.row]
-        cell.locationLabel.text = location.title
-        cell.tefillah = zman.tefillah
-        cell.zman = zman
-        cell.location = location
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.zmanCellIdentifier.rawValue) as! ZmanTableViewCell
+        
+        if let zman = viewModel.zman(for: indexPath.section) {
+            let location = zman.locations[indexPath.row]
+            cell.locationLabel.text = location.title
+        }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let zman = zmanim![section]
-        return zman.date.shortTimeString
+        if let zman = viewModel.zman(for: section) {
+            return zman.date.shortTimeString
+        }
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !zmanim![indexPath.section].locations[indexPath.row].recognized {
-            presentAlertController(
-                title: Constants.Alerts.UnknownLocation.Title,
-                message: Constants.Alerts.UnknownLocation.Message,
-                withCancelAction: true,
-                cancelActionTitle: Constants.Alerts.Actions.OK,
-                cancelActionHandler: { action in
-                    self.deselectSelectedRow()
-                })
-        } else {
-            performSegue(withIdentifier: Constants.Storyboard.Zmanim.ShowLocationSegueIdentifier, sender: indexPath)
+        if let zman = viewModel.zman(for: indexPath.section) {
+            if zman.locations[indexPath.row].recognized {
+                performSegue(withIdentifier: SegueIdentifier.showLocation.rawValue, sender: indexPath)
+            }
         }
     }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
+        if let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) {
             switch identifier {
-            case Constants.Storyboard.Zmanim.ShowLocationSegueIdentifier:
-                if let locationViewController = segue.destination as? LocationTableViewController {
-                    if let indexPath = sender as? IndexPath {
-                        locationViewController.location = zmanim![indexPath.section].locations[indexPath.row]
-                    }
+            case .showLocation:
+                if let locationViewController = segue.destination as? LocationTableViewController, let indexPath = sender as? IndexPath, let zman = viewModel.zman(for: indexPath.section) {
+                        locationViewController.viewModelData = LocationViewModelData(location: zman.locations[indexPath.row])
                 }
-            default:
-                break
+                
             }
         }
     }
     // MARK: -
     
-    func setupTableView() {
-        refreshControl?.endRefreshing()
-        tableView.backgroundView = nil
-        tableView.rowHeight = Constants.Zmanim.TableViewRowHeight
-    }
-    
-    func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(didRefresh), for: .valueChanged)
-        // In the case that zmanim is nil and is fetching begins animation
-        if zmanim == nil {
-            refreshControl?.beginRefreshing()
-        }
-    }
-    
     func didRefresh() {
-        if date.isToday {
-            date = Date()
-        }
-    }
-    
-    // TODO: change to global if needed
-    func deselectSelectedRow() {
-        if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selectedRowIndexPath, animated: true)
-        } 
-    }
-    
-    func setupNoZmanimView() {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: tableView.bounds.height))
-        titleLabel.center = tableView.center
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = UIColor.lightGray
-        titleLabel.font = UIFont.systemFont(ofSize: Constants.Alerts.Zmanim.NoZmanim.TextSize)
-        titleLabel.text = Constants.Alerts.Zmanim.NoZmanim.Title
-        titleLabel.sizeToFit()
-        tableView.backgroundView = titleLabel
-        tableView.separatorColor = UIColor.clear
+        
     }
 }

@@ -15,9 +15,6 @@ struct Constants {
     static let Maariv = "Ma'ariv"
     
     struct Main {
-        static let More = "More"
-        static let Selichos = "Selichos"
-        static let TableViewRowHeight: CGFloat = 100
         static let TableViewHeaderViewHeight: CGFloat = 250
         static let MapLaunchTransitionDuration: TimeInterval = 0.6
         static let MapDismissTransitionDuration: TimeInterval = 0.3
@@ -43,9 +40,6 @@ struct Constants {
     
     struct Location {
         static let TableViewHeaderViewHeight: CGFloat = 250
-        static let DefaultCellHeight: CGFloat = 44
-        static let DescriptionSectionTitle = "Description"
-        static let TodaysScheduleSectionTitle = "Today's Schedule"
     }
     
     struct LocalZmanim {
@@ -189,13 +183,7 @@ struct Constants {
 
     struct URLs {
         static let YUStudentLife = "http://www.yu.edu/student-life"
-        static let Waze = "waze://"
-        static let WazeWithCoordinate = "waze://?ll="
-        static let WazeAddNavigation = "&navigate=yes"
-        static let GoogleMaps = "comgooglemaps://"
-        static let GoogleMapsWithCoordinate = "comgooglemaps://?q="
         static let ZmanimWebsite = "http://zmanimforyu.weebly.com"
-        static let EmailMe = "mailto:nniazoff@icloud.com?subject=Hello!"
         static let ZmanimAppStore = "itms-apps://itunes.apple.com/app/id1071006216"
         
         struct YUZmanim {

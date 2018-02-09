@@ -21,7 +21,9 @@ class Location: Decodable {
     /// The longitude of the location.
     let longitude: Double
     
+    /// The URL to the location's image.
     var imageURL: URL?
+    /// The location's local image or cache from `imageURL`.
     var image: UIImage?
     
     /// `true` if location is recognized by the API and `false` if not. Default is `false`.
@@ -45,6 +47,10 @@ class Location: Decodable {
         let coordinates = try container.nestedContainer(keyedBy: CoordinatesCodingKeys.self, forKey: .coordinates)
         self.latitude = try coordinates.decode(Double.self, forKey: .latitude)
         self.longitude = try coordinates.decode(Double.self, forKey: .longitude)
+        
+        if let image = LocationImages.image(forLocationTitle: self.title) {
+            self.image = image
+        }
         
         if let locationUserInfo = decoder.userInfo[CodingUserInfo.key] as? CodingUserInfo {
             self.recognized = locationUserInfo.recognized

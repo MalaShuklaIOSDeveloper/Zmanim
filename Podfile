@@ -7,5 +7,4 @@ target 'Zmanim' do
 
   # Pods for Zmanim
   pod 'Alamofire'
-  pod 'DatePickerDialog'
 end

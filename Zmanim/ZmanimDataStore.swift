@@ -19,6 +19,12 @@ class ZmanimDataStore {
     var locations: [Location]?
     var localZmanim: [LocalZman]?
     
+    /// Last time `shacharis`, `mincha`, `maariv` was updated.
+    var lastZmanimUpdate: Date?
+    
+    /// Last time `locations` was updates.
+    var lastLocationsUpdate: Date?
+    
     lazy var zmanimDidChange: ((Zmanim) -> Void) = { zmanim in
         for tefillah in Tefillah.allTefillos {
             if let tefillahZmanim = zmanim[tefillah] {
@@ -32,10 +38,16 @@ class ZmanimDataStore {
                 }
             }
         }
+        
+        // Set last updated zmanim date to current date.
+        self.lastZmanimUpdate = Date()
     }
     
     lazy var locationsDidChange: (([Location]) -> Void) = { locations in
         self.locations = locations
+        
+        // Set last updated locations date to current date.
+        self.lastLocationsUpdate = Date()
     }
     
     private init() {}

@@ -1,15 +1,12 @@
 PODS:
   - Alamofire (4.6.0)
-  - DatePickerDialog (2.0)
 
 DEPENDENCIES:
   - Alamofire
-  - DatePickerDialog
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
 
-PODFILE CHECKSUM: b06937cfaa67797cfa4efcd46aec7a8f6f61dba2
+PODFILE CHECKSUM: 67113afc483ee08f1a9cf55b66dfa661e59365fe
 
 COCOAPODS: 1.3.1

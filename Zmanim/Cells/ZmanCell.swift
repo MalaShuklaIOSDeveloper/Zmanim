@@ -9,16 +9,5 @@
 import UIKit
 
 class ZmanTableViewCell: UITableViewCell {
-    // MARK: Properties
-    var tefillah: Tefillah!
-    var zman: Zman!
-    var location: Location!
-    
-    // MARK: Lifecycle
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    // MARK: IBOutlets
     @IBOutlet weak var locationLabel: UILabel!
 }

@@ -3,28 +3,14 @@
 //  Zmanim
 //
 //  Created by Natanel Niazoff.
-//  Copyright © 2017 Natanel Niazoff. All rights reserved.
+//  Copyright © 2018 Natanel Niazoff. All rights reserved.
 //
 
 import UIKit
 import MapKit
 import CoreLocation
 
-class AdAnnotation: NSObject, MKAnnotation {
-    @objc var title: String?
-    @objc var subtitle: String?
-    @objc var coordinate: CLLocationCoordinate2D
-    var annotationView: MKAnnotationView?
-    
-    init(coordinate: CLLocationCoordinate2D, title: String? = nil, subtitle: String? = nil, annotationView: MKAnnotationView? = nil) {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-    }
-}
-
 class LocationsMapViewController: UIViewController {
-    // MARK: Properties
     let locationManager = CLLocationManager()
     
     var locations: [Location]? {
@@ -260,10 +246,6 @@ extension LocationsMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // If annotation is user location keep standard
         if annotation.isKind(of: MKUserLocation.self) { return nil }
-        
-        if let adAnnotation = annotation as? AdAnnotation {
-            return adAnnotation.annotationView
-        }
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.Map.AnnotationViewReuseIdentifier) as? MKPinAnnotationView
         

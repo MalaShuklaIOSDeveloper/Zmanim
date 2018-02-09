@@ -426,7 +426,7 @@
                         <segue destination="Ynd-cr-EUx" kind="show" identifier="showZmanim" id="yuV-uu-uxa"/>
                         <segue destination="rmK-gF-Vki" kind="show" identifier="Show Local Zmanim" id="1Au-vo-gSf"/>
                         <segue destination="kVH-m2-Jg8" kind="show" identifier="Show About" id="lJ6-ow-Tg2"/>
-                        <segue destination="Rrp-yH-zQo" kind="presentation" identifier="Present Map" id="UID-En-9B1"/>
+                        <segue destination="Rrp-yH-zQo" kind="presentation" identifier="presentMap" id="UID-En-9B1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3k-3T-3aL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,7 +475,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="A1V-Us-VG1"/>
                     <connections>
-                        <segue destination="Sna-fw-qjw" kind="show" identifier="Show Location" id="ZPe-bZ-WVd"/>
+                        <segue destination="Sna-fw-qjw" kind="show" identifier="showLocation" id="ZPe-bZ-WVd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCu-Xq-qUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -490,31 +490,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="3gP-rr-bV8">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTd-PU-wwr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </imageView>
-                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7np-6d-A2X">
-                                    <rect key="frame" x="177.5" y="115" width="20" height="20"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="KTd-PU-wwr" firstAttribute="leading" secondItem="3gP-rr-bV8" secondAttribute="leading" id="8qU-d8-kdS"/>
-                                <constraint firstItem="7np-6d-A2X" firstAttribute="centerY" secondItem="KTd-PU-wwr" secondAttribute="centerY" id="PaS-eI-Co1"/>
-                                <constraint firstItem="KTd-PU-wwr" firstAttribute="top" secondItem="3gP-rr-bV8" secondAttribute="top" id="S7w-9Y-Pss"/>
-                                <constraint firstAttribute="bottom" secondItem="KTd-PU-wwr" secondAttribute="bottom" id="fZF-Sh-lp3"/>
-                                <constraint firstAttribute="trailing" secondItem="KTd-PU-wwr" secondAttribute="trailing" id="jFb-MB-YfL"/>
-                                <constraint firstItem="7np-6d-A2X" firstAttribute="centerX" secondItem="KTd-PU-wwr" secondAttribute="centerX" id="t1O-ZO-Qqm"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="174" id="afo-zG-H7I" customClass="DescriptionTableViewCell" customModule="Zmanim" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="305.5" width="375" height="174"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="afo-zG-H7I" id="HWc-mW-UDV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
@@ -538,8 +516,8 @@
                                     <outlet property="descriptionLabel" destination="yqP-o6-yZw" id="SWY-7j-pgg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subtitleCell" textLabel="ba8-0G-HyH" detailTextLabel="wHS-nD-a8a" style="IBUITableViewCellStyleSubtitle" id="tvT-Bv-xPc">
-                                <rect key="frame" x="0.0" y="479.5" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="zmanCell" textLabel="ba8-0G-HyH" detailTextLabel="wHS-nD-a8a" style="IBUITableViewCellStyleSubtitle" id="tvT-Bv-xPc">
+                                <rect key="frame" x="0.0" y="229.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tvT-Bv-xPc" id="Cm4-hg-tBa">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -575,10 +553,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="imageView" destination="KTd-PU-wwr" id="kZi-Vq-KmP"/>
-                        <outlet property="imageViewActivityIndicatorView" destination="7np-6d-A2X" id="TiC-g9-kS0"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JB-RW-Yu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/// A helper type to retrieve location images.
+/// A helper type to retrieve location images 🏙.
 struct LocationImages {
     static let Annex = UIImage(named: "Annex.jpg")
     static let FischelBeis = UIImage(named: "Fischel Beis.jpg")
@@ -24,7 +24,7 @@ struct LocationImages {
     static let SkyCaf = UIImage(named: "Sky Caf.jpg")
     static let Zysman101 = UIImage(named:"Zysman 101.jpg")
     
-    static func locationImage(for title: String) -> UIImage? {
+    static func image(forLocationTitle title: String) -> UIImage? {
         switch title {
         case "Annex":
             return Annex

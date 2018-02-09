@@ -94,7 +94,7 @@ struct ZmanimAPIClient {
     }
     
     /// Fetches zmanim from API and calls `completed` upon returning with result.
-    static func fetchZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
+    static func fetchZmanim(for date: Date, completed: ((_ result: APIResult<Zmanim>) -> Void)? = nil) {
         fetchLocations { result in
             switch result {
             // If fetched locations successfully...
@@ -128,13 +128,13 @@ struct ZmanimAPIClient {
                         // Send to observers.
                         observers.forEach { $0.zmanimDidChange(zmanim) }
                         observers.forEach { $0.locationsDidChange(locations) }
-                        completed(.success(zmanim))
+                        completed?(.success(zmanim))
                     case .failure(let error):
-                        completed(.failure(error))
+                        completed?(.failure(error))
                     }
                 }
             case .failure(let error):
-                completed(.failure(error))
+                completed?(.failure(error))
             }
         }
     }

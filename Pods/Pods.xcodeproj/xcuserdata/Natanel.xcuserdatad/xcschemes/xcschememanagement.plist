@@ -7,12 +7,7 @@
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-		</dict>
-		<key>DatePickerDialog.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>Pods-Zmanim.xcscheme</key>
 		<dict>
