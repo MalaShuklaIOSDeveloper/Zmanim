@@ -24,7 +24,7 @@ private class Cell {
     let height: CGFloat
     let selectionHandler: ((Cell) -> Void)?
     
-    init(title: String? = nil, cell: UITableViewCell, height: CGFloat = Constants.About.DefaultCellHeight, selectionHandler: ((Cell) -> Void)? = nil) {
+    init(title: String? = nil, cell: UITableViewCell, height: CGFloat = 44, selectionHandler: ((Cell) -> Void)? = nil) {
         self.title = title
         self.cell = cell
         self.height = height
@@ -33,57 +33,67 @@ private class Cell {
 }
 
 class AboutTableViewController: UITableViewController {
-    // MARK: Properties
     fileprivate var sections = [Section]()
     
-    // MARK: Lifecycle
+    var currentYear: String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter.string(from: date)
+    }
+    
+    struct Constants {
+        static let emailWithHello = "mailto:nniazoff@zmanimapp.com?subject=Hello!"
+        static let zmanimAppStore = "itms-apps://itunes.apple.com/app/id1071006216"
+    }
+    
+    enum CellIdentifier: String {
+        case imageCell, textCell, buttonCell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = Constants.About.Title
+        navigationItem.title = "About"
         
         func buttonCellWithTitle(_ title: String) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.About.ButtonCellIdentifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.buttonCell.rawValue)!
             cell.textLabel?.text = title
             cell.textLabel?.textColor = view.tintColor
             return cell
         }
         
-        let versionCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.About.TextCellIdentifier)!
+        let versionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.textCell.rawValue)!
         versionCell.isUserInteractionEnabled = false
-        versionCell.textLabel?.text = Constants.About.Version + " " + (Bundle.main.object(forInfoDictionaryKey: Constants.About.VerisonInfoDictionaryKey) as! String)
+        versionCell.textLabel?.text = "Version" + " " + (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String)
         
         sections = [
             Section(cells: [
-                Cell(cell: tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.About.ImageCellIdentifier)!, height: Constants.About.ImageCellHeight)
+                Cell(cell: tableView.dequeueReusableCell(withIdentifier: CellIdentifier.imageCell.rawValue)!, height: 140)
             ]),
             Section(cells: [
                 Cell(cell: versionCell)
             ]),
             Section(cells: [
-                Cell(cell: buttonCellWithTitle(Constants.About.Website), selectionHandler: { cell in
-                    self.presentOrOpenWebsiteURL()
-                }),
-                Cell(cell: buttonCellWithTitle(Constants.About.ContactUs), selectionHandler: { cell in
+                Cell(cell: buttonCellWithTitle("Contact"), selectionHandler: { cell in
                     self.openMail()
                 }),
-                Cell(cell: buttonCellWithTitle(Constants.About.RateUs), selectionHandler: { cell in
+                Cell(cell: buttonCellWithTitle("Rate Zmanim"), selectionHandler: { cell in
                     self.openAppStore()
                 })
             ])
         ]
         
-        // Sets copyright label to footer
-        let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: Constants.About.FooterHeight))
-        footerLabel.text = Constants.About.Footer
-        footerLabel.font = UIFont.systemFont(ofSize: Constants.About.FooterTextSize)
+        let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+        footerLabel.text = "Copyright © \(currentYear) Natanel Niazoff.\n All rights reserved."
+        footerLabel.font = UIFont.systemFont(ofSize: 15)
         footerLabel.textColor = UIColor.gray
         footerLabel.textAlignment = .center
         footerLabel.numberOfLines = 0
         tableView.tableFooterView = footerLabel
     }
     
-    // MARK: Table View Data Source
+    // MARK: - Table View
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -104,23 +114,13 @@ class AboutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return sections[indexPath.section].cells[indexPath.row].height
     }
-    
-    // MARK: Methods
-    // TODO: make functions
-    func presentOrOpenWebsiteURL() {
-        if let websiteURL = URL(string: Constants.URLs.ZmanimWebsite) {
-            let websiteSafariViewController = SFSafariViewController(url: websiteURL)
-            let navigationViewController = UINavigationController(rootViewController: websiteSafariViewController)
-            navigationViewController.setNavigationBarHidden(true, animated: false)
-            present(navigationViewController, animated: true, completion: nil)
-        }
-    }
+    // MARK: -
     
     func openMail() {
-        //URL.open(Constants.URLs.EmailMe)
+        URL.open(Constants.emailWithHello)
     }
     
     func openAppStore() {
-        URL.open(Constants.URLs.ZmanimAppStore)
+        URL.open(Constants.zmanimAppStore)
     }
 }

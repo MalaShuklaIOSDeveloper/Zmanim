@@ -57,9 +57,15 @@ class LocationViewModel {
     func title(for section: Int) -> String? {
         switch section {
         case 0: return "Description"
-        case 1: return "Today's Schedule"
+        case 1:
+            if let zmanim = items[1] {
+                if !zmanim.isEmpty {
+                    return "Today's Schedule"
+                }
+            }
         default: return nil
         }
+        return nil
     }
 }
 

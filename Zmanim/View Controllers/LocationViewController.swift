@@ -41,7 +41,7 @@ class LocationTableViewController: UITableViewController {
             headerView = UIView()
             imageView = UIImageView()
             if let headerView = headerView, let imageView = imageView {
-                imageView.setImage(locationImage)
+                imageView.image = locationImage
                 imageView.contentMode = .scaleAspectFill
                 imageView.translatesAutoresizingMaskIntoConstraints = false
                 headerView.addSubview(imageView)

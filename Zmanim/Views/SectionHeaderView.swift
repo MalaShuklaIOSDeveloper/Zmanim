@@ -3,7 +3,7 @@
 //  Zmanim
 //
 //  Created by Natanel Niazoff.
-//  Copyright © 2017 Natanel Niazoff. All rights reserved.
+//  Copyright © 2018 Natanel Niazoff. All rights reserved.
 //
 
 import Foundation
@@ -27,11 +27,12 @@ class SectionTitleHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let leadingConstraint = NSLayoutConstraint(item: headerLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 20)
-        let trailingConstraint = NSLayoutConstraint(item: headerLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-        let topConstraint = NSLayoutConstraint(item: headerLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: headerLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-        addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+        addConstraints([
+            leftAnchor.constraint(equalTo: headerLabel.leftAnchor, constant: 20),
+            topAnchor.constraint(equalTo: headerLabel.topAnchor),
+            rightAnchor.constraint(equalTo: headerLabel.rightAnchor),
+            bottomAnchor.constraint(equalTo: headerLabel.bottomAnchor)
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

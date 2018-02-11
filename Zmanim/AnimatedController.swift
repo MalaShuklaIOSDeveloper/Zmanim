@@ -3,14 +3,10 @@
 //  Zmanim
 //
 //  Created by Natanel Niazoff.
-//  Copyright © 2017 Natanel Niazoff. All rights reserved.
+//  Copyright © 2018 Natanel Niazoff. All rights reserved.
 //
 
 import UIKit
-
-@objc protocol AnimatedControllerDelegate {
-    @objc optional func animationEndedSuccessfully()
-}
 
 enum TransitionType {
     case springSlideUp
@@ -18,22 +14,12 @@ enum TransitionType {
 }
 
 class AnimatedController: NSObject {
-    // MARK: Properties
     fileprivate var transitionType: TransitionType
     fileprivate var duration: TimeInterval
-    
-    var delegate: AnimatedControllerDelegate?
     
     init(type: TransitionType = .springSlideUp, duration: TimeInterval = 1) {
         self.transitionType = type
         self.duration = duration
-    }
-    
-    // MARK: Methods
-    func animationEnded(_ transitionCompleted: Bool) {
-        if transitionCompleted {
-            delegate?.animationEndedSuccessfully?()
-        }
     }
 }
 
