@@ -113,7 +113,7 @@ struct ZmanimAPIClient {
                         for tefillah in Tefillah.allTefillos {
                             if let tefillahZmanim = zmanim[tefillah] {
                                 // ...and each zman...
-                                for (zmanIndex, zman) in tefillahZmanim.enumerated() {
+                                for zman in tefillahZmanim {
                                     // ...for each zman's raw location...
                                     for (zmanLocationIndex, var zmanLocation) in zman.locations.enumerated() {
                                         // ...for each location from before...
@@ -129,20 +129,22 @@ struct ZmanimAPIClient {
                                                 location.zmanim.append(zman)
                                             }
                                         }
-//                                        // For each zman...
-//                                        for anotherZman in tefillahZmanim {
-//                                            // ...if another zman is the same as our zman...
-//                                            if anotherZman == zman {
-//                                                // ...and the zman doesn't hold our zman...
-//                                                if !anotherZman.locations.contains(zmanLocation) {
-//                                                    // ...add the zman's location to that zman...
-//                                                    anotherZman.locations.append(zmanLocation)
-//                                                    zmanim[tefillah]?.remove(at: zmanIndex)
-//                                                    break
-//                                                }
-//                                            }
-//                                        }
                                     }
+                                }
+                                // Combines zmanim with multiple locations into one zman.
+                                zmanim[tefillah] = tefillahZmanim.reduce([Zman]()) { result, currentZman in
+                                    // If there's a previous zman...
+                                    if let prevZman = result.last {
+                                        // ...and it's equal to the current one...
+                                        if prevZman == currentZman {
+                                            // ...add the current zman's locations to the previous zman...
+                                            prevZman.locations += currentZman.locations
+                                            // ...and only return the previous zman.
+                                            return result
+                                        }
+                                    }
+                                    // If there's no previous zman or it's not equal to the current one, add it to the array.
+                                    return result + [currentZman]
                                 }
                             }
                         }
