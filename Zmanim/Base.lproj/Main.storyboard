@@ -216,7 +216,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tc8-iA-xUZ">
                                             <rect key="frame" x="16" y="0.0" width="343" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -230,15 +230,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="q2H-92-iA6">
-                        <barButtonItem key="leftBarButtonItem" title="Today" id="vji-p3-9YC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Today" id="vji-p3-9YC">
+                            <connections>
+                                <action selector="didTapDateButton:" destination="dTa-G3-tP1" id="Nby-1r-m5O"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Map" id="2x8-vY-VOA">
                             <connections>
-                                <action selector="presentMap:" destination="dTa-G3-tP1" id="H8c-8G-Lvf"/>
+                                <action selector="didTapMapButton:" destination="dTa-G3-tP1" id="x2y-gf-mku"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateButton" destination="vji-p3-9YC" id="5hH-nx-Mf3"/>
+                        <outlet property="calendarCollectionView" destination="2hX-GU-GXe" id="6xc-nH-Tx9"/>
+                        <outlet property="calendarView" destination="oCa-9f-WI7" id="f5r-EC-8QK"/>
+                        <outlet property="dateButton" destination="vji-p3-9YC" id="FFh-HP-Fbm"/>
                         <outlet property="mapButton" destination="2x8-vY-VOA" id="dLf-4E-mWO"/>
                         <segue destination="Ynd-cr-EUx" kind="show" identifier="showZmanim" id="yuV-uu-uxa"/>
                         <segue destination="rmK-gF-Vki" kind="show" identifier="Show Local Zmanim" id="1Au-vo-gSf"/>
@@ -247,6 +253,75 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3k-3T-3aL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="oCa-9f-WI7">
+                    <rect key="frame" x="0.0" y="0.0" width="129" height="215"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-GU-GXe" customClass="CalendarCollectionView" customModule="Zmanim" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="129" height="215"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q2H-mu-sSJ">
+                                <size key="itemSize" width="100" height="100"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                            </collectionViewFlowLayout>
+                            <cells>
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ezk-RG-Riz" customClass="CalendarCell" customModule="Zmanim" customModuleProvider="target">
+                                    <rect key="frame" x="14.666666666666666" y="10" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvH-px-hnS">
+                                                <rect key="frame" x="0.0" y="8" width="100" height="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCG-99-W0h">
+                                                <rect key="frame" x="0.0" y="77" width="100" height="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syp-hb-A2s">
+                                                <rect key="frame" x="43.333333333333336" y="32" width="14" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </view>
+                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="gCG-99-W0h" secondAttribute="bottom" constant="8" id="Iqe-2E-XAV"/>
+                                        <constraint firstItem="syp-hb-A2s" firstAttribute="centerY" secondItem="ezk-RG-Riz" secondAttribute="centerY" id="PJe-4X-JEV"/>
+                                        <constraint firstAttribute="trailing" secondItem="kvH-px-hnS" secondAttribute="trailing" id="ZwH-2f-GSn"/>
+                                        <constraint firstItem="kvH-px-hnS" firstAttribute="leading" secondItem="ezk-RG-Riz" secondAttribute="leading" id="bfm-hb-wEb"/>
+                                        <constraint firstAttribute="trailing" secondItem="gCG-99-W0h" secondAttribute="trailing" id="bgh-eW-k4b"/>
+                                        <constraint firstItem="gCG-99-W0h" firstAttribute="leading" secondItem="ezk-RG-Riz" secondAttribute="leading" id="dMK-f1-kCv"/>
+                                        <constraint firstItem="syp-hb-A2s" firstAttribute="centerX" secondItem="ezk-RG-Riz" secondAttribute="centerX" id="hbY-2W-Vji"/>
+                                        <constraint firstItem="kvH-px-hnS" firstAttribute="top" secondItem="ezk-RG-Riz" secondAttribute="top" constant="8" id="uge-Wp-HUS"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="dayLabel" destination="syp-hb-A2s" id="YUZ-F9-4uE"/>
+                                        <outlet property="monthLabel" destination="gCG-99-W0h" id="zL5-gY-2A5"/>
+                                        <outlet property="weekdayLabel" destination="kvH-px-hnS" id="1Ej-zS-3iz"/>
+                                    </connections>
+                                </collectionViewCell>
+                            </cells>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="2hX-GU-GXe" firstAttribute="leading" secondItem="oCa-9f-WI7" secondAttribute="leading" id="Fq0-l9-VbM"/>
+                        <constraint firstAttribute="bottom" secondItem="2hX-GU-GXe" secondAttribute="bottom" id="Hvl-JK-iT0"/>
+                        <constraint firstItem="2hX-GU-GXe" firstAttribute="top" secondItem="oCa-9f-WI7" secondAttribute="top" id="V1T-Mc-R6H"/>
+                        <constraint firstAttribute="trailing" secondItem="2hX-GU-GXe" secondAttribute="trailing" id="upU-hn-H9a"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="922" y="306"/>
         </scene>

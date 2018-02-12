@@ -10,7 +10,7 @@ import Foundation
 
 /// A data store for user 👨🏻 data.
 class UserDataStore {
-    let shared = UserDataStore()
+    static let shared = UserDataStore()
     var date = Date()
     
     private init() {}

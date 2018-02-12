@@ -30,8 +30,28 @@ class HomeViewModel {
         MoreHomeItem()
     ]
     
+    /// The date for zmanim.
+    var selectedDate: Date {
+        get {
+            return UserDataStore.shared.date
+        } set {
+            UserDataStore.shared.date = newValue
+        }
+    }
+    
+    /// An array of dates for the coming week including today.
+    var thisWeekDates: [Date] {
+        var dates = [Date()]
+        for days in 1...6 {
+            if let date = Calendar.current.date(byAdding: .day, value: days, to: Date()) {
+                dates.append(date)
+            }
+        }
+        return dates
+    }
+    
     func getZmanim() {
-        ZmanimAPIClient.fetchZmanim(for: Date())
+        ZmanimAPIClient.fetchZmanim(for: selectedDate)
     }
     
     var numberOfSections: Int {

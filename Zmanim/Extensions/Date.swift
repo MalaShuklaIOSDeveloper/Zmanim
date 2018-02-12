@@ -30,6 +30,24 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var monthString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: self)
+    }
+    
+    var dayString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return dateFormatter.string(from: self)
+    }
+    
+    var weekdayString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.string(from: self)
+    }
+    
     var minute: Int {
         return Calendar.current.component(.minute, from: self)
     }
@@ -52,6 +70,10 @@ extension Date {
     
     var isToday: Bool {
         return day == Date().day && month == Date().month && year == Date().year
+    }
+    
+    func isSameDayAs(_ date: Date) -> Bool {
+        return day == date.day && month == date.month && year == date.year
     }
     
     func addingFullDay() -> Date {

@@ -9,18 +9,19 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
-    /// The date for zmanim.
-    var date = Date()
-    
     private var viewModel = HomeViewModel()
     
-    // MARK: - IBOutlets
+    // MARK: - IBOutlets & View Properties
     @IBOutlet var mapButton: UIBarButtonItem!
     @IBOutlet var dateButton: UIBarButtonItem! {
         didSet {
             setDateButtonText()
         }
     }
+    @IBOutlet var calendarView: UIView!
+    @IBOutlet var calendarCollectionView: CalendarCollectionView!
+    
+    var isCalendarViewHidden = true
     
     private struct Constants {
         static let tableViewRowHeight: CGFloat = 100
@@ -45,6 +46,46 @@ class HomeTableViewController: UITableViewController {
         navigationItem.titleView = titleIconImageView
         
         viewModel.getZmanim()
+        
+        calendarView.frame = CGRect(x: 0, y: -100, width: tableView.frame.width, height: 100)
+        
+        calendarCollectionView.configureCell = { index, cell in
+            let date = self.viewModel.thisWeekDates[index]
+            cell.monthLabel.text = date.monthString
+            cell.dayLabel.text = date.dayString
+            cell.weekdayLabel.text = date.weekdayString
+            
+            if date.isToday {
+                if date.isSameDayAs(self.viewModel.selectedDate) {
+                    cell.backgroundColor = .strawberry
+                    cell.layer.borderWidth = 0
+                    cell.setTextWhite()
+                } else {
+                    cell.backgroundColor = .white
+                    cell.layer.borderWidth = 0.5
+                    cell.layer.borderColor = UIColor.gray.cgColor
+                    cell.setDayStrawberry()
+                }
+            } else {
+                if date.isSameDayAs(self.viewModel.selectedDate) {
+                    cell.backgroundColor = self.view.tintColor
+                    cell.layer.borderWidth = 0
+                    cell.setTextWhite()
+                } else {
+                    cell.backgroundColor = .white
+                    cell.layer.borderWidth = 0.5
+                    cell.layer.borderColor = UIColor.gray.cgColor
+                    cell.setTextBlack()
+                }
+            }
+        }
+        
+        calendarCollectionView.didSelectIndex = { index in
+            self.viewModel.selectedDate = self.viewModel.thisWeekDates[index]
+            self.calendarCollectionView.reloadData()
+            self.setDateButtonText()
+            self.viewModel.getZmanim()
+        }
     }
     
     // MARK: - Table View
@@ -88,8 +129,28 @@ class HomeTableViewController: UITableViewController {
     }
     // MARK: -
     
+    func showCalendarView() {
+        tableView.addSubview(calendarView)
+        tableView.contentInset.top = 100
+        tableView.contentOffset.y = -88
+        UIView.animate(withDuration: 0.25) {
+            self.tableView.contentOffset.y = -188
+        }
+        isCalendarViewHidden = false
+    }
+    
+    func hideCalendarView() {
+        isCalendarViewHidden = true
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tableView.contentOffset.y = -88
+        }) { completed in
+            self.tableView.contentInset.top = 0
+            self.calendarView.removeFromSuperview()
+        }
+    }
+    
     func setDateButtonText() {
-        dateButton.title = date.isToday ? "Today" : date.shortDateTimeString
+        dateButton.title = viewModel.selectedDate.isToday ? "Today" : viewModel.selectedDate.shortDateString
     }
     
     func openMail() {
@@ -97,8 +158,16 @@ class HomeTableViewController: UITableViewController {
     }
     
     // MARK: - IBActions
-    @IBAction func presentMap(_ sender: UIBarButtonItem) {
+    @IBAction func didTapMapButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: SegueIdentifier.presentMap.rawValue, sender: sender)
+    }
+    
+    @IBAction func didTapDateButton(_ sender: UIBarButtonItem) {
+        if isCalendarViewHidden {
+            showCalendarView()
+        } else {
+            hideCalendarView()
+        }
     }
 }
 
@@ -109,5 +178,11 @@ extension HomeTableViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AnimatedController(type: .slideDown, duration: 0.25)
+    }
+}
+
+extension UIColor {
+    static var strawberry: UIColor {
+        return UIColor(named: "Strawberry")!
     }
 }
