@@ -24,7 +24,7 @@ class LocationTableViewController: UITableViewController {
         static let wazeBaseURL = "waze://"
         static let googleMapsBaseURL = "comgooglemaps://"
         static let headerViewHeight: CGFloat = 250
-        static let standardRowHeight: CGFloat = 50
+        static let tableViewRowHeight: CGFloat = 60
     }
     
     // MARK: - Lifecycle
@@ -35,7 +35,7 @@ class LocationTableViewController: UITableViewController {
         
         navigationItem.title = viewModel.location.title
         
-        tableView.estimatedRowHeight = Constants.standardRowHeight
+        tableView.estimatedRowHeight = Constants.tableViewRowHeight
         
         if let locationImage = viewModel.location.image {
             headerView = UIView()
@@ -95,7 +95,7 @@ class LocationTableViewController: UITableViewController {
         case .description:
             return UITableViewAutomaticDimension
         case .zman:
-            return Constants.standardRowHeight
+            return Constants.tableViewRowHeight
         }
     }
     

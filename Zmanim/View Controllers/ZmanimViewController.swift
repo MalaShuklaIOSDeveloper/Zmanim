@@ -13,7 +13,7 @@ class ZmanimTableViewController: UITableViewController {
     private var viewModel: ZmanimViewModel!
     
     private struct Constants {
-        static let tableViewRowHeight: CGFloat = 52
+        static let tableViewRowHeight: CGFloat = 60
     }
     
     private enum SegueIdentifier: String {
@@ -31,12 +31,8 @@ class ZmanimTableViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = true
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(didRefresh), for: .valueChanged)
-        refreshControl?.beginRefreshing()
         
-        viewModel.getZmanim {
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
-        }
+        getZmanim()
     }
     
     // MARK: - Table View
@@ -88,7 +84,15 @@ class ZmanimTableViewController: UITableViewController {
     }
     // MARK: -
     
+    func getZmanim() {
+        refreshControl?.beginRefreshing()
+        viewModel.getZmanim {
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
+    
     func didRefresh() {
-        
+        getZmanim()
     }
 }

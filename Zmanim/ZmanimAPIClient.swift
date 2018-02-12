@@ -43,7 +43,9 @@ private class ZmanimAPIObservers {
 
 /// A client for fetching data from the API 🏭.
 struct ZmanimAPIClient {
-    private static let baseAPIURL = "http://zmanimapp.com:5000/api"
+    private struct Constants {
+        static let baseAPIURL = "http://zmanimapp.com:5000/api"
+    }
     
     // MARK: - Observers
     private static var observers: [ZmanimAPIObserver] {
@@ -64,11 +66,13 @@ struct ZmanimAPIClient {
     }
     
     // MARK: - Zmanim
-    /// Fetches zmanim without location objects from API and calls `completed` upon returning with result.
+    /**
+    Fetches zmanim and parses to `Zman` objects without respective `Location` objects from API and calls `completed` upon returning with result.
+    */
     private static func fetchRawZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
         var zmanim = Zmanim()
         for tefillah in Tefillah.allTefillos {
-            let url = baseAPIURL.tefillos + "/\(tefillah.rawValue)/\(date.apiFormat)"
+            let url = Constants.baseAPIURL.tefillos + "/\(tefillah.rawValue)/\(date.apiFormat)"
             Alamofire.request(url).responseJSON { response in
                 switch response.result {
                 case .success:
@@ -93,7 +97,9 @@ struct ZmanimAPIClient {
         }
     }
     
-    /// Fetches zmanim from API and calls `completed` upon returning with result.
+    /**
+     Fetches zmanim and locations and parses to `Zman` objects with respective `Location` objects from API and calls `completed` upon returning with result. Sends zmanim and locations to observers.
+    */
     static func fetchZmanim(for date: Date, completed: ((_ result: APIResult<Zmanim>) -> Void)? = nil) {
         fetchLocations { result in
             switch result {
@@ -101,26 +107,41 @@ struct ZmanimAPIClient {
             case .success(let locations):
                 fetchRawZmanim(for: date) { result in
                     switch result {
-                    case .success(let zmanim):
+                    case .success(var zmanim):
                         // ...if fetched zmanim successfully...
                         // ...for each tefillah...
                         for tefillah in Tefillah.allTefillos {
                             if let tefillahZmanim = zmanim[tefillah] {
                                 // ...and each zman...
-                                for zman in tefillahZmanim {
+                                for (zmanIndex, zman) in tefillahZmanim.enumerated() {
                                     // ...for each zman's raw location...
-                                    for (index, zmanLocation) in zman.locations.enumerated() {
+                                    for (zmanLocationIndex, var zmanLocation) in zman.locations.enumerated() {
                                         // ...for each location from before...
                                         for location in locations {
                                             // ...if the zman's raw location matches the location...
                                             if zmanLocation.title.contains(location.title) {
-                                                // FIXME: Reference cycle
+                                                // ...change `zmanLocation` to the location...
+                                                zmanLocation = location
+                                                // FIXME: REFERENCE CYCLE
                                                 // ...assign the location to the zman...
-                                                zman.locations[index] = location
-                                                // ...and the zman to the location.
+                                                zman.locations[zmanLocationIndex] = zmanLocation
+                                                // ...and add the zman to the location.
                                                 location.zmanim.append(zman)
                                             }
                                         }
+//                                        // For each zman...
+//                                        for anotherZman in tefillahZmanim {
+//                                            // ...if another zman is the same as our zman...
+//                                            if anotherZman == zman {
+//                                                // ...and the zman doesn't hold our zman...
+//                                                if !anotherZman.locations.contains(zmanLocation) {
+//                                                    // ...add the zman's location to that zman...
+//                                                    anotherZman.locations.append(zmanLocation)
+//                                                    zmanim[tefillah]?.remove(at: zmanIndex)
+//                                                    break
+//                                                }
+//                                            }
+//                                        }
                                     }
                                 }
                             }
@@ -140,9 +161,11 @@ struct ZmanimAPIClient {
     }
     
     // MARK: Locations
-    /// Fetches locations from API and calls `completed` upon returning with result.
+    /**
+     Fetches locations and parses to `Location` objects without respective `Zman` objects from API and calls `completed` upon returning with result.
+    */
     static func fetchLocations(_ completed: @escaping (_ result: APIResult<[Location]>) -> Void) {
-        let url = baseAPIURL.locations
+        let url = Constants.baseAPIURL.locations
         Alamofire.request(url).responseJSON { response in
             switch response.result {
             case .success:
@@ -165,7 +188,7 @@ struct ZmanimAPIClient {
     // MARK: Local Zmanim
     /// Fetches local zmanim from API and calls `completed` upon returning with result.
     static func fetchLocalZmanim(for date: Date, completed: @escaping (_ result: APIResult<[LocalZman]>) -> Void) {
-        let url = baseAPIURL.zmanim
+        let url = Constants.baseAPIURL.zmanim
         Alamofire.request(url).responseJSON { response in
 //            switch response.result {
 //            case .success:

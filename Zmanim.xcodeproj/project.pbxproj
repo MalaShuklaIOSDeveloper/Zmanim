@@ -23,7 +23,7 @@
 		5B4455C51D257FB100B19A6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4455C41D257FB100B19A6E /* CoreLocation.framework */; };
 		5B47564E1C9B393B00927935 /* LocalZmanimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B47564D1C9B393B00927935 /* LocalZmanimViewController.swift */; };
 		5B4AF58C1CB1EDE0001F0CB6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4AF58B1CB1EDE0001F0CB6 /* AboutViewController.swift */; };
-		5B5889401D21B9070060022C /* LocalZmanimModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B58893F1D21B9070060022C /* LocalZmanimModel.swift */; };
+		5B5889401D21B9070060022C /* LocalZmanimViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B58893F1D21B9070060022C /* LocalZmanimViewModel.swift */; };
 		5B5E52421D301F5D002C1D2A /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E52411D301F5D002C1D2A /* DescriptionCell.swift */; };
 		5B61452D1C029FF1007530F7 /* YU.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B61452C1C029FF1007530F7 /* YU.jpg */; };
 		5B61452F1C02A07A007530F7 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61452E1C02A07A007530F7 /* LocationViewController.swift */; };
@@ -36,6 +36,7 @@
 		5B6305B32028C0170017094C /* LocationImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305AC2028C0160017094C /* LocationImages.swift */; };
 		5B6305B42028C0170017094C /* ZmanimDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305AD2028C0160017094C /* ZmanimDataStore.swift */; };
 		5B6305D8202D23810017094C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305D7202D23810017094C /* LocationViewModel.swift */; };
+		5B6305E7203007050017094C /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6305E6203007050017094C /* UserDataStore.swift */; };
 		5B86C40D1D454E0200E4CDA6 /* Morg Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */; };
 		5B95EA091C2AE8D000647230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95EA081C2AE8D000647230 /* HomeViewController.swift */; };
 		5B9A177D1D2EB5B300588091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */; };
@@ -95,7 +96,7 @@
 		5B4455C41D257FB100B19A6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B47564D1C9B393B00927935 /* LocalZmanimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZmanimViewController.swift; path = "View Controllers/LocalZmanimViewController.swift"; sourceTree = "<group>"; };
 		5B4AF58B1CB1EDE0001F0CB6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = "View Controllers/AboutViewController.swift"; sourceTree = "<group>"; };
-		5B58893F1D21B9070060022C /* LocalZmanimModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZmanimModel.swift; path = "View Models/LocalZmanimModel.swift"; sourceTree = "<group>"; };
+		5B58893F1D21B9070060022C /* LocalZmanimViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalZmanimViewModel.swift; path = "View Models/LocalZmanimViewModel.swift"; sourceTree = "<group>"; };
 		5B5E52411D301F5D002C1D2A /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = Cells/DescriptionCell.swift; sourceTree = "<group>"; };
 		5B61452C1C029FF1007530F7 /* YU.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = YU.jpg; sourceTree = "<group>"; };
 		5B61452E1C02A07A007530F7 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = "View Controllers/LocationViewController.swift"; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 		5B6305AC2028C0160017094C /* LocationImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationImages.swift; path = Zmanim/LocationImages.swift; sourceTree = "<group>"; };
 		5B6305AD2028C0160017094C /* ZmanimDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimDataStore.swift; path = Zmanim/ZmanimDataStore.swift; sourceTree = "<group>"; };
 		5B6305D7202D23810017094C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationViewModel.swift; path = "View Controllers/LocationViewModel.swift"; sourceTree = "<group>"; };
+		5B6305E6203007050017094C /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		5B86C40C1D454E0200E4CDA6 /* Morg Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Beis.jpg"; sourceTree = "<group>"; };
 		5B95EA081C2AE8D000647230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = "View Models/HomeViewModel.swift"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				5B6305AC2028C0160017094C /* LocationImages.swift */,
 				5B6305AA2028C0160017094C /* ZmanimAPIClient.swift */,
 				5B6305AD2028C0160017094C /* ZmanimDataStore.swift */,
+				5B6305E6203007050017094C /* UserDataStore.swift */,
 				5B3C0EB61BFCDC56005FB04C /* Zmanim */,
 				5B6FE7191CBE93A6002A09CA /* Frameworks */,
 				5B3C0EB51BFCDC56005FB04C /* Products */,
@@ -237,7 +240,7 @@
 				5B61452E1C02A07A007530F7 /* LocationViewController.swift */,
 				5B6305D7202D23810017094C /* LocationViewModel.swift */,
 				5B47564D1C9B393B00927935 /* LocalZmanimViewController.swift */,
-				5B58893F1D21B9070060022C /* LocalZmanimModel.swift */,
+				5B58893F1D21B9070060022C /* LocalZmanimViewModel.swift */,
 				5B4AF58B1CB1EDE0001F0CB6 /* AboutViewController.swift */,
 				5B3A86A51D24254500860C8D /* LocationsViewController.swift */,
 			);
@@ -437,10 +440,11 @@
 				5B6305B12028C0170017094C /* ZmanimAPIClient.swift in Sources */,
 				5B6305D8202D23810017094C /* LocationViewModel.swift in Sources */,
 				5B3B6EFB1E2C607D0042F61B /* Date.swift in Sources */,
-				5B5889401D21B9070060022C /* LocalZmanimModel.swift in Sources */,
+				5B5889401D21B9070060022C /* LocalZmanimViewModel.swift in Sources */,
 				5B3C0EB81BFCDC56005FB04C /* AppDelegate.swift in Sources */,
 				5BBAFC341D35993100A70878 /* ZmanCell.swift in Sources */,
 				5B3C0ECD1BFCE51E005FB04C /* ZmanimViewController.swift in Sources */,
+				5B6305E7203007050017094C /* UserDataStore.swift in Sources */,
 				5B6305B42028C0170017094C /* ZmanimDataStore.swift in Sources */,
 				5B5E52421D301F5D002C1D2A /* DescriptionCell.swift in Sources */,
 				5B6305A72028BFC20017094C /* Shabbos.swift in Sources */,

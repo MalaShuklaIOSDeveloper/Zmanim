@@ -100,10 +100,6 @@ class HomeTableViewController: UITableViewController {
     @IBAction func presentMap(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: SegueIdentifier.presentMap.rawValue, sender: sender)
     }
-    
-    @IBAction func changeDate(_ sender: UIBarButtonItem) {
-        
-    }
 }
 
 extension HomeTableViewController: UIViewControllerTransitioningDelegate {

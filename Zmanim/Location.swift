@@ -77,6 +77,12 @@ extension Location {
     }
 }
 
+extension Location: Equatable {
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        return lhs.title == rhs.title
+    }
+}
+
 extension Location {
     /// The coordinate of the location composed of `latitude` and `longitude`.
     var coordinate: CLLocationCoordinate2D {

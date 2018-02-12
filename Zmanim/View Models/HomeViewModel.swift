@@ -54,7 +54,7 @@ struct TefillahHomeItem: HomeItem {
 }
 
 struct MoreHomeItem: HomeItem {
-    let key: HomeItemKey = .tefillah
+    let key: HomeItemKey = .more
     let cellIdentifier: HomeCellIdentifier = .itemCell
     
     var title: String {
