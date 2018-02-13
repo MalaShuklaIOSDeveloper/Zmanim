@@ -48,6 +48,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var timeWithSecondsString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm:ss a"
+        return dateFormatter.string(from: self)
+    }
+    
     var minute: Int {
         return Calendar.current.component(.minute, from: self)
     }
@@ -72,7 +78,7 @@ extension Date {
         return day == Date().day && month == Date().month && year == Date().year
     }
     
-    func isSameDayAs(_ date: Date) -> Bool {
+    func isSameDay(as date: Date) -> Bool {
         return day == date.day && month == date.month && year == date.year
     }
     

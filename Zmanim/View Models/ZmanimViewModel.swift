@@ -16,15 +16,17 @@ enum ZmanCellIdentifier: String {
     case zmanCell
 }
 
+enum GetZmanimResult {
+    case success
+    case error
+}
+
 class ZmanimViewModel {
     /// The tefillah to display zmanim for.
     var tefillah: Tefillah!
     
     /// The zmanim to display.
     private var zmanim: [Zman]?
-    
-    /// The date to display zmanim for.
-    var date = Date()
     
     let zmanCellIdentifier: ZmanCellIdentifier = .zmanCell
     
@@ -36,23 +38,24 @@ class ZmanimViewModel {
         self.tefillah = data.tefillah
     }
     
-    func getZmanim(completed: @escaping (() -> Void)) {
+    func getZmanim(completed: @escaping ((GetZmanimResult) -> Void)) {
         // If there are zmanim cached in the data store and they are from today...
         if let tefillahZmanim = ZmanimDataStore.shared.zmanim(for: tefillah), let lastUpdatedDate = ZmanimDataStore.shared.lastZmanimUpdate, lastUpdatedDate.isToday {
             // ...set our zmanim to those zmanim.
             zmanim = tefillahZmanim
-            completed()
+            completed(.success)
         }
         // If the data store is empty or zmanim are old...
         else {
             // ...fetch new zmanim.
-            ZmanimAPIClient.fetchZmanim(for: Date()) { result in
+            ZmanimAPIClient.fetchZmanim(for: UserDataStore.shared.date) { result in
                 switch result {
                 case .success(let value):
                     self.zmanim = value[self.tefillah]
-                    completed()
+                    completed(.success)
                 case .failure(let error):
                     print(error)
+                    completed(.error)
                 }
             }
         }

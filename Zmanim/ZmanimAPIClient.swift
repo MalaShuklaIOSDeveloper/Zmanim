@@ -28,6 +28,8 @@ protocol ZmanimAPIObserver {
     var zmanimDidChange: ((Zmanim) -> Void) { get }
     
     var locationsDidChange: (([Location]) -> Void) { get }
+    
+    var localZmanimDidChange: (([LocalZman]) -> Void) { get }
 }
 
 /// A singleton class that stores observers to `UserAPIClient`.
@@ -162,7 +164,7 @@ struct ZmanimAPIClient {
         }
     }
     
-    // MARK: Locations
+    // MARK: - Locations
     /**
      Fetches locations and parses to `Location` objects without respective `Zman` objects from API and calls `completed` upon returning with result.
     */
@@ -187,17 +189,27 @@ struct ZmanimAPIClient {
         }
     }
     
-    // MARK: Local Zmanim
+    // MARK: - Local Zmanim
     /// Fetches local zmanim from API and calls `completed` upon returning with result.
     static func fetchLocalZmanim(for date: Date, completed: @escaping (_ result: APIResult<[LocalZman]>) -> Void) {
         let url = Constants.baseAPIURL.zmanim
         Alamofire.request(url).responseJSON { response in
-//            switch response.result {
-//            case .success:
-//
-//            case.failure(let error):
-//                completed(.failure(error))
-//            }
+            switch response.result {
+            case .success:
+                if let localZmanimData = response.data {
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.userInfo[Location.CodingUserInfo.key] = LocalZman.CodingUserInfo(date: date)
+                        let rawLocalZmanim = try decoder.decode(RawLocalZmanim.self, from: localZmanimData)
+                        observers.forEach { $0.localZmanimDidChange(rawLocalZmanim.zmanim) }
+                        completed(.success(rawLocalZmanim.zmanim))
+                    } catch {
+                        completed(.failure(error))
+                    }
+                }
+            case.failure(let error):
+                completed(.failure(error))
+            }
         }
     }
 }
@@ -214,6 +226,11 @@ private struct RawZmanim: Decodable {
 /// A type that represents decodable raw locations from API JSON.
 private struct RawLocations: Decodable {
     let locations: [Location]
+}
+
+/// A type that represents decodable raw local zmanim from API JSON.
+private struct RawLocalZmanim: Decodable {
+    let zmanim: [LocalZman]
 }
 
 private extension String {

@@ -25,6 +25,9 @@ class ZmanimDataStore {
     /// Last time `locations` was updates.
     var lastLocationsUpdate: Date?
     
+    /// Last time `localZmanim` was updates.
+    var lastLocalZmanimUpdate: Date?
+    
     lazy var zmanimDidChange: ((Zmanim) -> Void) = { zmanim in
         for tefillah in Tefillah.allTefillos {
             if let tefillahZmanim = zmanim[tefillah] {
@@ -50,6 +53,13 @@ class ZmanimDataStore {
         self.lastLocationsUpdate = Date()
     }
     
+    lazy var localZmanimDidChange: (([LocalZman]) -> Void) = { localZmanim in
+        self.localZmanim = localZmanim
+        
+        // Set last updated locations date to current date.
+        self.lastLocalZmanimUpdate = Date()
+    }
+    
     private init() {}
     
     func setAsZmanimAPIObserver() {
@@ -65,6 +75,14 @@ class ZmanimDataStore {
         case .maariv:
             return maariv
         }
+    }
+    
+    func clearData() {
+        shacharis = nil
+        mincha = nil
+        maariv = nil
+        locations = nil
+        localZmanim = nil
     }
 }
 

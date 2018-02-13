@@ -9,20 +9,39 @@
 import UIKit
 
 class CalendarCell: UICollectionViewCell {
-    @IBOutlet var monthLabel: UILabel!
-    @IBOutlet var dayLabel: UILabel!
     @IBOutlet var weekdayLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    func setup() {
+        layer.masksToBounds = false
+        layer.cornerRadius = 15
+        layer.shadowOpacity = 0.1
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 8
+    }
     
     func setTextWhite() {
-        [monthLabel, dayLabel, weekdayLabel].forEach { $0?.textColor = .white }
+        [dayLabel, weekdayLabel].forEach { $0?.textColor = .white }
     }
     
     func setTextBlack() {
-        [monthLabel, dayLabel, weekdayLabel].forEach { $0?.textColor = .black }
+        [dayLabel, weekdayLabel].forEach { $0?.textColor = .black }
     }
     
     func setDayStrawberry() {
-        [monthLabel, weekdayLabel].forEach { $0?.textColor = .black }
+        weekdayLabel.textColor = .black
         dayLabel.textColor = .strawberry
     }
 }

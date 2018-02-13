@@ -35,8 +35,6 @@ class CalendarCollectionView: UICollectionView {
     func setup() {
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
-            layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-            layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = .greatestFiniteMagnitude
         }
         backgroundColor = .white
@@ -58,13 +56,12 @@ extension CalendarCollectionView: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.calendarCell.rawValue, for: indexPath) as! CalendarCell
-        cell.layer.cornerRadius = 10
         configureCell?(indexPath.row, cell)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.height - 20
+        let size = collectionView.frame.height - (collectionView.contentInset.top + collectionView.contentInset.bottom)
         return CGSize(width: size, height: size)
     }
     

@@ -54,8 +54,6 @@ class AboutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "About"
-        
         func buttonCellWithTitle(_ title: String) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.buttonCell.rawValue)!
             cell.textLabel?.text = title
@@ -78,7 +76,7 @@ class AboutTableViewController: UITableViewController {
                 Cell(cell: buttonCellWithTitle("Contact"), selectionHandler: { cell in
                     self.openMail()
                 }),
-                Cell(cell: buttonCellWithTitle("Rate Zmanim"), selectionHandler: { cell in
+                Cell(cell: buttonCellWithTitle("Rate Zmanim on App Store"), selectionHandler: { cell in
                     self.openAppStore()
                 })
             ])

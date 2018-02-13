@@ -8,10 +8,11 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
-    private var viewModel = HomeViewModel()
+class HomeViewController: UIViewController {
+    fileprivate var viewModel = HomeViewModel()
     
     // MARK: - IBOutlets & View Properties
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var mapButton: UIBarButtonItem!
     @IBOutlet var dateButton: UIBarButtonItem! {
         didSet {
@@ -21,15 +22,18 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet var calendarView: UIView!
     @IBOutlet var calendarCollectionView: CalendarCollectionView!
     
+    
     var isCalendarViewHidden = true
     
-    private struct Constants {
+    fileprivate struct Constants {
+        static let defaultTableViewContentYOffset: CGFloat = -88
+        static let calendarViewHeight: CGFloat = 120
         static let tableViewRowHeight: CGFloat = 100
         static let emailWithHello = "mailto:nniazoff@zmanimapp.com?subject=Hello!"
     }
     
-    private enum SegueIdentifier: String {
-        case showZmanim, presentMap
+    fileprivate enum SegueIdentifier: String {
+        case showZmanim, presentMap, showLocalZmanim, showAbout
     }
     
     // MARK: - Lifecycle
@@ -37,7 +41,6 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = Constants.tableViewRowHeight
-        clearsSelectionOnViewWillAppear = true
         
         // Sets title view to icon.
         let titleIconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -47,34 +50,28 @@ class HomeTableViewController: UITableViewController {
         
         viewModel.getZmanim()
         
-        calendarView.frame = CGRect(x: 0, y: -100, width: tableView.frame.width, height: 100)
+        calendarView.frame = CGRect(x: 0, y: -Constants.calendarViewHeight, width: tableView.frame.width, height: Constants.calendarViewHeight)
+        calendarCollectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         
         calendarCollectionView.configureCell = { index, cell in
             let date = self.viewModel.thisWeekDates[index]
-            cell.monthLabel.text = date.monthString
-            cell.dayLabel.text = date.dayString
             cell.weekdayLabel.text = date.weekdayString
+            cell.dayLabel.text = date.dayString
             
             if date.isToday {
-                if date.isSameDayAs(self.viewModel.selectedDate) {
+                if date.isSameDay(as: self.viewModel.selectedDate) {
                     cell.backgroundColor = .strawberry
-                    cell.layer.borderWidth = 0
                     cell.setTextWhite()
                 } else {
                     cell.backgroundColor = .white
-                    cell.layer.borderWidth = 0.5
-                    cell.layer.borderColor = UIColor.gray.cgColor
                     cell.setDayStrawberry()
                 }
             } else {
-                if date.isSameDayAs(self.viewModel.selectedDate) {
-                    cell.backgroundColor = self.view.tintColor
-                    cell.layer.borderWidth = 0
+                if date.isSameDay(as: self.viewModel.selectedDate) {
+                    cell.backgroundColor = .black
                     cell.setTextWhite()
                 } else {
                     cell.backgroundColor = .white
-                    cell.layer.borderWidth = 0.5
-                    cell.layer.borderColor = UIColor.gray.cgColor
                     cell.setTextBlack()
                 }
             }
@@ -88,36 +85,11 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table View
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = viewModel.items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier.rawValue)!
-        cell.textLabel?.text = item.title
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = viewModel.items[indexPath.row]
-        switch item.key {
-        case .tefillah:
-            performSegue(withIdentifier: SegueIdentifier.showZmanim.rawValue, sender: item)
-        case .more: break
-        }
-    }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch sender {
         case let tefillahItem as TefillahHomeItem:
-            if let zmanimViewController = segue.destination as? ZmanimTableViewController {
+            if let zmanimViewController = segue.destination as? ZmanimViewController {
                 zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
             }
         case let barButtonItem as UIBarButtonItem:
@@ -131,10 +103,10 @@ class HomeTableViewController: UITableViewController {
     
     func showCalendarView() {
         tableView.addSubview(calendarView)
-        tableView.contentInset.top = 100
-        tableView.contentOffset.y = -88
+        tableView.contentInset.top = Constants.calendarViewHeight
+        tableView.contentOffset.y = Constants.defaultTableViewContentYOffset
         UIView.animate(withDuration: 0.25) {
-            self.tableView.contentOffset.y = -188
+            self.tableView.contentOffset.y = Constants.defaultTableViewContentYOffset - Constants.calendarViewHeight
         }
         isCalendarViewHidden = false
     }
@@ -142,7 +114,7 @@ class HomeTableViewController: UITableViewController {
     func hideCalendarView() {
         isCalendarViewHidden = true
         UIView.animate(withDuration: 0.25, animations: {
-            self.tableView.contentOffset.y = -88
+            self.tableView.contentOffset.y = Constants.defaultTableViewContentYOffset
         }) { completed in
             self.tableView.contentInset.top = 0
             self.calendarView.removeFromSuperview()
@@ -171,7 +143,36 @@ class HomeTableViewController: UITableViewController {
     }
 }
 
-extension HomeTableViewController: UIViewControllerTransitioningDelegate {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(in: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = viewModel.items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier.rawValue)!
+        cell.textLabel?.text = item.title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.items[indexPath.row]
+        switch item.key {
+        case .tefillah:
+            performSegue(withIdentifier: SegueIdentifier.showZmanim.rawValue, sender: item)
+        case .zmanim:
+            performSegue(withIdentifier: SegueIdentifier.showLocalZmanim.rawValue, sender: item)
+        case .more:
+            performSegue(withIdentifier: SegueIdentifier.showAbout.rawValue, sender: item)
+        }
+    }
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AnimatedController(duration: 0.25)
     }

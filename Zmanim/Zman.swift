@@ -43,7 +43,7 @@ class Zman: Decodable {
         }
         self.date = date
         
-        // Init `name` and set as single unrecognized location.
+        // Get title and set as single unrecognized location.
         let title = try container.decode(String.self, forKey: .title)
         self.locations = [Location(title: title)]
     }

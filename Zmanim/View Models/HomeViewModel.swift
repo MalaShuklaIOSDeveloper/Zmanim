@@ -9,7 +9,7 @@
 import Foundation
 
 enum HomeItemKey {
-    case tefillah, more
+    case tefillah, zmanim, more
 }
 
 enum HomeCellIdentifier: String {
@@ -27,6 +27,7 @@ class HomeViewModel {
         TefillahHomeItem(tefillah: .shacharis),
         TefillahHomeItem(tefillah: .mincha),
         TefillahHomeItem(tefillah: .maariv),
+        ZmanimHomeItem(),
         MoreHomeItem()
     ]
     
@@ -51,6 +52,7 @@ class HomeViewModel {
     }
     
     func getZmanim() {
+        ZmanimDataStore.shared.clearData()
         ZmanimAPIClient.fetchZmanim(for: selectedDate)
     }
     
@@ -70,6 +72,15 @@ struct TefillahHomeItem: HomeItem {
     
     var title: String {
         return tefillah.title
+    }
+}
+
+struct ZmanimHomeItem: HomeItem {
+    let key: HomeItemKey = .zmanim
+    let cellIdentifier: HomeCellIdentifier = .itemCell
+    
+    var title: String {
+        return "Zmanim"
     }
 }
 
