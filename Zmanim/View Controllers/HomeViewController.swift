@@ -21,7 +21,8 @@ class HomeViewController: UIViewController {
     }
     @IBOutlet var calendarView: UIView!
     @IBOutlet var calendarCollectionView: CalendarCollectionView!
-    
+    @IBOutlet var shanyimView: UIView!
+    @IBOutlet var shnayimViewButton: UIButton!
     
     var isCalendarViewHidden = true
     
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
         static let calendarViewHeight: CGFloat = 120
         static let tableViewRowHeight: CGFloat = 100
         static let emailWithHello = "mailto:nniazoff@zmanimapp.com?subject=Hello!"
+        static let shnayimAppStore = "itms-apps://itunes.apple.com/app/id1296709500"
     }
     
     fileprivate enum SegueIdentifier: String {
@@ -47,6 +49,8 @@ class HomeViewController: UIViewController {
         titleIconImageView.image = #imageLiteral(resourceName: "Title Icon")
         titleIconImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleIconImageView
+        
+        registerForPreviewing(with: self, sourceView: tableView)
         
         viewModel.getZmanim()
         
@@ -83,6 +87,24 @@ class HomeViewController: UIViewController {
             self.setDateButtonText()
             self.viewModel.getZmanim()
         }
+        
+        // MARK: - Shnayim
+        shanyimView.layer.masksToBounds = false
+        shanyimView.layer.cornerRadius = 15
+        shanyimView.layer.cornerRadius = 15
+        shanyimView.layer.shadowOpacity = 0.15
+        shanyimView.layer.shadowOffset = CGSize.zero
+        shanyimView.layer.shadowRadius = 8
+        view.addSubview(shanyimView)
+        shanyimView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            shanyimView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
+            shanyimView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
+            shanyimView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            shanyimView.heightAnchor.constraint(equalToConstant: 90)
+        ])
+        
+        shnayimViewButton.layer.cornerRadius = shnayimViewButton.frame.height/2
     }
     
     // MARK: - Navigation
@@ -141,8 +163,13 @@ class HomeViewController: UIViewController {
             hideCalendarView()
         }
     }
+    
+    @IBAction func didTapShnayimViewButton(_ sender: UIButton) {
+        URL.open(Constants.shnayimAppStore)
+    }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
@@ -172,6 +199,26 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: - UIViewControllerPreviewingDelegate
+extension HomeViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            if let tefillahItem = viewModel.item(for: indexPath) as? TefillahHomeItem {
+                previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+                if let zmanimViewController = storyboard?.instantiateViewController(withIdentifier: "zmanimViewController") as? ZmanimViewController {
+                    zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
+                    return zmanimViewController
+                }
+            }
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: false)
+    }
+}
+
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AnimatedController(duration: 0.25)
@@ -185,5 +232,9 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
 extension UIColor {
     static var strawberry: UIColor {
         return UIColor(named: "Strawberry")!
+    }
+    
+    static var shnayimBrown: UIColor {
+        return UIColor(named: "Shnayim Brown")!
     }
 }

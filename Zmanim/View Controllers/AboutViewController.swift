@@ -73,7 +73,7 @@ class AboutTableViewController: UITableViewController {
                 Cell(cell: versionCell)
             ]),
             Section(cells: [
-                Cell(cell: buttonCellWithTitle("Contact"), selectionHandler: { cell in
+                Cell(cell: buttonCellWithTitle("Contact Developer"), selectionHandler: { cell in
                     self.openMail()
                 }),
                 Cell(cell: buttonCellWithTitle("Rate Zmanim on App Store"), selectionHandler: { cell in

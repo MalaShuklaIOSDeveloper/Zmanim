@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -302,7 +303,7 @@
                                 <action selector="didTapDateButton:" destination="u3x-Vs-ibj" id="4hA-TQ-58v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Map" id="10s-dB-vRT">
+                        <barButtonItem key="rightBarButtonItem" title="Map" image="Map" id="10s-dB-vRT">
                             <connections>
                                 <action selector="didTapMapButton:" destination="u3x-Vs-ibj" id="HuO-mi-1Hr"/>
                             </connections>
@@ -313,6 +314,8 @@
                         <outlet property="calendarView" destination="oCa-9f-WI7" id="8Tu-Dz-ZnC"/>
                         <outlet property="dateButton" destination="fzy-9Y-t4i" id="rTV-iB-cyS"/>
                         <outlet property="mapButton" destination="10s-dB-vRT" id="I8Y-Tf-FBe"/>
+                        <outlet property="shanyimView" destination="BdG-zc-7aW" id="csC-bh-zxz"/>
+                        <outlet property="shnayimViewButton" destination="FUC-Sh-Y14" id="DpM-a8-LwH"/>
                         <outlet property="tableView" destination="PvS-LW-TAv" id="hbL-Fr-AEc"/>
                         <segue destination="NTs-41-Qbi" kind="show" identifier="showZmanim" id="ajV-Tq-Z48"/>
                         <segue destination="kVH-m2-Jg8" kind="show" identifier="showAbout" id="bGn-1c-ZDJ"/>
@@ -382,13 +385,68 @@
                         <constraint firstAttribute="trailing" secondItem="2hX-GU-GXe" secondAttribute="trailing" id="upU-hn-H9a"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="BdG-zc-7aW">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="90"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="r48-gr-WpG">
+                            <rect key="frame" x="20" y="15" width="77.666666666666671" height="60"/>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVy-PA-heX">
+                            <rect key="frame" x="117.66666666666669" y="18" width="135" height="55"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shnayim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA3-yw-sKm">
+                                    <rect key="frame" x="0.0" y="0.0" width="135" height="40.666666666666664"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="135" id="mNe-Cw-eAK"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get the app!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-hJ-Xgf">
+                                    <rect key="frame" x="0.0" y="40.666666666666664" width="135" height="14.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUC-Sh-Y14">
+                            <rect key="frame" x="290" y="25" width="60" height="40"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="8fS-yd-0e9"/>
+                                <constraint firstAttribute="height" constant="40" id="NSa-1Z-CLl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="VIEW">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapShnayimViewButton:" destination="u3x-Vs-ibj" eventType="touchUpInside" id="uFI-sz-cHv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="Shnayim Brown"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FUC-Sh-Y14" secondAttribute="trailing" constant="20" id="9M5-oD-dix"/>
+                        <constraint firstItem="r48-gr-WpG" firstAttribute="leading" secondItem="BdG-zc-7aW" secondAttribute="leading" constant="20" id="FTQ-EX-ycS"/>
+                        <constraint firstItem="FUC-Sh-Y14" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="IGP-bW-Urn"/>
+                        <constraint firstItem="YVy-PA-heX" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="XZN-YM-dcd"/>
+                        <constraint firstItem="YVy-PA-heX" firstAttribute="centerX" secondItem="BdG-zc-7aW" secondAttribute="centerX" id="ZAG-wb-XBe"/>
+                        <constraint firstItem="r48-gr-WpG" firstAttribute="top" secondItem="BdG-zc-7aW" secondAttribute="top" constant="15" id="cbC-Br-vv3"/>
+                        <constraint firstAttribute="bottom" secondItem="r48-gr-WpG" secondAttribute="bottom" constant="15" id="dqY-PC-VNs"/>
+                        <constraint firstItem="YVy-PA-heX" firstAttribute="leading" secondItem="r48-gr-WpG" secondAttribute="trailing" constant="20" id="kKJ-GI-GXl"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="921" y="306"/>
         </scene>
         <!--Zmanim View Controller-->
         <scene sceneID="xjf-33-F4Q">
             <objects>
-                <viewController id="NTs-41-Qbi" customClass="ZmanimViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="zmanimViewController" id="NTs-41-Qbi" customClass="ZmanimViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yJb-tY-6Ev"/>
                         <viewControllerLayoutGuide type="bottom" id="lVT-rS-Qjc"/>
@@ -610,8 +668,12 @@
     </scenes>
     <resources>
         <image name="About Icon" width="120" height="120"/>
+        <image name="Check" width="1281" height="1006"/>
         <image name="Map" width="24" height="22"/>
         <image name="Map Icon" width="44" height="42"/>
+        <namedColor name="Shnayim Brown">
+            <color red="0.50199997425079346" green="0.27500000596046448" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="74W-WQ-utv"/>

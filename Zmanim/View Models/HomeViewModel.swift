@@ -63,6 +63,10 @@ class HomeViewModel {
     func numberOfRows(in section: Int) -> Int {
         return items.count
     }
+    
+    func item(for indexPath: IndexPath) -> HomeItem? {
+        return items[indexPath.row]
+    }
 }
 
 struct TefillahHomeItem: HomeItem {
