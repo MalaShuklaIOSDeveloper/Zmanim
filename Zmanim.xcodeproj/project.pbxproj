@@ -41,8 +41,10 @@
 		5B95EA091C2AE8D000647230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95EA081C2AE8D000647230 /* HomeViewController.swift */; };
 		5B9A177D1D2EB5B300588091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */; };
 		5B9BAC921D32BC1600E445CA /* AnimatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9BAC911D32BC1600E445CA /* AnimatedController.swift */; };
+		5BAA10FD20348E08003F6B23 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA10FC20348E08003F6B23 /* RoundButton.swift */; };
+		5BAA10FF203490AB003F6B23 /* ShnayimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA10FE203490AB003F6B23 /* ShnayimView.swift */; };
 		5BBAFC341D35993100A70878 /* ZmanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAFC331D35993100A70878 /* ZmanCell.swift */; };
-		5BCC11DC1D6A0474005B6379 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC11DB1D6A0474005B6379 /* SectionHeaderView.swift */; };
+		5BCC11DC1D6A0474005B6379 /* SectionTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */; };
 		5BCC11E41D6CF5B8005B6379 /* Fischel Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */; };
 		5BCC11E61D6CF5C4005B6379 /* Glueck Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E51D6CF5C4005B6379 /* Glueck Beis.jpg */; };
 		5BCC11E81D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E71D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg */; };
@@ -116,8 +118,10 @@
 		5B95EA081C2AE8D000647230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = "View Models/HomeViewModel.swift"; sourceTree = "<group>"; };
 		5B9BAC911D32BC1600E445CA /* AnimatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedController.swift; sourceTree = "<group>"; };
+		5BAA10FC20348E08003F6B23 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = Views/RoundButton.swift; sourceTree = "<group>"; };
+		5BAA10FE203490AB003F6B23 /* ShnayimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShnayimView.swift; path = Views/ShnayimView.swift; sourceTree = "<group>"; };
 		5BBAFC331D35993100A70878 /* ZmanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanCell.swift; path = Cells/ZmanCell.swift; sourceTree = "<group>"; };
-		5BCC11DB1D6A0474005B6379 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeaderView.swift; path = Views/SectionHeaderView.swift; sourceTree = "<group>"; };
+		5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionTitleHeaderView.swift; path = Views/SectionTitleHeaderView.swift; sourceTree = "<group>"; };
 		5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fischel Beis.jpg"; sourceTree = "<group>"; };
 		5BCC11E51D6CF5C4005B6379 /* Glueck Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Glueck Beis.jpg"; sourceTree = "<group>"; };
 		5BCC11E71D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sefardi Beit Midrash.jpg"; sourceTree = "<group>"; };
@@ -264,8 +268,10 @@
 		5BFCC60F1D5BB8D000ACC3E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5BCC11DB1D6A0474005B6379 /* SectionHeaderView.swift */,
+				5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */,
 				5BFCE956203128C900A943FD /* CalendarCollectionView.swift */,
+				5BAA10FC20348E08003F6B23 /* RoundButton.swift */,
+				5BAA10FE203490AB003F6B23 /* ShnayimView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -459,10 +465,12 @@
 				5B6305B22028C0170017094C /* Tefillah.swift in Sources */,
 				5B47564E1C9B393B00927935 /* LocalZmanimViewController.swift in Sources */,
 				5B95EA091C2AE8D000647230 /* HomeViewController.swift in Sources */,
-				5BCC11DC1D6A0474005B6379 /* SectionHeaderView.swift in Sources */,
+				5BAA10FD20348E08003F6B23 /* RoundButton.swift in Sources */,
+				5BCC11DC1D6A0474005B6379 /* SectionTitleHeaderView.swift in Sources */,
 				5B6305A12028BF620017094C /* Zman.swift in Sources */,
 				5BFCE957203128C900A943FD /* CalendarCollectionView.swift in Sources */,
 				5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */,
+				5BAA10FF203490AB003F6B23 /* ShnayimView.swift in Sources */,
 				5B6305B02028C0170017094C /* LocalZman.swift in Sources */,
 				5B419F581D19DD3E0018F1C7 /* ZmanimViewModel.swift in Sources */,
 				5B4AF58C1CB1EDE0001F0CB6 /* AboutViewController.swift in Sources */,
@@ -604,7 +612,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -630,7 +638,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

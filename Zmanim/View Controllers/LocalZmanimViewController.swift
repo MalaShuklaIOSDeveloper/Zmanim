@@ -33,6 +33,8 @@ class LocalZmanimViewController: UIViewController {
     }
     
     func getLocalZmanim() {
+        // Show refresh control.
+        tableView.setContentOffset(CGPoint(x: 0, y: -(tableView.refreshControl?.frame.height ?? 0)), animated: true)
         tableView.refreshControl?.beginRefreshing()
         errorActivityIndicator.startAnimating()
         viewModel.getLocalZmanim { result in
@@ -50,7 +52,7 @@ class LocalZmanimViewController: UIViewController {
         }
     }
     
-    func didRefresh() {
+    @objc func didRefresh() {
         getLocalZmanim()
     }
     

@@ -21,8 +21,7 @@ class HomeViewController: UIViewController {
     }
     @IBOutlet var calendarView: UIView!
     @IBOutlet var calendarCollectionView: CalendarCollectionView!
-    @IBOutlet var shanyimView: UIView!
-    @IBOutlet var shnayimViewButton: UIButton!
+    @IBOutlet var shanyimView: ShnayimView!
     
     var isCalendarViewHidden = true
     
@@ -30,6 +29,7 @@ class HomeViewController: UIViewController {
         static let defaultTableViewContentYOffset: CGFloat = -88
         static let calendarViewHeight: CGFloat = 120
         static let tableViewRowHeight: CGFloat = 100
+        static let shnayimViewHeight: CGFloat = 90
         static let emailWithHello = "mailto:nniazoff@zmanimapp.com?subject=Hello!"
         static let shnayimAppStore = "itms-apps://itunes.apple.com/app/id1296709500"
     }
@@ -88,23 +88,30 @@ class HomeViewController: UIViewController {
             self.viewModel.getZmanim()
         }
         
-        // MARK: - Shnayim
-        shanyimView.layer.masksToBounds = false
-        shanyimView.layer.cornerRadius = 15
-        shanyimView.layer.cornerRadius = 15
-        shanyimView.layer.shadowOpacity = 0.15
-        shanyimView.layer.shadowOffset = CGSize.zero
-        shanyimView.layer.shadowRadius = 8
         view.addSubview(shanyimView)
         shanyimView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             shanyimView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             shanyimView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             shanyimView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            shanyimView.heightAnchor.constraint(equalToConstant: 90)
+            shanyimView.heightAnchor.constraint(equalToConstant: Constants.shnayimViewHeight)
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        shnayimViewButton.layer.cornerRadius = shnayimViewButton.frame.height/2
+        // Deselect selected row.
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Reload collection view in case new date.
+        calendarCollectionView.reloadData()
     }
     
     // MARK: - Navigation

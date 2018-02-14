@@ -37,11 +37,11 @@ class Zman: Decodable {
         // Setup date formatter and init `date`.
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
-        let dateString = try container.decode(String.self, forKey: .time)
-        guard let date = dateFormatter.date(from: dateString) else {
+        let timeDateString = try container.decode(String.self, forKey: .time)
+        guard let timeDate = dateFormatter.date(from: timeDateString) else {
             throw DecodeError.notEnoughData
         }
-        self.date = date
+        self.date = zmanUserInfo.date.settingTime(to: timeDate)!
         
         // Get title and set as single unrecognized location.
         let title = try container.decode(String.self, forKey: .title)
@@ -77,5 +77,24 @@ extension Zman: CustomStringConvertible {
 extension Zman: Equatable {
     static func ==(lhs: Zman, rhs: Zman) -> Bool {
         return lhs.tefillah == rhs.tefillah && lhs.date == rhs.date 
+    }
+}
+
+extension Date {
+    /**
+     Merges `self` with the time components in the provided date.
+     - Parameter timeDate: A date with the time to be merged with `self`.
+    */
+    func settingTime(to timeDate: Date) -> Date? {
+        let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: self)
+        let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: timeDate)
+        var mergedComponents = DateComponents()
+        mergedComponents.day = dateComponents.day
+        mergedComponents.month = dateComponents.month
+        mergedComponents.year = dateComponents.year
+        mergedComponents.hour = timeComponents.hour
+        mergedComponents.minute = timeComponents.minute
+        mergedComponents.second = timeComponents.second
+        return Calendar.current.date(from: mergedComponents)
     }
 }

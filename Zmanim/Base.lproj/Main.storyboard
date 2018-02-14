@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -315,7 +314,6 @@
                         <outlet property="dateButton" destination="fzy-9Y-t4i" id="rTV-iB-cyS"/>
                         <outlet property="mapButton" destination="10s-dB-vRT" id="I8Y-Tf-FBe"/>
                         <outlet property="shanyimView" destination="BdG-zc-7aW" id="csC-bh-zxz"/>
-                        <outlet property="shnayimViewButton" destination="FUC-Sh-Y14" id="DpM-a8-LwH"/>
                         <outlet property="tableView" destination="PvS-LW-TAv" id="hbL-Fr-AEc"/>
                         <segue destination="NTs-41-Qbi" kind="show" identifier="showZmanim" id="ajV-Tq-Z48"/>
                         <segue destination="kVH-m2-Jg8" kind="show" identifier="showAbout" id="bGn-1c-ZDJ"/>
@@ -385,59 +383,49 @@
                         <constraint firstAttribute="trailing" secondItem="2hX-GU-GXe" secondAttribute="trailing" id="upU-hn-H9a"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" id="BdG-zc-7aW">
+                <view contentMode="scaleToFill" id="BdG-zc-7aW" customClass="ShnayimView" customModule="Zmanim" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="370" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="r48-gr-WpG">
-                            <rect key="frame" x="20" y="15" width="77.666666666666671" height="60"/>
+                            <rect key="frame" x="15" y="15" width="76.333333333333329" height="60"/>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVy-PA-heX">
-                            <rect key="frame" x="117.66666666666669" y="18" width="135" height="55"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shnayim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA3-yw-sKm">
-                                    <rect key="frame" x="0.0" y="0.0" width="135" height="40.666666666666664"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="135" id="mNe-Cw-eAK"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get the app!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgV-hJ-Xgf">
-                                    <rect key="frame" x="0.0" y="40.666666666666664" width="135" height="14.333333333333336"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                        </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUC-Sh-Y14">
-                            <rect key="frame" x="290" y="25" width="60" height="40"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxw-fb-gaf" customClass="RoundButton" customModule="Zmanim" customModuleProvider="target">
+                            <rect key="frame" x="279.33333333333331" y="25" width="75.666666666666686" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="8fS-yd-0e9"/>
-                                <constraint firstAttribute="height" constant="40" id="NSa-1Z-CLl"/>
+                                <constraint firstAttribute="height" constant="40" id="ETQ-9p-MRq"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <state key="normal" title="VIEW">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <state key="normal" title="GET">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="didTapShnayimViewButton:" destination="u3x-Vs-ibj" eventType="touchUpInside" id="uFI-sz-cHv"/>
+                                <action selector="didTapShnayimViewButton:" destination="u3x-Vs-ibj" eventType="touchUpInside" id="PWC-vJ-dy7"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shnayim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA3-yw-sKm">
+                            <rect key="frame" x="107.00000000000001" y="21" width="157.33333333333337" height="48"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" name="Shnayim Brown"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="FUC-Sh-Y14" secondAttribute="trailing" constant="20" id="9M5-oD-dix"/>
-                        <constraint firstItem="r48-gr-WpG" firstAttribute="leading" secondItem="BdG-zc-7aW" secondAttribute="leading" constant="20" id="FTQ-EX-ycS"/>
-                        <constraint firstItem="FUC-Sh-Y14" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="IGP-bW-Urn"/>
-                        <constraint firstItem="YVy-PA-heX" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="XZN-YM-dcd"/>
-                        <constraint firstItem="YVy-PA-heX" firstAttribute="centerX" secondItem="BdG-zc-7aW" secondAttribute="centerX" id="ZAG-wb-XBe"/>
+                        <constraint firstItem="uxw-fb-gaf" firstAttribute="leading" secondItem="IA3-yw-sKm" secondAttribute="trailing" constant="15" id="57Q-1I-d3L"/>
+                        <constraint firstItem="r48-gr-WpG" firstAttribute="leading" secondItem="BdG-zc-7aW" secondAttribute="leading" constant="15" id="FTQ-EX-ycS"/>
+                        <constraint firstAttribute="trailing" secondItem="uxw-fb-gaf" secondAttribute="trailing" constant="15" id="G4r-ZT-lEJ"/>
+                        <constraint firstItem="IA3-yw-sKm" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="NVl-EI-hv0"/>
+                        <constraint firstItem="IA3-yw-sKm" firstAttribute="leading" secondItem="r48-gr-WpG" secondAttribute="trailing" constant="15" id="SW8-hh-r4k"/>
                         <constraint firstItem="r48-gr-WpG" firstAttribute="top" secondItem="BdG-zc-7aW" secondAttribute="top" constant="15" id="cbC-Br-vv3"/>
                         <constraint firstAttribute="bottom" secondItem="r48-gr-WpG" secondAttribute="bottom" constant="15" id="dqY-PC-VNs"/>
-                        <constraint firstItem="YVy-PA-heX" firstAttribute="leading" secondItem="r48-gr-WpG" secondAttribute="trailing" constant="20" id="kKJ-GI-GXl"/>
+                        <constraint firstItem="IA3-yw-sKm" firstAttribute="centerX" secondItem="BdG-zc-7aW" secondAttribute="centerX" id="rGf-7L-yux"/>
+                        <constraint firstItem="uxw-fb-gaf" firstAttribute="centerY" secondItem="BdG-zc-7aW" secondAttribute="centerY" id="rzK-pI-Jba"/>
                     </constraints>
                 </view>
             </objects>
@@ -505,6 +493,7 @@
                         <outlet property="errorActivityIndicator" destination="BO1-g7-AFR" id="wk2-Hr-EDh"/>
                         <outlet property="errorTapGestureRecognizer" destination="lxa-is-6vR" id="eIc-3C-xgq"/>
                         <outlet property="errorView" destination="DVg-3C-63R" id="jAj-Q3-fjh"/>
+                        <outlet property="nothingView" destination="TrK-t5-LyL" id="OOh-aE-nYg"/>
                         <outlet property="tableView" destination="b2t-tG-eiL" id="38f-Tw-NDN"/>
                         <segue destination="Sna-fw-qjw" kind="show" identifier="showLocation" id="74W-WQ-utv"/>
                     </connections>
@@ -542,6 +531,23 @@
                         <constraint firstItem="iYu-ij-NFW" firstAttribute="centerY" secondItem="DVg-3C-63R" secondAttribute="centerY" id="j4Y-oJ-58O"/>
                         <constraint firstAttribute="bottom" secondItem="BO1-g7-AFR" secondAttribute="bottom" constant="40" id="oXL-6s-6AF"/>
                         <constraint firstItem="iYu-ij-NFW" firstAttribute="centerX" secondItem="DVg-3C-63R" secondAttribute="centerX" id="xQz-Hx-OUP"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="TrK-t5-LyL">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exS-jL-WSl">
+                            <rect key="frame" x="17" y="108.33333333333331" width="267" height="83.666666666666686"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="70"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="exS-jL-WSl" firstAttribute="centerY" secondItem="TrK-t5-LyL" secondAttribute="centerY" id="UBp-n3-pJq"/>
+                        <constraint firstItem="exS-jL-WSl" firstAttribute="centerX" secondItem="TrK-t5-LyL" secondAttribute="centerX" id="tSV-LE-uts"/>
                     </constraints>
                 </view>
                 <tapGestureRecognizer id="lxa-is-6vR">

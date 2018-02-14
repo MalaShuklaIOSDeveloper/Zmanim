@@ -14,12 +14,14 @@ class ZmanimViewController: UIViewController {
     
     // MARK: - IBOutlets & View Properties
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var nothingView: UIView!
     @IBOutlet var errorView: UIView!
     @IBOutlet var errorTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var errorActivityIndicator: UIActivityIndicatorView!
     
     fileprivate struct Constants {
         static let tableViewRowHeight: CGFloat = 60
+        static let sectionHeaderViewHeight: CGFloat = 36
     }
     
     fileprivate enum SegueIdentifier: String {
@@ -37,11 +39,21 @@ class ZmanimViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didRefresh), for: .valueChanged)
         errorView.translatesAutoresizingMaskIntoConstraints = false
+        nothingView.translatesAutoresizingMaskIntoConstraints = false
         
         getZmanim()
     }
     
-    // MARK: Navigation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Deselect selected row.
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) {
             switch identifier {
@@ -56,6 +68,8 @@ class ZmanimViewController: UIViewController {
     // MARK: -
     
     func getZmanim() {
+        // Show refresh control.
+        tableView.setContentOffset(CGPoint(x: 0, y: -(tableView.refreshControl?.frame.height ?? 0)), animated: true)
         tableView.refreshControl?.beginRefreshing()
         errorActivityIndicator.startAnimating()
         viewModel.getZmanim { result in
@@ -65,6 +79,8 @@ class ZmanimViewController: UIViewController {
                 if self.errorView.isDescendant(of: self.view) {
                     self.removeErrorView()
                 }
+            case .nothing:
+                self.addNothingView()
             case .error:
                 self.addErrorView()
             }
@@ -73,17 +89,30 @@ class ZmanimViewController: UIViewController {
         }
     }
     
-    func didRefresh() {
+    @objc func didRefresh() {
         getZmanim()
+    }
+    
+    func addNothingView() {
+        view.addSubview(nothingView)
+        view.bringSubview(toFront: nothingView)
+        NSLayoutConstraint.activate([
+            nothingView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            nothingView.topAnchor.constraint(equalTo: view.topAnchor),
+            nothingView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            nothingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func addErrorView() {
         view.addSubview(errorView)
         view.bringSubview(toFront: errorView)
-        errorView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        errorView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        errorView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            errorView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            errorView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         view.addGestureRecognizer(errorTapGestureRecognizer)
     }
     
@@ -98,6 +127,7 @@ class ZmanimViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
 extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
@@ -118,9 +148,19 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.sectionHeaderViewHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let zman = viewModel.zman(for: section) {
-            return zman.date.shortTimeString
+            let sectionHeaderView = SectionTitleHeaderView(title: zman.date.shortTimeString)
+            if let nextZman = viewModel.nextZman, zman == nextZman {
+                sectionHeaderView.titleColor = .blueberry
+            } else {
+                sectionHeaderView.titleColor = .black
+            }
+            return sectionHeaderView
         }
         return nil
     }
@@ -132,4 +172,8 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+}
+
+extension UIColor {
+    static let blueberry = UIColor(named: "Blueberry")!
 }
