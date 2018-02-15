@@ -9,6 +9,7 @@
 import UIKit
 
 class ZmanimViewController: UIViewController {
+    static let storyboardID = "zmanimViewController"
     var viewModelData: ZmanimViewModelData!
     fileprivate var viewModel: ZmanimViewModel!
     
@@ -41,6 +42,8 @@ class ZmanimViewController: UIViewController {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         nothingView.translatesAutoresizingMaskIntoConstraints = false
         
+        registerForPreviewing(with: self, sourceView: tableView)
+        
         getZmanim()
     }
     
@@ -69,7 +72,7 @@ class ZmanimViewController: UIViewController {
     
     func getZmanim() {
         // Show refresh control.
-        tableView.setContentOffset(CGPoint(x: 0, y: -(tableView.refreshControl?.frame.height ?? 0)), animated: true)
+        // tableView.setContentOffset(CGPoint(x: 0, y: -(tableView.refreshControl?.frame.height ?? 0)), animated: true)
         tableView.refreshControl?.beginRefreshing()
         errorActivityIndicator.startAnimating()
         viewModel.getZmanim { result in
@@ -125,6 +128,12 @@ class ZmanimViewController: UIViewController {
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
         didRefresh()
     }
+    
+    @IBAction func didTapNext(_ sender: UIBarButtonItem) {
+        if let nextZmanIndexPath = viewModel.nextZmanIndexPath {
+            tableView.scrollToRow(at: nextZmanIndexPath, at: .top, animated: true)
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -157,8 +166,12 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
             let sectionHeaderView = SectionTitleHeaderView(title: zman.date.shortTimeString)
             if let nextZman = viewModel.nextZman, zman == nextZman {
                 sectionHeaderView.titleColor = .blueberry
+                sectionHeaderView.titleWeight = .bold
+                sectionHeaderView.headerLabel.beginBlinking()
             } else {
                 sectionHeaderView.titleColor = .black
+                sectionHeaderView.titleWeight = .semibold
+                sectionHeaderView.headerLabel.endBlinking()
             }
             return sectionHeaderView
         }
@@ -171,6 +184,43 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
                 performSegue(withIdentifier: SegueIdentifier.showLocation.rawValue, sender: indexPath)
             }
         }
+    }
+}
+
+// MARK: - UIViewControllerPreviewingDelegate
+extension ZmanimViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+            if let locationViewController = storyboard?.instantiateViewController(withIdentifier: LocationTableViewController.storyboardID) as? LocationTableViewController, let zman = viewModel.zman(for: indexPath.section) {
+                locationViewController.viewModelData = LocationViewModelData(location: zman.locations[indexPath.row])
+                return locationViewController
+            }
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+}
+
+private extension UIView {
+    func beginBlinking() {
+        UIView.animate(withDuration: 1, delay: 1, animations: {
+            self.alpha = 0.25
+        }) { completed in
+            UIView.animate(withDuration: 1, animations: {
+                self.alpha = 1
+            }) { completed in
+                self.beginBlinking()
+            }
+        }
+    }
+    
+    func endBlinking() {
+        alpha = 1
+        layer.removeAllAnimations()
     }
 }
 

@@ -9,6 +9,7 @@
 import UIKit
 
 class LocalZmanimViewController: UIViewController {
+    static let storyboardID = "localZmanimViewController"
     fileprivate let viewModel = LocalZmanimViewModel()
     
     //MARK: - IBOutlets
@@ -87,9 +88,9 @@ extension LocalZmanimViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let localZman = viewModel.localZman(for: indexPath.row)!
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.localZmanCellIdentifier.rawValue, for: indexPath)
-        cell.textLabel?.text = localZman.title
-        cell.detailTextLabel?.text = localZman.date.timeWithSecondsString
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.localZmanCellIdentifier.rawValue, for: indexPath) as! LocalZmanCell
+        cell.titleLabel.text = localZman.title
+        cell.timeLabel.text = localZman.date.timeWithSecondsString
         return cell
     }
     

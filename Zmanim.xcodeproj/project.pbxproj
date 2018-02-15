@@ -53,6 +53,7 @@
 		5BCC11EE1D6CF644005B6379 /* Glueck 2 Lobby.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11ED1D6CF644005B6379 /* Glueck 2 Lobby.jpg */; };
 		5BCC11F01D6CF667005B6379 /* Morg Lounge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */; };
 		5BCC11F21D6D0152005B6379 /* Muss Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */; };
+		5BF4A31F203520F000AEC616 /* LocalZmanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */; };
 		5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */; };
 		5BFCE957203128C900A943FD /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE956203128C900A943FD /* CalendarCollectionView.swift */; };
 		5BFCE95920312A1600A943FD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE95820312A1600A943FD /* CalendarCell.swift */; };
@@ -130,6 +131,7 @@
 		5BCC11ED1D6CF644005B6379 /* Glueck 2 Lobby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Glueck 2 Lobby.jpg"; sourceTree = "<group>"; };
 		5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Lounge.jpg"; sourceTree = "<group>"; };
 		5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muss Beis.jpg"; sourceTree = "<group>"; };
+		5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalZmanCell.swift; path = Cells/LocalZmanCell.swift; sourceTree = "<group>"; };
 		5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Extensions/URL.swift; sourceTree = "<group>"; };
 		5BFCE956203128C900A943FD /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCollectionView.swift; path = Views/CalendarCollectionView.swift; sourceTree = "<group>"; };
 		5BFCE95820312A1600A943FD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Cells/CalendarCell.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				5BBAFC331D35993100A70878 /* ZmanCell.swift */,
+				5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */,
 				5B5E52411D301F5D002C1D2A /* DescriptionCell.swift */,
 				5BFCE95820312A1600A943FD /* CalendarCell.swift */,
 			);
@@ -466,6 +469,7 @@
 				5B47564E1C9B393B00927935 /* LocalZmanimViewController.swift in Sources */,
 				5B95EA091C2AE8D000647230 /* HomeViewController.swift in Sources */,
 				5BAA10FD20348E08003F6B23 /* RoundButton.swift in Sources */,
+				5BF4A31F203520F000AEC616 /* LocalZmanCell.swift in Sources */,
 				5BCC11DC1D6A0474005B6379 /* SectionTitleHeaderView.swift in Sources */,
 				5B6305A12028BF620017094C /* Zman.swift in Sources */,
 				5BFCE957203128C900A943FD /* CalendarCollectionView.swift in Sources */,

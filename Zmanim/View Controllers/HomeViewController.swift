@@ -210,11 +210,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = tableView.indexPathForRow(at: location) {
-            if let tefillahItem = viewModel.item(for: indexPath) as? TefillahHomeItem {
-                previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
-                if let zmanimViewController = storyboard?.instantiateViewController(withIdentifier: "zmanimViewController") as? ZmanimViewController {
-                    zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
-                    return zmanimViewController
+            previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
+            if let item = viewModel.item(for: indexPath) {
+                switch item.key {
+                case .tefillah:
+                    let tefillahItem = item as! TefillahHomeItem
+                    if let zmanimViewController = storyboard?.instantiateViewController(withIdentifier: ZmanimViewController.storyboardID) as? ZmanimViewController {
+                        zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
+                        return zmanimViewController
+                    }
+                case .zmanim:
+                    if let localZmanimViewController = storyboard?.instantiateViewController(withIdentifier: LocalZmanimViewController.storyboardID) as? LocalZmanimViewController {
+                        return localZmanimViewController
+                    }
+                default: break
                 }
             }
         }

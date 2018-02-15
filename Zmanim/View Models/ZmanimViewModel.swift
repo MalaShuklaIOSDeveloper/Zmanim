@@ -35,15 +35,11 @@ class ZmanimViewModel {
         return zmanim?.count ?? 0
     }
     
-    var nextZman: Zman? {
-        if let zmanim = zmanim {
-            let currentDate = Date()
-            /// The positive zmanim time intervals from now sorted in ascending order.
-            let sortedZmanimTimeIntervals = zmanim.map { $0.date.timeIntervalSince(currentDate) }.filter { $0 > 0}.sorted(by: <)
-            let sortedZmanimDates = sortedZmanimTimeIntervals.map { Date(timeInterval: $0, since: currentDate) }
-            if let firstZmanDate = sortedZmanimDates.first {
-                return zman(for: firstZmanDate)
-            }
+    var nextZman: Zman?
+    
+    var nextZmanIndexPath: IndexPath? {
+        if let nextZman = nextZman, let zmanSection = zmanim?.index(of: nextZman) {
+            return IndexPath(row: 0, section: zmanSection)
         }
         return nil
     }
@@ -62,8 +58,9 @@ class ZmanimViewModel {
             }
             // If there are zmanim...
             else {
-                // ...set our zmanim to those zmanim and...
+                // ...set our zmanim to those zmanim...
                 zmanim = tefillahZmanim
+                self.setNextZman()
                 // ...send to closure.
                 completed(.success)
             }
@@ -79,6 +76,7 @@ class ZmanimViewModel {
                             completed(.nothing)
                         } else {
                             self.zmanim = zmanim
+                            self.setNextZman()
                             completed(.success)
                         }
                     }
@@ -92,6 +90,15 @@ class ZmanimViewModel {
     
     func numberOfRows(in section: Int) -> Int {
         return zmanim?[section].locations.count ?? 0
+    }
+    
+    func setNextZman() {
+        if let zmanim = zmanim {
+            let currentDate = Date()
+            if let nextZmanDate = zmanim.map({ $0.date }).sorted().first(where: { $0.timeIntervalSince(currentDate) > 0 }) {
+                nextZman = zman(for: nextZmanDate)
+            }
+        }
     }
     
     func zman(for index: Int) -> Zman? {

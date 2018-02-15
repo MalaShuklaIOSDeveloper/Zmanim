@@ -28,7 +28,13 @@ class SectionTitleHeaderView: UIView {
         }
     }
     
-    private let headerLabel = UILabel()
+    var titleWeight: UIFont.Weight = .semibold {
+        didSet {
+            update()
+        }
+    }
+    
+    let headerLabel = UILabel()
     
     init(title: String, titleSize: CGFloat = 20, titleColor: UIColor = .black) {
         self.title = title
@@ -67,7 +73,7 @@ class SectionTitleHeaderView: UIView {
     func update() {
         headerLabel.text = title
         headerLabel.textColor = titleColor
-        headerLabel.font = UIFont.systemFont(ofSize: titleSize, weight: .semibold)
+        headerLabel.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
     }
 }
 

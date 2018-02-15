@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 class LocationTableViewController: UITableViewController {
+    static let storyboardID = "locationViewController"
     var viewModelData: LocationViewModelData!
     private var viewModel: LocationViewModel!
     

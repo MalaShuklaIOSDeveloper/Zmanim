@@ -89,7 +89,7 @@
         <!--Washington Heights-->
         <scene sceneID="KyA-ze-0S0">
             <objects>
-                <viewController id="M5p-fN-pr1" customClass="LocalZmanimViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="localZmanimViewController" id="M5p-fN-pr1" customClass="LocalZmanimViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pT6-4W-vK3"/>
                         <viewControllerLayoutGuide type="bottom" id="gYi-Ec-fjV"/>
@@ -102,29 +102,38 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="localZmanCell" textLabel="GFY-l6-LPb" detailTextLabel="fT7-uH-4hC" rowHeight="60" style="IBUITableViewCellStyleValue1" id="wQc-O0-4XS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="localZmanCell" rowHeight="60" id="Qst-Hg-xdY" customClass="LocalZmanCell" customModule="Zmanim" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wQc-O0-4XS" id="YYV-78-0sY">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qst-Hg-xdY" id="sik-8X-jS1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" id="GFY-l6-LPb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-JQ-P6S">
                                                     <rect key="frame" x="15" y="18" width="40" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fT7-uH-4hC">
-                                                    <rect key="frame" x="308" y="18" width="52" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-0I-CNo">
+                                                    <rect key="frame" x="65" y="18" width="295" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fuB-0I-CNo" firstAttribute="trailing" secondItem="sik-8X-jS1" secondAttribute="trailingMargin" id="2tA-OL-CsW"/>
+                                                <constraint firstItem="FUH-JQ-P6S" firstAttribute="trailing" secondItem="fuB-0I-CNo" secondAttribute="leading" constant="-10" id="H2e-YQ-OSW"/>
+                                                <constraint firstItem="fuB-0I-CNo" firstAttribute="centerY" secondItem="sik-8X-jS1" secondAttribute="centerY" id="R0b-IP-A3W"/>
+                                                <constraint firstItem="FUH-JQ-P6S" firstAttribute="centerY" secondItem="sik-8X-jS1" secondAttribute="centerY" id="j1e-xk-a5t"/>
+                                                <constraint firstItem="FUH-JQ-P6S" firstAttribute="leading" secondItem="sik-8X-jS1" secondAttribute="leadingMargin" id="nH1-9N-QUq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="fuB-0I-CNo" id="k2L-Gc-Uo9"/>
+                                            <outlet property="titleLabel" destination="FUH-JQ-P6S" id="b7Z-6o-Um0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -190,7 +199,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="921" y="1090"/>
+            <point key="canvasLocation" x="920.79999999999995" y="1089.9014778325125"/>
         </scene>
         <!--Locations View Controller-->
         <scene sceneID="ETY-sP-GCc">
@@ -489,6 +498,13 @@
                             <constraint firstAttribute="bottom" secondItem="b2t-tG-eiL" secondAttribute="bottom" id="rJc-Am-WX7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qXw-FP-VwQ">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="TOt-j7-hMH">
+                            <connections>
+                                <action selector="didTapNext:" destination="NTs-41-Qbi" id="N0G-YN-hWv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="errorActivityIndicator" destination="BO1-g7-AFR" id="wk2-Hr-EDh"/>
                         <outlet property="errorTapGestureRecognizer" destination="lxa-is-6vR" id="eIc-3C-xgq"/>
@@ -561,7 +577,7 @@
         <!--Location Table View Controller-->
         <scene sceneID="N4b-Cq-gwX">
             <objects>
-                <tableViewController id="Sna-fw-qjw" customClass="LocationTableViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="locationViewController" id="Sna-fw-qjw" customClass="LocationTableViewController" customModule="Zmanim" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="zpM-r8-HPW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
