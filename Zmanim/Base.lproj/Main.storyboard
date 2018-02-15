@@ -396,15 +396,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="370" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="r48-gr-WpG">
-                            <rect key="frame" x="15" y="15" width="76.333333333333329" height="60"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="r48-gr-WpG">
+                            <rect key="frame" x="14.999999999999996" y="15" width="56.666666666666657" height="60"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxw-fb-gaf" customClass="RoundButton" customModule="Zmanim" customModuleProvider="target">
-                            <rect key="frame" x="279.33333333333331" y="25" width="75.666666666666686" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxw-fb-gaf" customClass="RoundButton" customModule="Zmanim" customModuleProvider="target">
+                            <rect key="frame" x="299" y="25" width="56" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ETQ-9p-MRq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" title="GET">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -417,8 +418,8 @@
                                 <action selector="didTapShnayimViewButton:" destination="u3x-Vs-ibj" eventType="touchUpInside" id="PWC-vJ-dy7"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shnayim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA3-yw-sKm">
-                            <rect key="frame" x="107.00000000000001" y="21" width="157.33333333333337" height="48"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" text="Shnayim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="IA3-yw-sKm">
+                            <rect key="frame" x="87.333333333333329" y="21" width="196.66666666666669" height="48"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>

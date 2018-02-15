@@ -23,10 +23,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var calendarCollectionView: CalendarCollectionView!
     @IBOutlet var shanyimView: ShnayimView!
     
+    let isiPhoneX = UIScreen.main.nativeBounds.height == 2436
     var isCalendarViewHidden = true
+    var defaultTableViewContentYOffset: CGFloat {
+        return isiPhoneX ? -88 : -64
+    }
     
     fileprivate struct Constants {
-        static let defaultTableViewContentYOffset: CGFloat = -88
         static let calendarViewHeight: CGFloat = 120
         static let tableViewRowHeight: CGFloat = 100
         static let shnayimViewHeight: CGFloat = 90
@@ -93,9 +96,10 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             shanyimView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             shanyimView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
-            shanyimView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shanyimView.bottomAnchor, constant: isiPhoneX ? 0 : 20),
             shanyimView.heightAnchor.constraint(equalToConstant: Constants.shnayimViewHeight)
         ])
+        tableView.contentInset.bottom = shanyimView.frame.height + (isiPhoneX ? 0 : 20)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,9 +137,9 @@ class HomeViewController: UIViewController {
     func showCalendarView() {
         tableView.addSubview(calendarView)
         tableView.contentInset.top = Constants.calendarViewHeight
-        tableView.contentOffset.y = Constants.defaultTableViewContentYOffset
+        tableView.contentOffset.y = defaultTableViewContentYOffset
         UIView.animate(withDuration: 0.25) {
-            self.tableView.contentOffset.y = Constants.defaultTableViewContentYOffset - Constants.calendarViewHeight
+            self.tableView.contentOffset.y = self.defaultTableViewContentYOffset - Constants.calendarViewHeight
         }
         isCalendarViewHidden = false
     }
@@ -143,7 +147,7 @@ class HomeViewController: UIViewController {
     func hideCalendarView() {
         isCalendarViewHidden = true
         UIView.animate(withDuration: 0.25, animations: {
-            self.tableView.contentOffset.y = Constants.defaultTableViewContentYOffset
+            self.tableView.contentOffset.y = self.defaultTableViewContentYOffset
         }) { completed in
             self.tableView.contentInset.top = 0
             self.calendarView.removeFromSuperview()
