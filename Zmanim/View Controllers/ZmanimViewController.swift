@@ -43,6 +43,8 @@ class ZmanimViewController: UIViewController {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         nothingView.translatesAutoresizingMaskIntoConstraints = false
         
+        setupNextButton()
+        
         registerForPreviewing(with: self, sourceView: tableView)
         
         getZmanim()
@@ -72,8 +74,6 @@ class ZmanimViewController: UIViewController {
     // MARK: -
     
     func getZmanim() {
-        // Show refresh control.
-        // tableView.setContentOffset(CGPoint(x: 0, y: -(tableView.refreshControl?.frame.height ?? 0)), animated: true)
         tableView.refreshControl?.beginRefreshing()
         errorActivityIndicator.startAnimating()
         viewModel.getZmanim { result in
@@ -81,6 +81,7 @@ class ZmanimViewController: UIViewController {
             case .success:
                 self.tableView.reloadData()
                 self.nextButton.isEnabled = true
+                self.setupNextButton()
                 if self.errorView.isDescendant(of: self.view) {
                     self.removeErrorView()
                 }
@@ -98,6 +99,14 @@ class ZmanimViewController: UIViewController {
     
     @objc func didRefresh() {
         getZmanim()
+    }
+    
+    func setupNextButton() {
+        if let nextZman = viewModel.nextZman, nextZman.tefillah == viewModel.tefillah {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
     }
     
     func addNothingView() {
