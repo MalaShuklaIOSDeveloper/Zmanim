@@ -19,6 +19,14 @@ class ZmanimDataStore {
     var locations: [Location]?
     var localZmanim: [LocalZman]?
     
+    /// An array of all the zmanim in `shacharis`, `mincha` and `maariv`.
+    var allZmanim: [Zman]? {
+        if let shacharis = shacharis, let mincha = mincha, let maariv = maariv {
+            return shacharis + mincha + maariv
+        }
+        return nil
+    }
+    
     /// Last time `shacharis`, `mincha`, `maariv` was updated.
     var lastZmanimUpdate: Date?
     
@@ -75,6 +83,14 @@ class ZmanimDataStore {
         case .maariv:
             return maariv
         }
+    }
+    
+    func nextZman(for date: Date) -> Zman? {
+        // Searches for next zman that date is a positive time interval from `date`.
+        if let nextZman = allZmanim?.sorted().first(where: { $0.date.timeIntervalSince(date) > 0 }) {
+            return nextZman
+        }
+        return nil
     }
     
     func clearData() {

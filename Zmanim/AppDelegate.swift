@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Set data store as API observer to keep data up to date.
         ZmanimDataStore.shared.setAsZmanimAPIObserver()
+        
+        // Request authorization for user local notifications.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            
+        }
         
         // Set the navigation bar to white application wide.
         UINavigationBar.appearance().barTintColor = UIColor.white

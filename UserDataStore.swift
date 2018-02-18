@@ -11,6 +11,7 @@ import Foundation
 /// A data store for user 👨🏻 data.
 class UserDataStore {
     static let shared = UserDataStore()
+    /// The date used to get zmanim.
     var date = Date()
     
     private init() {}

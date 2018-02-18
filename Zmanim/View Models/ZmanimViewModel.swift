@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 struct ZmanimViewModelData {
     let tefillah: Tefillah
@@ -22,6 +23,10 @@ enum GetZmanimResult {
     case error
 }
 
+enum ZmanNotificationMinutes: Int {
+    case five = 5, ten = 10, thirty = 30
+}
+
 class ZmanimViewModel {
     /// The tefillah to display zmanim for.
     var tefillah: Tefillah!
@@ -35,13 +40,19 @@ class ZmanimViewModel {
         return zmanim?.count ?? 0
     }
     
-    var nextZman: Zman?
+    var nextZman: Zman? {
+        return ZmanimDataStore.shared.nextZman(for: Date())
+    }
     
     var nextZmanIndexPath: IndexPath? {
         if let nextZman = nextZman, let zmanSection = zmanim?.index(of: nextZman) {
             return IndexPath(row: 0, section: zmanSection)
         }
         return nil
+    }
+    
+    var selectedDate: Date {
+        return UserDataStore.shared.date
     }
     
     init(data: ZmanimViewModelData) {
@@ -60,7 +71,6 @@ class ZmanimViewModel {
             else {
                 // ...set our zmanim to those zmanim...
                 zmanim = tefillahZmanim
-                self.setNextZman()
                 // ...send to closure.
                 completed(.success)
             }
@@ -68,7 +78,7 @@ class ZmanimViewModel {
         // If the data store is empty or zmanim are old...
         else {
             // ...fetch new zmanim.
-            ZmanimAPIClient.fetchZmanim(for: UserDataStore.shared.date) { result in
+            ZmanimAPIClient.fetchZmanim(for: selectedDate) { result in
                 switch result {
                 case .success(let value):
                     if let zmanim = value[self.tefillah] {
@@ -76,7 +86,6 @@ class ZmanimViewModel {
                             completed(.nothing)
                         } else {
                             self.zmanim = zmanim
-                            self.setNextZman()
                             completed(.success)
                         }
                     }
@@ -92,15 +101,6 @@ class ZmanimViewModel {
         return zmanim?[section].locations.count ?? 0
     }
     
-    func setNextZman() {
-        if let zmanim = zmanim {
-            let currentDate = Date()
-            if let nextZmanDate = zmanim.map({ $0.date }).sorted().first(where: { $0.timeIntervalSince(currentDate) > 0 }) {
-                nextZman = zman(for: nextZmanDate)
-            }
-        }
-    }
-    
     func zman(for index: Int) -> Zman? {
         return zmanim?[index]
     }
@@ -114,5 +114,24 @@ class ZmanimViewModel {
             }
         }
         return nil
+    }
+    
+    func createNotification(for zman: Zman, at location: Location, withMinutesProceeding minutes: ZmanNotificationMinutes) {
+        if let notifyDate = Calendar.current.date(byAdding: .minute, value: -minutes.rawValue, to: zman.date) {
+            let content = UNMutableNotificationContent()
+            content.title = "\(minutes.rawValue) until \(zman.tefillah.title) at \(location.title)!"
+            
+            let triggerDateComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: notifyDate)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+            
+            let identifier = UUID().uuidString
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print(error)
+                }
+            }
+        }
     }
 }

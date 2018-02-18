@@ -8,6 +8,12 @@
 
 import UIKit
 
-class ZmanTableViewCell: UITableViewCell {
+class ZmanCell: UITableViewCell {
+    var didTapNotify: ((ZmanCell) -> Void)?
+    
     @IBOutlet weak var locationLabel: UILabel!
+
+    @IBAction func didTapNotify(_ sender: UIButton) {
+        didTapNotify?(self)
+    }
 }

@@ -74,9 +74,13 @@ extension Zman: CustomStringConvertible {
     }
 }
 
-extension Zman: Equatable {
+extension Zman: Comparable {
+    static func <(lhs: Zman, rhs: Zman) -> Bool {
+        return lhs.date < rhs.date
+    }
+    
     static func ==(lhs: Zman, rhs: Zman) -> Bool {
-        return lhs.tefillah == rhs.tefillah && lhs.date == rhs.date 
+        return lhs.date == rhs.date
     }
 }
 

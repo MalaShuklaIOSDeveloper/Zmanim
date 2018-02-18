@@ -74,7 +74,7 @@ class LocationTableViewController: UITableViewController {
         switch item.key {
         case .description:
             let descriptionItem = item as! DescriptionLocationItem
-            let cell = tableView.dequeueReusableCell(withIdentifier: descriptionItem.cellIdentifier.rawValue) as! DescriptionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: descriptionItem.cellIdentifier.rawValue) as! DescriptionCell
             cell.descriptionLabel.text = descriptionItem.text
             return cell
         case .zman:

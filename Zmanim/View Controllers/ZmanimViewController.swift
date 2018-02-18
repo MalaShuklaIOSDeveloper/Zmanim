@@ -15,6 +15,7 @@ class ZmanimViewController: UIViewController {
     
     // MARK: - IBOutlets & View Properties
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var nextButton: UIBarButtonItem!
     @IBOutlet var nothingView: UIView!
     @IBOutlet var errorView: UIView!
     @IBOutlet var errorTapGestureRecognizer: UITapGestureRecognizer!
@@ -79,12 +80,15 @@ class ZmanimViewController: UIViewController {
             switch result {
             case .success:
                 self.tableView.reloadData()
+                self.nextButton.isEnabled = true
                 if self.errorView.isDescendant(of: self.view) {
                     self.removeErrorView()
                 }
             case .nothing:
+                self.nextButton.isEnabled = false
                 self.addNothingView()
             case .error:
+                self.nextButton.isEnabled = false
                 self.addErrorView()
             }
             self.tableView.refreshControl?.endRefreshing()
@@ -147,11 +151,15 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.zmanCellIdentifier.rawValue) as! ZmanTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.zmanCellIdentifier.rawValue) as! ZmanCell
         
         if let zman = viewModel.zman(for: indexPath.section) {
             let location = zman.locations[indexPath.row]
             cell.locationLabel.text = location.title
+            
+            cell.didTapNotify = { cell in
+                self.viewModel.createNotification(for: zman, at: location, withMinutesProceeding: .five)
+            }
         }
         
         return cell
@@ -164,7 +172,7 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let zman = viewModel.zman(for: section) {
             let sectionHeaderView = SectionTitleHeaderView(title: zman.date.shortTimeString)
-            if let nextZman = viewModel.nextZman, zman == nextZman {
+            if let nextZman = viewModel.nextZman, zman == nextZman, nextZman.date.isToday {
                 sectionHeaderView.titleColor = .blueberry
                 sectionHeaderView.titleWeight = .bold
                 sectionHeaderView.headerLabel.beginBlinking()

@@ -458,25 +458,34 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="zmanCell" rowHeight="60" id="hti-Zr-ujp" customClass="ZmanTableViewCell" customModule="Zmanim" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="zmanCell" rowHeight="60" id="hti-Zr-ujp" customClass="ZmanCell" customModule="Zmanim" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hti-Zr-ujp" id="afL-oC-OUj">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-Ni-7xM">
-                                                    <rect key="frame" x="20" y="11" width="322" height="38"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-Ni-7xM">
+                                                    <rect key="frame" x="20" y="11" width="270" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-Ee-1L4">
+                                                    <rect key="frame" x="300" y="14" width="42" height="30"/>
+                                                    <state key="normal" title="Notify"/>
+                                                    <connections>
+                                                        <action selector="didTapNotify:" destination="hti-Zr-ujp" eventType="touchUpInside" id="Mcl-mJ-C5U"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Xyt-Ni-7xM" secondAttribute="trailing" id="7uy-lZ-k9t"/>
+                                                <constraint firstAttribute="trailing" secondItem="VRQ-Ee-1L4" secondAttribute="trailing" id="WNf-dm-Bu7"/>
                                                 <constraint firstItem="Xyt-Ni-7xM" firstAttribute="top" secondItem="afL-oC-OUj" secondAttribute="topMargin" id="WlT-yX-ZmH"/>
+                                                <constraint firstItem="VRQ-Ee-1L4" firstAttribute="leading" secondItem="Xyt-Ni-7xM" secondAttribute="trailing" constant="10" id="XUF-fC-siV"/>
                                                 <constraint firstItem="Xyt-Ni-7xM" firstAttribute="leading" secondItem="afL-oC-OUj" secondAttribute="leading" constant="20" id="gvv-Pj-jTd"/>
                                                 <constraint firstItem="Xyt-Ni-7xM" firstAttribute="bottom" secondItem="afL-oC-OUj" secondAttribute="bottomMargin" id="ocb-9h-14W"/>
+                                                <constraint firstItem="VRQ-Ee-1L4" firstAttribute="centerY" secondItem="afL-oC-OUj" secondAttribute="centerY" id="ogd-Ha-hmx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -510,6 +519,7 @@
                         <outlet property="errorActivityIndicator" destination="BO1-g7-AFR" id="wk2-Hr-EDh"/>
                         <outlet property="errorTapGestureRecognizer" destination="lxa-is-6vR" id="eIc-3C-xgq"/>
                         <outlet property="errorView" destination="DVg-3C-63R" id="jAj-Q3-fjh"/>
+                        <outlet property="nextButton" destination="TOt-j7-hMH" id="y2V-Zh-6uW"/>
                         <outlet property="nothingView" destination="TrK-t5-LyL" id="OOh-aE-nYg"/>
                         <outlet property="tableView" destination="b2t-tG-eiL" id="38f-Tw-NDN"/>
                         <segue destination="Sna-fw-qjw" kind="show" identifier="showLocation" id="74W-WQ-utv"/>
@@ -584,7 +594,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="174" id="afo-zG-H7I" customClass="DescriptionTableViewCell" customModule="Zmanim" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="174" id="afo-zG-H7I" customClass="DescriptionCell" customModule="Zmanim" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="afo-zG-H7I" id="HWc-mW-UDV">
