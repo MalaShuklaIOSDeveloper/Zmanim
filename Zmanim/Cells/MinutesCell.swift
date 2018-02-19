@@ -9,6 +9,19 @@
 import UIKit
 
 class MinutesCell: UICollectionViewCell {
+    var isColorsInverted = false {
+        didSet {
+            if isColorsInverted {
+                invertColors()
+            } else {
+                regularColors()
+            }
+        }
+    }
+    
+    @IBOutlet var minutesLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -27,5 +40,15 @@ class MinutesCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 8
         layer.shadowOffset = CGSize.zero
+    }
+    
+    private func regularColors() {
+        backgroundColor = .blueberry
+        [minutesLabel, titleLabel].forEach { $0?.textColor = .white }
+    }
+    
+    private func invertColors() {
+        backgroundColor = .blueberry
+        [minutesLabel, titleLabel].forEach { $0?.textColor = .white }
     }
 }

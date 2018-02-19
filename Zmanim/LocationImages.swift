@@ -11,47 +11,60 @@ import UIKit
 
 /// A helper type to retrieve location images 🏙.
 struct LocationImages {
-    static let Annex = UIImage(named: "Annex.jpg")
-    static let FischelBeis = UIImage(named: "Fischel Beis.jpg")
-    static let Glueck2Lobby = UIImage(named: "Glueck 2 Lobby.jpg")
-    static let Glueck303 = UIImage(named: "Glueck 303.jpg")
-    static let GlueckBeis = UIImage(named: "Glueck Beis.jpg")
-    static let MussBeis = UIImage(named: "Muss Beis.jpg")
-    static let MorgBeis = UIImage(named: "Morg Beis.jpg")
-    static let MorgLounge = UIImage(named: "Morg Lounge.jpg")
-    static let RubinShul = UIImage(named: "Rubin Shul.jpg")
-    static let SefardiBeitMidrash = UIImage(named: "Sefardi Beit Midrash.jpg")
-    static let SkyCaf = UIImage(named: "Sky Caf.jpg")
-    static let Zysman101 = UIImage(named:"Zysman 101.jpg")
-    
+    static let Annex = UIImage(named: Location.Title.annex.fileName)
+    static let FischelBeis = UIImage(named: Location.Title.fischelBeis.fileName)
+    static let Glueck2Lobby = UIImage(named: Location.Title.glueck2Lobby.fileName)
+    static let Glueck303 = UIImage(named: Location.Title.glueck303.fileName)
+    static let GlueckBeis = UIImage(named: Location.Title.glueckBeis.fileName)
+    static let MussBeis = UIImage(named: Location.Title.mussBeis.fileName)
+    static let MorgBeis = UIImage(named: Location.Title.morgBeis.fileName)
+    static let MorgLounge = UIImage(named: Location.Title.morgLounge.fileName)
+    static let RubinShul = UIImage(named: Location.Title.rubinShul.fileName)
+    static let SefardiBeitMidrash = UIImage(named: Location.Title.sefardiBeitMidrash.fileName)
+    static let SkyCaf = UIImage(named: Location.Title.skyCaf.fileName)
+    static let Zysman101 = UIImage(named: Location.Title.zysman101.fileName)
+
     static func image(forLocationTitle title: String) -> UIImage? {
-        switch title {
-        case "Annex":
-            return Annex
-        case "Fischel Beis":
-            return FischelBeis
-        case "Glueck 2 Lobby":
-            return Glueck2Lobby
-        case "Glueck 303":
-            return Glueck303
-        case "Glueck Beis":
-            return GlueckBeis
-        case "Muss Beis":
-            return MussBeis
-        case "Morg Beis":
-            return MorgBeis
-        case "Morg Lounge":
-            return MorgLounge
-        case "Rubin Shul":
-            return RubinShul
-        case "Sefardi Beit Midrash":
-            return SefardiBeitMidrash
-        case "Sky Caf":
-            return SkyCaf
-        case "Zysman 101":
-            return Zysman101
-        default:
-            return nil
+        if let locationTitle = Location.Title(rawValue: title) {
+            switch locationTitle {
+            case .annex:
+                return Annex
+            case .fischelBeis:
+                return FischelBeis
+            case .glueck2Lobby:
+                return Glueck2Lobby
+            case .glueck303:
+                return Glueck303
+            case .glueckBeis:
+                return GlueckBeis
+            case .mussBeis:
+                return MussBeis
+            case .morgBeis:
+                return MorgBeis
+            case .morgLounge:
+                return MorgLounge
+            case .rubinShul:
+                return RubinShul
+            case .sefardiBeitMidrash:
+                return SefardiBeitMidrash
+            case .skyCaf:
+                return SkyCaf
+            case .zysman101:
+                return Zysman101
+            }
         }
+        return nil
+    }
+}
+
+extension Location.Title {
+    var localImageURL: URL? {
+        return Bundle.main.url(forResource: rawValue, withExtension: ".jpg")
+    }
+}
+
+fileprivate extension Location.Title {
+    var fileName: String {
+        return rawValue + ".jpg"
     }
 }

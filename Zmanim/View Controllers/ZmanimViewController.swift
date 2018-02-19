@@ -80,8 +80,17 @@ class ZmanimViewController: UIViewController {
         
         minutesCollectionView.configureCell = { (index, cell) in
             if let minutesCell = cell as? MinutesCell {
-                
+                let minutes = self.viewModel.notificationMinutes[index]
+                minutesCell.minutesLabel.text = String(minutes.displayValue)
+                minutesCell.titleLabel.text = minutes.title
+                if self.viewModel.isMinutesCellSelected(at: index) {
+                    
+                }
             }
+        }
+        
+        minutesCollectionView.didSelectIndex = { index in
+            self.viewModel.addNotification(for: self.viewModel.notificationMinutes[index])
         }
     }
     
@@ -202,7 +211,7 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
             cell.locationLabel.text = location.title
             
             cell.didTapNotify = { cell in
-                self.viewModel.add(ZmanNotification(zman: zman, location: location, minutesBefore: ZmanimViewModel.NotificationMinutes.five.rawValue))
+                self.viewModel.selectedNotifyIndexPath = indexPath
             }
         }
         

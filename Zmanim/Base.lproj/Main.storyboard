@@ -466,13 +466,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-Ni-7xM">
-                                                    <rect key="frame" x="20" y="11" width="270" height="38"/>
+                                                    <rect key="frame" x="20" y="11" width="265" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-Ee-1L4">
-                                                    <rect key="frame" x="300" y="14" width="42" height="30"/>
+                                                    <rect key="frame" x="295" y="14" width="47" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Notify"/>
                                                     <connections>
                                                         <action selector="didTapNotify:" destination="hti-Zr-ujp" eventType="touchUpInside" id="Mcl-mJ-C5U"/>
@@ -573,6 +574,10 @@
                                         <constraint firstItem="Xqj-0O-qZh" firstAttribute="centerX" secondItem="wZX-PN-SWa" secondAttribute="centerX" id="euD-GW-a8I"/>
                                         <constraint firstItem="Xqj-0O-qZh" firstAttribute="centerY" secondItem="wZX-PN-SWa" secondAttribute="centerY" id="mXY-Hs-9tE"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="minutesLabel" destination="O6h-Pi-KA3" id="BRa-E0-Cvm"/>
+                                        <outlet property="titleLabel" destination="jfC-El-gng" id="fbZ-Lq-mmd"/>
+                                    </connections>
                                 </collectionViewCell>
                             </cells>
                         </collectionView>
@@ -582,13 +587,20 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyn-kq-PUl">
+                            <rect key="frame" x="309" y="9" width="41" height="29"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <state key="normal" title="DONE"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="Pyn-kq-PUl" firstAttribute="centerY" secondItem="O87-IT-WXk" secondAttribute="centerY" id="2ZH-YU-iyx"/>
                         <constraint firstItem="O87-IT-WXk" firstAttribute="top" secondItem="R9z-lc-u5u" secondAttribute="top" constant="15" id="Equ-Q3-xjD"/>
                         <constraint firstItem="1cm-nn-wdb" firstAttribute="leading" secondItem="R9z-lc-u5u" secondAttribute="leading" id="F8F-Ug-6iG"/>
                         <constraint firstAttribute="bottom" secondItem="1cm-nn-wdb" secondAttribute="bottom" id="LA9-Fx-Lf0"/>
                         <constraint firstItem="1cm-nn-wdb" firstAttribute="top" secondItem="R9z-lc-u5u" secondAttribute="top" id="Xe1-2D-Nzj"/>
+                        <constraint firstAttribute="trailing" secondItem="Pyn-kq-PUl" secondAttribute="trailing" constant="20" id="eg5-zK-kbu"/>
                         <constraint firstAttribute="trailing" secondItem="1cm-nn-wdb" secondAttribute="trailing" id="g4u-7m-svH"/>
                         <constraint firstItem="O87-IT-WXk" firstAttribute="leading" secondItem="R9z-lc-u5u" secondAttribute="leading" constant="20" id="u4g-zd-hL2"/>
                     </constraints>

@@ -59,6 +59,23 @@ class Location: Decodable {
 }
 
 extension Location {
+    enum Title: String {
+        case annex = "Annex"
+        case fischelBeis = "Fischel Beis"
+        case glueck2Lobby = "Glueck 2 Lobby"
+        case glueck303 = "Glueck 303"
+        case glueckBeis = "Glueck Beis"
+        case mussBeis = "Muss Beis"
+        case morgBeis = "Morg Beis"
+        case morgLounge = "Morg Lounge"
+        case rubinShul = "Rubin Shul"
+        case sefardiBeitMidrash = "Sefardi Beit Midrash"
+        case skyCaf = "Sky Caf"
+        case zysman101 = "Zysman 101"
+    }
+}
+
+extension Location {
     enum CodingKeys: String, CodingKey {
         case title = "name"
         case directions = "description"

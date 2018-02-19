@@ -51,16 +51,10 @@ class ZmanimViewModel {
         return UserDataStore.shared.date
     }
     
-    var notificationMinutes: [NotificationMinutes] {
-        return NotificationMinutes.allMinutes
-    }
+    var selectedNotifyIndexPath: IndexPath?
     
-    enum NotificationMinutes: Int {
-        case five = 5, ten = 10, thirty = 30, oneHour = 60, twoHours = 120
-        
-        static var allMinutes: [NotificationMinutes] {
-            return [.five, .ten, .thirty, .oneHour, .twoHours]
-        }
+    var notificationMinutes: [ZmanNotificationMinutes] {
+        return ZmanNotificationMinutes.allMinutes
     }
     
     init(data: ZmanimViewModelData) {
@@ -124,7 +118,24 @@ class ZmanimViewModel {
         return nil
     }
     
-    func add(_ notification: ZmanNotification) {
-        UserDataStore.shared.add(notification)
+    func addNotification(for minutes: ZmanNotificationMinutes) {
+        if let indexPath = selectedNotifyIndexPath, let zmanim = zmanim {
+            let zman = zmanim[indexPath.section]
+            let location = zman.locations[indexPath.row]
+            let notification = ZmanNotification(zman: zman, location: location, minutes: minutes)
+            UserDataStore.shared.add(notification)
+        }
+    }
+    
+    func isMinutesCellSelected(at index: Int) -> Bool {
+        if index < notificationMinutes.count {
+            let minutes = notificationMinutes[index]
+            if let indexPath = selectedNotifyIndexPath, let zmanim = zmanim {
+                let zman = zmanim[indexPath.section]
+                let location = zman.locations[indexPath.row]
+                return UserDataStore.shared.notification(forZman: zman, location: location, minutes: minutes) != nil
+            }
+        }
+        return false
     }
 }

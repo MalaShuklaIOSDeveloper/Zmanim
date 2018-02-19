@@ -33,7 +33,7 @@ class UserDataStore {
         }
     }
     
-    func notification(forZman zman: Zman, location: Location) -> ZmanNotification? {
-        return notifications.first { $0.zman == zman && $0.location == location }
+    func notification(forZman zman: Zman, location: Location, minutes: ZmanNotificationMinutes) -> ZmanNotification? {
+        return notifications.first { $0.zman == zman && $0.location == location && $0.minutes == minutes }
     }
 }
