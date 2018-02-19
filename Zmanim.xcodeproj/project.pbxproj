@@ -42,7 +42,6 @@
 		5B9A177D1D2EB5B300588091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */; };
 		5B9BAC921D32BC1600E445CA /* AnimatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9BAC911D32BC1600E445CA /* AnimatedController.swift */; };
 		5BAA10FD20348E08003F6B23 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA10FC20348E08003F6B23 /* RoundButton.swift */; };
-		5BAA10FF203490AB003F6B23 /* ShnayimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA10FE203490AB003F6B23 /* ShnayimView.swift */; };
 		5BBAFC341D35993100A70878 /* ZmanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBAFC331D35993100A70878 /* ZmanCell.swift */; };
 		5BCC11DC1D6A0474005B6379 /* SectionTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */; };
 		5BCC11E41D6CF5B8005B6379 /* Fischel Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */; };
@@ -54,8 +53,10 @@
 		5BCC11F01D6CF667005B6379 /* Morg Lounge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */; };
 		5BCC11F21D6D0152005B6379 /* Muss Beis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */; };
 		5BF4A31F203520F000AEC616 /* LocalZmanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */; };
+		5BF4A33B203A621E00AEC616 /* ZmanNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A33A203A621E00AEC616 /* ZmanNotification.swift */; };
+		5BF4A33D203AA2FB00AEC616 /* MinutesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A33C203AA2FB00AEC616 /* MinutesCell.swift */; };
 		5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */; };
-		5BFCE957203128C900A943FD /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE956203128C900A943FD /* CalendarCollectionView.swift */; };
+		5BFCE957203128C900A943FD /* SelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE956203128C900A943FD /* SelectionCollectionView.swift */; };
 		5BFCE95920312A1600A943FD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE95820312A1600A943FD /* CalendarCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,7 +121,6 @@
 		5B9A177C1D2EB5B300588091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = "View Models/HomeViewModel.swift"; sourceTree = "<group>"; };
 		5B9BAC911D32BC1600E445CA /* AnimatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedController.swift; sourceTree = "<group>"; };
 		5BAA10FC20348E08003F6B23 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = Views/RoundButton.swift; sourceTree = "<group>"; };
-		5BAA10FE203490AB003F6B23 /* ShnayimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShnayimView.swift; path = Views/ShnayimView.swift; sourceTree = "<group>"; };
 		5BBAFC331D35993100A70878 /* ZmanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanCell.swift; path = Cells/ZmanCell.swift; sourceTree = "<group>"; };
 		5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionTitleHeaderView.swift; path = Views/SectionTitleHeaderView.swift; sourceTree = "<group>"; };
 		5BCC11E31D6CF5B8005B6379 /* Fischel Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fischel Beis.jpg"; sourceTree = "<group>"; };
@@ -132,8 +132,10 @@
 		5BCC11EF1D6CF667005B6379 /* Morg Lounge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Morg Lounge.jpg"; sourceTree = "<group>"; };
 		5BCC11F11D6D0152005B6379 /* Muss Beis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Muss Beis.jpg"; sourceTree = "<group>"; };
 		5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalZmanCell.swift; path = Cells/LocalZmanCell.swift; sourceTree = "<group>"; };
+		5BF4A33A203A621E00AEC616 /* ZmanNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZmanNotification.swift; sourceTree = "<group>"; };
+		5BF4A33C203AA2FB00AEC616 /* MinutesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MinutesCell.swift; path = Cells/MinutesCell.swift; sourceTree = "<group>"; };
 		5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Extensions/URL.swift; sourceTree = "<group>"; };
-		5BFCE956203128C900A943FD /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCollectionView.swift; path = Views/CalendarCollectionView.swift; sourceTree = "<group>"; };
+		5BFCE956203128C900A943FD /* SelectionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectionCollectionView.swift; path = Views/SelectionCollectionView.swift; sourceTree = "<group>"; };
 		5BFCE95820312A1600A943FD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Cells/CalendarCell.swift; sourceTree = "<group>"; };
 		80D5EBF3D9E0E871718BB81C /* Pods-Zmanim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zmanim.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim.debug.xcconfig"; sourceTree = "<group>"; };
 		83B2977DC707CB35779507F0 /* Pods_Zmanim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zmanim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				5B6305A92028C0160017094C /* LocalZman.swift */,
 				5B6305A62028BFC20017094C /* Shabbos.swift */,
 				5B6305AB2028C0160017094C /* Tefillah.swift */,
+				5BF4A33A203A621E00AEC616 /* ZmanNotification.swift */,
 				5B6305AC2028C0160017094C /* LocationImages.swift */,
 				5B6305AA2028C0160017094C /* ZmanimAPIClient.swift */,
 				5B6305AD2028C0160017094C /* ZmanimDataStore.swift */,
@@ -264,6 +267,7 @@
 				5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */,
 				5B5E52411D301F5D002C1D2A /* DescriptionCell.swift */,
 				5BFCE95820312A1600A943FD /* CalendarCell.swift */,
+				5BF4A33C203AA2FB00AEC616 /* MinutesCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -272,9 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				5BCC11DB1D6A0474005B6379 /* SectionTitleHeaderView.swift */,
-				5BFCE956203128C900A943FD /* CalendarCollectionView.swift */,
+				5BFCE956203128C900A943FD /* SelectionCollectionView.swift */,
 				5BAA10FC20348E08003F6B23 /* RoundButton.swift */,
-				5BAA10FE203490AB003F6B23 /* ShnayimView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -461,8 +464,10 @@
 				5B3C0ECD1BFCE51E005FB04C /* ZmanimViewController.swift in Sources */,
 				5B6305E7203007050017094C /* UserDataStore.swift in Sources */,
 				5B6305B42028C0170017094C /* ZmanimDataStore.swift in Sources */,
+				5BF4A33B203A621E00AEC616 /* ZmanNotification.swift in Sources */,
 				5B5E52421D301F5D002C1D2A /* DescriptionCell.swift in Sources */,
 				5BFCE95920312A1600A943FD /* CalendarCell.swift in Sources */,
+				5BF4A33D203AA2FB00AEC616 /* MinutesCell.swift in Sources */,
 				5B6305A72028BFC20017094C /* Shabbos.swift in Sources */,
 				5B3A86A61D24254500860C8D /* LocationsViewController.swift in Sources */,
 				5B6305B22028C0170017094C /* Tefillah.swift in Sources */,
@@ -472,9 +477,8 @@
 				5BF4A31F203520F000AEC616 /* LocalZmanCell.swift in Sources */,
 				5BCC11DC1D6A0474005B6379 /* SectionTitleHeaderView.swift in Sources */,
 				5B6305A12028BF620017094C /* Zman.swift in Sources */,
-				5BFCE957203128C900A943FD /* CalendarCollectionView.swift in Sources */,
+				5BFCE957203128C900A943FD /* SelectionCollectionView.swift in Sources */,
 				5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */,
-				5BAA10FF203490AB003F6B23 /* ShnayimView.swift in Sources */,
 				5B6305B02028C0170017094C /* LocalZman.swift in Sources */,
 				5B419F581D19DD3E0018F1C7 /* ZmanimViewModel.swift in Sources */,
 				5B4AF58C1CB1EDE0001F0CB6 /* AboutViewController.swift in Sources */,

@@ -20,8 +20,8 @@ class HomeViewController: UIViewController {
         }
     }
     @IBOutlet var calendarView: UIView!
-    @IBOutlet var calendarCollectionView: CalendarCollectionView!
-    @IBOutlet var shanyimView: ShnayimView!
+    @IBOutlet var calendarCollectionView: SelectionCollectionView!
+    @IBOutlet var shnayimView: UIView!
     
     let isiPhoneX = UIScreen.main.nativeBounds.height == 2436
     var isCalendarViewHidden = true
@@ -35,6 +35,10 @@ class HomeViewController: UIViewController {
         static let shnayimViewHeight: CGFloat = 90
         static let emailWithHello = "mailto:nniazoff@zmanimapp.com?subject=Hello!"
         static let shnayimAppStore = "itms-apps://itunes.apple.com/app/id1296709500"
+    }
+    
+    enum CellIdentifier: String {
+        case calendarCell
     }
     
     fileprivate enum SegueIdentifier: String {
@@ -59,27 +63,31 @@ class HomeViewController: UIViewController {
         
         calendarView.frame = CGRect(x: 0, y: -Constants.calendarViewHeight, width: tableView.frame.width, height: Constants.calendarViewHeight)
         calendarCollectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        calendarCollectionView.numberOfItems = viewModel.thisWeekDates.count
+        calendarCollectionView.cellReuseIdentifier = CellIdentifier.calendarCell.rawValue
         
         calendarCollectionView.configureCell = { index, cell in
             let date = self.viewModel.thisWeekDates[index]
-            cell.weekdayLabel.text = date.weekdayString
-            cell.dayLabel.text = date.dayString
-            
-            if date.isToday {
-                if date.isSameDay(as: self.viewModel.selectedDate) {
-                    cell.backgroundColor = .strawberry
-                    cell.setTextWhite()
+            if let calendarCell = cell as? CalendarCell {
+                calendarCell.weekdayLabel.text = date.weekdayString
+                calendarCell.dayLabel.text = date.dayString
+                
+                if date.isToday {
+                    if date.isSameDay(as: self.viewModel.selectedDate) {
+                        calendarCell.backgroundColor = .strawberry
+                        calendarCell.setTextWhite()
+                    } else {
+                        calendarCell.backgroundColor = .white
+                        calendarCell.setDayStrawberry()
+                    }
                 } else {
-                    cell.backgroundColor = .white
-                    cell.setDayStrawberry()
-                }
-            } else {
-                if date.isSameDay(as: self.viewModel.selectedDate) {
-                    cell.backgroundColor = .black
-                    cell.setTextWhite()
-                } else {
-                    cell.backgroundColor = .white
-                    cell.setTextBlack()
+                    if date.isSameDay(as: self.viewModel.selectedDate) {
+                        calendarCell.backgroundColor = .black
+                        calendarCell.setTextWhite()
+                    } else {
+                        calendarCell.backgroundColor = .white
+                        calendarCell.setTextBlack()
+                    }
                 }
             }
         }
@@ -91,15 +99,20 @@ class HomeViewController: UIViewController {
             self.viewModel.getZmanim()
         }
         
-        view.addSubview(shanyimView)
-        shanyimView.translatesAutoresizingMaskIntoConstraints = false
+        shnayimView.layer.masksToBounds = false
+        shnayimView.layer.cornerRadius = 15
+        shnayimView.layer.shadowOpacity = 0.2
+        shnayimView.layer.shadowRadius = 8
+        shnayimView.layer.shadowOffset = CGSize.zero
+        view.addSubview(shnayimView)
+        shnayimView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            shanyimView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
-            shanyimView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
-            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shanyimView.bottomAnchor, constant: isiPhoneX ? 0 : 20),
-            shanyimView.heightAnchor.constraint(equalToConstant: Constants.shnayimViewHeight)
+            shnayimView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
+            shnayimView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shnayimView.bottomAnchor, constant: isiPhoneX ? 0 : 20),
+            shnayimView.heightAnchor.constraint(equalToConstant: Constants.shnayimViewHeight)
         ])
-        tableView.contentInset.bottom = shanyimView.frame.height + (isiPhoneX ? 0 : 20)
+        tableView.contentInset.bottom = shnayimView.frame.height + (isiPhoneX ? 0 : 20)
     }
     
     override func viewWillAppear(_ animated: Bool) {

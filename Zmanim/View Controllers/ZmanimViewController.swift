@@ -16,14 +16,23 @@ class ZmanimViewController: UIViewController {
     // MARK: - IBOutlets & View Properties
     @IBOutlet var tableView: UITableView!
     @IBOutlet var nextButton: UIBarButtonItem!
+    @IBOutlet var minutesView: UIView!
+    @IBOutlet var minutesCollectionView: SelectionCollectionView!
     @IBOutlet var nothingView: UIView!
     @IBOutlet var errorView: UIView!
     @IBOutlet var errorTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var errorActivityIndicator: UIActivityIndicatorView!
     
+    let isiPhoneX = UIScreen.main.nativeBounds.height == 2436
+    
     fileprivate struct Constants {
         static let tableViewRowHeight: CGFloat = 60
         static let sectionHeaderViewHeight: CGFloat = 36
+        static let minutesViewHeight: CGFloat = 150
+    }
+    
+    fileprivate enum CellIdentifier: String {
+        case minutesCell
     }
     
     fileprivate enum SegueIdentifier: String {
@@ -48,6 +57,32 @@ class ZmanimViewController: UIViewController {
         registerForPreviewing(with: self, sourceView: tableView)
         
         getZmanim()
+        
+        minutesView.layer.masksToBounds = false
+        minutesView.layer.cornerRadius = 15
+        minutesView.layer.shadowOpacity = 0.1
+        minutesView.layer.shadowRadius = 8
+        minutesView.layer.shadowOffset = CGSize.zero
+        view.addSubview(minutesView)
+        minutesView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            minutesView.heightAnchor.constraint(equalToConstant: Constants.minutesViewHeight),
+            minutesView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
+            minutesView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: minutesView.bottomAnchor, constant: isiPhoneX ? 0 : 20),
+        ])
+        tableView.contentInset.bottom = minutesView.frame.height + (isiPhoneX ? 0 : 20)
+        
+        minutesCollectionView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
+        minutesCollectionView.backgroundColor = .clear
+        minutesCollectionView.numberOfItems = viewModel.notificationMinutes.count
+        minutesCollectionView.cellReuseIdentifier = CellIdentifier.minutesCell.rawValue
+        
+        minutesCollectionView.configureCell = { (index, cell) in
+            if let minutesCell = cell as? MinutesCell {
+                
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -167,7 +202,7 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
             cell.locationLabel.text = location.title
             
             cell.didTapNotify = { cell in
-                self.viewModel.createNotification(for: zman, at: location, withMinutesProceeding: .five)
+                self.viewModel.add(ZmanNotification(zman: zman, location: location, minutesBefore: ZmanimViewModel.NotificationMinutes.five.rawValue))
             }
         }
         

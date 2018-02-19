@@ -23,10 +23,6 @@ enum GetZmanimResult {
     case error
 }
 
-enum ZmanNotificationMinutes: Int {
-    case five = 5, ten = 10, thirty = 30
-}
-
 class ZmanimViewModel {
     /// The tefillah to display zmanim for.
     var tefillah: Tefillah!
@@ -53,6 +49,18 @@ class ZmanimViewModel {
     
     var selectedDate: Date {
         return UserDataStore.shared.date
+    }
+    
+    var notificationMinutes: [NotificationMinutes] {
+        return NotificationMinutes.allMinutes
+    }
+    
+    enum NotificationMinutes: Int {
+        case five = 5, ten = 10, thirty = 30, oneHour = 60, twoHours = 120
+        
+        static var allMinutes: [NotificationMinutes] {
+            return [.five, .ten, .thirty, .oneHour, .twoHours]
+        }
     }
     
     init(data: ZmanimViewModelData) {
@@ -116,22 +124,7 @@ class ZmanimViewModel {
         return nil
     }
     
-    func createNotification(for zman: Zman, at location: Location, withMinutesProceeding minutes: ZmanNotificationMinutes) {
-        if let notifyDate = Calendar.current.date(byAdding: .minute, value: -minutes.rawValue, to: zman.date) {
-            let content = UNMutableNotificationContent()
-            content.title = "\(minutes.rawValue) until \(zman.tefillah.title) at \(location.title)!"
-            
-            let triggerDateComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: notifyDate)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
-            
-            let identifier = UUID().uuidString
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print(error)
-                }
-            }
-        }
+    func add(_ notification: ZmanNotification) {
+        UserDataStore.shared.add(notification)
     }
 }

@@ -76,7 +76,7 @@ class AboutTableViewController: UITableViewController {
                 Cell(cell: buttonCellWithTitle("Contact Developer"), selectionHandler: { cell in
                     self.openMail()
                 }),
-                Cell(cell: buttonCellWithTitle("Rate Zmanim on App Store"), selectionHandler: { cell in
+                Cell(cell: buttonCellWithTitle("Rate on App Store"), selectionHandler: { cell in
                     self.openAppStore()
                 })
             ])

@@ -28,8 +28,8 @@ class CalendarCell: UICollectionViewCell {
         layer.masksToBounds = false
         layer.cornerRadius = 15
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize.zero
         layer.shadowRadius = 8
+        layer.shadowOffset = CGSize.zero
     }
     
     func setTextWhite() {

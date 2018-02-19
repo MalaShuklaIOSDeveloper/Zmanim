@@ -83,7 +83,7 @@ struct ZmanimAPIClient {
                             let decoder = JSONDecoder()
                             decoder.userInfo[Zman.CodingUserInfo.key] = Zman.CodingUserInfo(tefillah: tefillah, date: date)
                             let rawZmanim = try decoder.decode(RawZmanim.self, from: zmanimData)
-                            zmanim[tefillah] = rawZmanim.data.teffilos
+                            zmanim[tefillah] = rawZmanim.tefillos
                             if zmanim.count == Tefillah.allTefillos.count {
                                 completed(.success(zmanim))
                             }
@@ -192,7 +192,7 @@ struct ZmanimAPIClient {
     // MARK: - Local Zmanim
     /// Fetches local zmanim from API and calls `completed` upon returning with result.
     static func fetchLocalZmanim(for date: Date, completed: @escaping (_ result: APIResult<[LocalZman]>) -> Void) {
-        let url = Constants.baseAPIURL.zmanim
+        let url = Constants.baseAPIURL.zmanim + "/\(date.apiFormat)"
         Alamofire.request(url).responseJSON { response in
             switch response.result {
             case .success:
@@ -216,11 +216,7 @@ struct ZmanimAPIClient {
 
 /// A type that represents decodable raw zmanim from API JSON.
 private struct RawZmanim: Decodable {
-    let data: Data
-    
-    struct Data: Decodable {
-        let teffilos: [Zman]
-    }
+    let tefillos: [Zman]
 }
 
 /// A type that represents decodable raw locations from API JSON.

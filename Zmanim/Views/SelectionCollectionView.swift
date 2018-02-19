@@ -1,5 +1,5 @@
 //
-//  CalendarCollectionView.swift
+//  SelectionCollectionView.swift
 //  Zmanim
 //
 //  Created by Natanel Niazoff on 2/11/18.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CalendarCollectionView: UICollectionView {
+class SelectionCollectionView: UICollectionView {
+    /// The number of items to display for the collection view.
+    var numberOfItems = 0
+    /// The cell identifier to dequeue cells with.
+    var cellReuseIdentifier: String?
     /// Configures cell with data before being displayed.
-    var configureCell: ((_ index: Int, _ cell: CalendarCell) -> Void)?
+    var configureCell: ((_ index: Int, _ cell: UICollectionViewCell) -> Void)?
     /// Called when a cell at an index did get selected.
     var didSelectIndex: ((_ index: Int) -> Void)?
-    
-    enum CellIdentifier: String {
-        case calendarCell
-    }
     
     convenience init(frame: CGRect) {
         self.init(frame: frame, collectionViewLayout: UICollectionViewFlowLayout())
@@ -45,19 +45,22 @@ class CalendarCollectionView: UICollectionView {
     }
 }
 
-extension CalendarCollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SelectionCollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.calendarCell.rawValue, for: indexPath) as! CalendarCell
-        configureCell?(indexPath.row, cell)
-        return cell
+        if let identifier = cellReuseIdentifier {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            configureCell?(indexPath.row, cell)
+            return cell
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
