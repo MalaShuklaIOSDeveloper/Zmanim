@@ -10,7 +10,7 @@ import UIKit
 
 class SelectionCollectionView: UICollectionView {
     /// The number of items to display for the collection view.
-    var numberOfItems = 0
+    var numberOfItems = { 0 }
     /// The cell identifier to dequeue cells with.
     var cellReuseIdentifier: String?
     /// Configures cell with data before being displayed.
@@ -51,7 +51,7 @@ extension SelectionCollectionView: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfItems
+        return numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

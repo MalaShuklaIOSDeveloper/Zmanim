@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
         
         calendarView.frame = CGRect(x: 0, y: -Constants.calendarViewHeight, width: tableView.frame.width, height: Constants.calendarViewHeight)
         calendarCollectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        calendarCollectionView.numberOfItems = viewModel.thisWeekDates.count
+        calendarCollectionView.numberOfItems = { self.viewModel.thisWeekDates.count }
         calendarCollectionView.cellReuseIdentifier = CellIdentifier.calendarCell.rawValue
         
         calendarCollectionView.configureCell = { index, cell in

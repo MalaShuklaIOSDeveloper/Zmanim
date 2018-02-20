@@ -53,8 +53,11 @@ class ZmanimViewModel {
     
     var selectedNotifyIndexPath: IndexPath?
     
-    var notificationMinutes: [ZmanNotificationMinutes] {
-        return ZmanNotificationMinutes.allMinutes
+    var selectedNotificationMinutes: [ZmanNotificationMinutes] {
+        if let indexPath = selectedNotifyIndexPath {
+            return notificationMinutes(for: indexPath)
+        }
+        return []
     }
     
     init(data: ZmanimViewModelData) {
@@ -118,22 +121,54 @@ class ZmanimViewModel {
         return nil
     }
     
-    func addNotification(for minutes: ZmanNotificationMinutes) {
+    func notificationMinutes(for indexPath: IndexPath) -> [ZmanNotificationMinutes] {
+        if let zmanim = zmanim {
+            let zman = zmanim[indexPath.section]
+            return ZmanNotificationMinutes.allMinutes.filter { $0.date(before: zman.date)!.timeIntervalSinceNow > 0 }
+        }
+        return []
+    }
+    
+    func notification(forIndexPath indexPath: IndexPath, minutes: ZmanNotificationMinutes) -> ZmanNotification? {
+        if let zmanim = zmanim {
+            let zman = zmanim[indexPath.section]
+            let location = zman.locations[indexPath.row]
+            return UserDataStore.shared.notification(forZman: zman, location: location, minutes: minutes)
+        }
+        return nil
+    }
+    
+    func addNotification(for minutes: ZmanNotificationMinutes, completed: (() -> Void)? = nil) {
         if let indexPath = selectedNotifyIndexPath, let zmanim = zmanim {
             let zman = zmanim[indexPath.section]
             let location = zman.locations[indexPath.row]
             let notification = ZmanNotification(zman: zman, location: location, minutes: minutes)
-            UserDataStore.shared.add(notification)
+            UserDataStore.shared.add(notification, completed: completed)
         }
     }
     
-    func isMinutesCellSelected(at index: Int) -> Bool {
-        if index < notificationMinutes.count {
-            let minutes = notificationMinutes[index]
-            if let indexPath = selectedNotifyIndexPath, let zmanim = zmanim {
-                let zman = zmanim[indexPath.section]
-                let location = zman.locations[indexPath.row]
-                return UserDataStore.shared.notification(forZman: zman, location: location, minutes: minutes) != nil
+    func removeNotification(for minutes: ZmanNotificationMinutes) {
+        if let indexPath = selectedNotifyIndexPath {
+            if let notification = notification(forIndexPath: indexPath, minutes: minutes) {
+                UserDataStore.shared.remove(notification)
+            }
+        }
+    }
+    
+    func isMinutesSelected(at index: Int) -> Bool {
+        if let indexPath = selectedNotifyIndexPath {
+            if index < selectedNotificationMinutes.count {
+                let minutes = selectedNotificationMinutes[index]
+                return notification(forIndexPath: indexPath, minutes: minutes) != nil
+            }
+        }
+        return false
+    }
+    
+    func isAnyMinutesSelected(at indexPath: IndexPath) -> Bool {
+        for minutes in ZmanNotificationMinutes.allMinutes {
+            if notification(forIndexPath: indexPath, minutes: minutes) != nil {
+                return true
             }
         }
         return false

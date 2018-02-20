@@ -16,24 +16,42 @@ class UserDataStore {
     var date = Date()
     /// The notifications associated with the user.
     private var notifications = [ZmanNotification]()
+    private var upcomingNotifications: [ZmanNotification] {
+        return notifications.sorted().filter { $0.notifyDate.timeIntervalSinceNow > 0 }
+    }
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
     private init() {}
     
-    func add(_ notification: ZmanNotification) {
-        if let request = notification.request {
-            notificationCenter.add(request) { error in
+    func getNotifications() {
+        notificationCenter.getPendingNotificationRequests { requests in
+            let data = requests.flatMap { return $0.content.userInfo[ZmanNotification.userInfoKey] as? Data }
+            self.notifications = data.flatMap { return try? JSONDecoder().decode(ZmanNotification.self, from: $0) }
+            
+        }
+    }
+    
+    func add(_ notification: ZmanNotification, completed: (() -> Void)? = nil) {
+        notificationCenter.add(notification.request) { error in
+            DispatchQueue.main.async {
                 if let error = error {
                     print(error)
                 } else {
                     self.notifications.append(notification)
+                    completed?()
                 }
             }
         }
     }
     
+    func remove(_ notification: ZmanNotification) {
+        let id = notification.id
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+        notifications = upcomingNotifications.filter { $0 != notification }
+    }
+    
     func notification(forZman zman: Zman, location: Location, minutes: ZmanNotificationMinutes) -> ZmanNotification? {
-        return notifications.first { $0.zman == zman && $0.location == location && $0.minutes == minutes }
+        return upcomingNotifications.first { $0.zmanDate == zman.date && $0.locationTitle == location.title && $0.minutes == minutes }
     }
 }

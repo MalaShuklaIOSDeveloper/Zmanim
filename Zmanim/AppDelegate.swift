@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+        // Get all pending notifications and store them.
+        UserDataStore.shared.getNotifications()
+        
         // Set the navigation bar to white application wide.
         UINavigationBar.appearance().barTintColor = UIColor.white
         

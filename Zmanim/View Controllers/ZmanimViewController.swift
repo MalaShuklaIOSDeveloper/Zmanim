@@ -23,6 +23,9 @@ class ZmanimViewController: UIViewController {
     @IBOutlet var errorTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var errorActivityIndicator: UIActivityIndicatorView!
     
+    /// The table view content offset before adjustments from minutes view.
+    var contentOffsetBeforeMinutesViewY: CGFloat?
+    var isMinutesViewAnimating = false
     let isiPhoneX = UIScreen.main.nativeBounds.height == 2436
     
     fileprivate struct Constants {
@@ -71,26 +74,41 @@ class ZmanimViewController: UIViewController {
             minutesView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: minutesView.bottomAnchor, constant: isiPhoneX ? 0 : 20),
         ])
-        tableView.contentInset.bottom = minutesView.frame.height + (isiPhoneX ? 0 : 20)
+        hideMinutesView(false)
         
         minutesCollectionView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
         minutesCollectionView.backgroundColor = .clear
-        minutesCollectionView.numberOfItems = viewModel.notificationMinutes.count
         minutesCollectionView.cellReuseIdentifier = CellIdentifier.minutesCell.rawValue
+        
+        minutesCollectionView.numberOfItems = {
+            self.viewModel.selectedNotificationMinutes.count
+        }
         
         minutesCollectionView.configureCell = { (index, cell) in
             if let minutesCell = cell as? MinutesCell {
-                let minutes = self.viewModel.notificationMinutes[index]
+                let minutes = self.viewModel.selectedNotificationMinutes[index]
                 minutesCell.minutesLabel.text = String(minutes.displayValue)
                 minutesCell.titleLabel.text = minutes.title
-                if self.viewModel.isMinutesCellSelected(at: index) {
-                    
+                if self.viewModel.isMinutesSelected(at: index) {
+                    minutesCell.isSelected = true
+                } else {
+                    minutesCell.isSelected = false
                 }
             }
         }
         
         minutesCollectionView.didSelectIndex = { index in
-            self.viewModel.addNotification(for: self.viewModel.notificationMinutes[index])
+            if self.viewModel.isMinutesSelected(at: index) {
+                let minutes = self.viewModel.selectedNotificationMinutes[index]
+                self.viewModel.removeNotification(for: minutes)
+                self.minutesCollectionView.reloadData()
+                self.reloadSelectedNotifyRow()
+            } else {
+                self.viewModel.addNotification(for: self.viewModel.selectedNotificationMinutes[index]) {
+                    self.minutesCollectionView.reloadData()
+                    self.reloadSelectedNotifyRow()
+                }
+            }
         }
     }
     
@@ -142,7 +160,49 @@ class ZmanimViewController: UIViewController {
     }
     
     @objc func didRefresh() {
+        viewModel.selectedNotifyIndexPath = nil
+        hideMinutesView(true)
         getZmanim()
+    }
+    
+    func reloadSelectedNotifyRow() {
+        if let indexPath = viewModel.selectedNotifyIndexPath {
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+    
+    func showMinutesView(_ animated: Bool) {
+        minutesView.isHidden = false
+        isMinutesViewAnimating = true
+        UIView.animate(withDuration: animated ? 0.25 : 0, animations: {
+            self.tableView.contentInset.bottom = self.minutesView.frame.height + 10 + (self.isiPhoneX ? 0 : 20)
+            self.minutesView.transform = .identity
+            if let indexPath = self.viewModel.selectedNotifyIndexPath {
+                let rectInTableView = self.tableView.rectForRow(at: indexPath)
+                let rectInView = self.tableView.convert(rectInTableView, to: self.view)
+                let cellBottomY = rectInView.origin.y + rectInView.size.height
+                if cellBottomY >= self.minutesView.frame.origin.y {
+                    self.contentOffsetBeforeMinutesViewY = self.tableView.contentOffset.y
+                    self.tableView.contentOffset.y += (cellBottomY - self.minutesView.frame.origin.y) + 10
+                }
+            }
+        }) { completed in
+            self.isMinutesViewAnimating = false
+        }
+    }
+    
+    func hideMinutesView(_ animated: Bool) {
+        isMinutesViewAnimating = true
+        UIView.animate(withDuration: animated ? 0.2 : 0, animations: {
+            self.tableView.contentInset.bottom = 0
+            self.minutesView.transform = CGAffineTransform(translationX: 0, y: self.minutesView.frame.height + self.view.safeAreaInsets.bottom + (self.isiPhoneX ? 0 : 20))
+            if let contentOffsetY = self.contentOffsetBeforeMinutesViewY {
+                self.tableView.contentOffset.y = contentOffsetY
+            }
+        }) { completed in
+            self.isMinutesViewAnimating = false
+            self.minutesView.isHidden = true
+        }
     }
     
     func setupNextButton() {
@@ -191,6 +251,14 @@ class ZmanimViewController: UIViewController {
             tableView.scrollToRow(at: nextZmanIndexPath, at: .top, animated: true)
         }
     }
+    
+    @IBAction func didTapMinuteViewDone(_ sender: UIButton) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        viewModel.selectedNotifyIndexPath = nil
+        hideMinutesView(true)
+    }
 }
 
 // MARK: - UITableViewDataSource & UITableViewDelegate
@@ -206,12 +274,33 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.zmanCellIdentifier.rawValue) as! ZmanCell
         
+        if let selectedNotifyIndexPath = viewModel.selectedNotifyIndexPath {
+            if selectedNotifyIndexPath == indexPath {
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+        }
+        
         if let zman = viewModel.zman(for: indexPath.section) {
             let location = zman.locations[indexPath.row]
             cell.locationLabel.text = location.title
             
             cell.didTapNotify = { cell in
+                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
                 self.viewModel.selectedNotifyIndexPath = indexPath
+                self.minutesCollectionView.reloadData()
+                self.minutesCollectionView.contentOffset.x = 0
+                self.showMinutesView(true)
+            }
+        }
+        
+        if viewModel.notificationMinutes(for: indexPath).isEmpty {
+            cell.notifyButton.isHidden = true
+        } else {
+            cell.notifyButton.isHidden = false
+            if viewModel.isAnyMinutesSelected(at: indexPath) {
+                cell.notifyButton.setTitle("🔔", for: .normal)
+            } else {
+                cell.notifyButton.setTitle("🔕", for: .normal)
             }
         }
         
@@ -240,10 +329,18 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        hideMinutesView(true)
         if let zman = viewModel.zman(for: indexPath.section) {
             if zman.locations[indexPath.row].recognized {
                 performSegue(withIdentifier: SegueIdentifier.showLocation.rawValue, sender: indexPath)
             }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMinutesViewAnimating {
+            // Set to `nil` if content offset changed so doesn't change back and be intrusive.
+            contentOffsetBeforeMinutesViewY = nil
         }
     }
 }

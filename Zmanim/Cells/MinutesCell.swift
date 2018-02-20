@@ -9,12 +9,15 @@
 import UIKit
 
 class MinutesCell: UICollectionViewCell {
-    var isColorsInverted = false {
-        didSet {
-            if isColorsInverted {
-                invertColors()
+    override var isSelected: Bool {
+        get {
+            return super.isSelected
+        } set {
+            super.isSelected = newValue
+            if isSelected {
+                setSelectedColors()
             } else {
-                regularColors()
+                setRegularColors()
             }
         }
     }
@@ -40,14 +43,15 @@ class MinutesCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 8
         layer.shadowOffset = CGSize.zero
+        setRegularColors()
     }
     
-    private func regularColors() {
-        backgroundColor = .blueberry
-        [minutesLabel, titleLabel].forEach { $0?.textColor = .white }
+    private func setRegularColors() {
+        backgroundColor = .white
+        [minutesLabel, titleLabel].forEach { $0?.textColor = .black }
     }
     
-    private func invertColors() {
+    private func setSelectedColors() {
         backgroundColor = .blueberry
         [minutesLabel, titleLabel].forEach { $0?.textColor = .white }
     }

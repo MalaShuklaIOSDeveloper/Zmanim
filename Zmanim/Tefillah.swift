@@ -9,7 +9,7 @@
 import Foundation
 
 /// A type with values that represent a specific tefillah 📖.
-enum Tefillah: String {
+enum Tefillah: String, Codable {
     case shacharis, mincha, maariv
     
     var title: String {
