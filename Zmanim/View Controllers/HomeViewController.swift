@@ -9,16 +9,13 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    fileprivate var viewModel = HomeViewModel()
+    let viewModelData = HomeViewModelData()
+    fileprivate var viewModel: HomeViewModel!
     
     // MARK: - IBOutlets & View Properties
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapButton: UIBarButtonItem!
-    @IBOutlet var dateButton: UIBarButtonItem! {
-        didSet {
-            setDateButtonText()
-        }
-    }
+    @IBOutlet var dateButton: UIBarButtonItem!
     @IBOutlet var calendarView: UIView!
     @IBOutlet var calendarCollectionView: SelectionCollectionView!
     @IBOutlet var shnayimView: UIView!
@@ -49,6 +46,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = HomeViewModel(data: viewModelData)
+        
         tableView.rowHeight = Constants.tableViewRowHeight
         
         // Sets title view to icon.
@@ -56,6 +55,7 @@ class HomeViewController: UIViewController {
         titleIconImageView.image = #imageLiteral(resourceName: "Title Icon")
         titleIconImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleIconImageView
+        setDateButtonText()
         
         registerForPreviewing(with: self, sourceView: tableView)
         
@@ -147,6 +147,10 @@ class HomeViewController: UIViewController {
     }
     // MARK: -
     
+    func setDateButtonText() {
+        dateButton.title = viewModel.selectedDate.isToday ? "Today" : viewModel.selectedDate.shortDateString
+    }
+    
     func showCalendarView() {
         tableView.addSubview(calendarView)
         tableView.contentInset.top = Constants.calendarViewHeight
@@ -167,8 +171,15 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func setDateButtonText() {
-        dateButton.title = viewModel.selectedDate.isToday ? "Today" : viewModel.selectedDate.shortDateString
+    func selectInitialIndexPath() {
+        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { timer in
+            if let indexPath = self.viewModel.initialIndexPath {
+                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                self.tableView(self.tableView, didSelectRowAt: indexPath)
+                // Clear notification sent to app by user.
+                self.viewModelData.notification = nil
+            }
+        }
     }
     
     func openMail() {

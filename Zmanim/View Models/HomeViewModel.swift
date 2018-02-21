@@ -8,6 +8,14 @@
 
 import Foundation
 
+class HomeViewModelData {
+    var notification: ZmanNotification?
+    
+    init(notification: ZmanNotification? = nil) {
+        self.notification = notification
+    }
+}
+
 enum HomeItemKey {
     case tefillah, zmanim, more
 }
@@ -23,13 +31,16 @@ protocol HomeItem {
 }
 
 class HomeViewModel {
-    let items: [HomeItem] = [
-        TefillahHomeItem(tefillah: .shacharis),
-        TefillahHomeItem(tefillah: .mincha),
-        TefillahHomeItem(tefillah: .maariv),
-        ZmanimHomeItem(),
-        MoreHomeItem()
-    ]
+    private var data: HomeViewModelData
+    private (set) var items: [HomeItem] = []
+    
+    /// The initial tefillah to be displayed given a notification.
+    var initialIndexPath: IndexPath? {
+        if let tefillah = data.notification?.tefillah, let row = Tefillah.allTefillos.index(of: tefillah) {
+            return IndexPath(row: row, section: 0)
+        }
+        return nil
+    }
     
     /// The date for zmanim.
     var selectedDate: Date {
@@ -49,6 +60,16 @@ class HomeViewModel {
             }
         }
         return dates
+    }
+    
+    init(data: HomeViewModelData) {
+        self.data = data
+        
+        for tefillah in Tefillah.allTefillos {
+            items.append(TefillahHomeItem(tefillah: tefillah))
+        }
+        items.append(ZmanimHomeItem())
+        items.append(MoreHomeItem())
     }
     
     func getZmanim() {
