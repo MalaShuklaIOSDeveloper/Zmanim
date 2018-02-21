@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import FirebaseDatabase
 
 typealias JSON = [String : Any]
 typealias Zmanim = [Tefillah : [Zman]]
@@ -16,6 +17,10 @@ typealias Zmanim = [Tefillah : [Zman]]
 enum APIResult<T> {
     case success(T)
     case failure(Error)
+}
+
+enum APIError: Error {
+    case badBaseURL
 }
 
 /**
@@ -45,8 +50,29 @@ private class ZmanimAPIObservers {
 
 /// A client for fetching data from the API 🏭.
 struct ZmanimAPIClient {
-    private struct Constants {
-        static let baseAPIURL = "http://zmanimapp.com:5000/api"
+    /// The shared Firebase database reference.
+    private static let database = Database.database().reference()
+    
+    // MARK: - API
+    private static var baseURL: String?
+    
+    /// Starts the observer for changes to the base API URL.
+    static func startBaseURLValueChangeObserver() {
+        database.api.baseURL.observe(.value) { snapshot in
+            if let baseURL = snapshot.value as? String {
+                self.baseURL = baseURL
+            }
+        }
+    }
+    
+    /// Gets and sets the base API URL.
+    static func getBaseURL(completed: @escaping () -> Void) {
+        database.api.baseURL.observeSingleEvent(of: .value) { snapshot in
+            if let baseURL = snapshot.value as? String {
+                self.baseURL = baseURL
+            }
+            completed()
+        }
     }
     
     // MARK: - Observers
@@ -72,9 +98,21 @@ struct ZmanimAPIClient {
     Fetches zmanim and parses to `Zman` objects without respective `Location` objects from API and calls `completed` upon returning with result.
     */
     private static func fetchRawZmanim(for date: Date, completed: @escaping (_ result: APIResult<Zmanim>) -> Void) {
+        guard let baseURL = self.baseURL else {
+            getBaseURL {
+                if self.baseURL != nil {
+                    fetchRawZmanim(for: date, completed: completed)
+                } else {
+                    completed(.failure(APIError.badBaseURL))
+                    return
+                }
+            }
+            return
+        }
+        
         var zmanim = Zmanim()
         for tefillah in Tefillah.allTefillos {
-            let url = Constants.baseAPIURL.tefillos + "/\(tefillah.rawValue)/\(date.apiFormat)"
+            let url = baseURL.api.tefillos + "/\(tefillah.rawValue)/\(date.apiFormat)"
             Alamofire.request(url).responseJSON { response in
                 switch response.result {
                 case .success:
@@ -109,51 +147,13 @@ struct ZmanimAPIClient {
             case .success(let locations):
                 fetchRawZmanim(for: date) { result in
                     switch result {
-                    case .success(var zmanim):
-                        // ...if fetched zmanim successfully...
-                        // ...for each tefillah...
-                        for tefillah in Tefillah.allTefillos {
-                            if let tefillahZmanim = zmanim[tefillah] {
-                                // ...and each zman...
-                                for zman in tefillahZmanim {
-                                    // ...for each zman's raw location...
-                                    for (zmanLocationIndex, var zmanLocation) in zman.locations.enumerated() {
-                                        // ...for each location from before...
-                                        for location in locations {
-                                            // ...if the zman's raw location matches the location...
-                                            if zmanLocation.title.contains(location.title) {
-                                                // ...change `zmanLocation` to the location...
-                                                zmanLocation = location
-                                                // FIXME: REFERENCE CYCLE
-                                                // ...assign the location to the zman...
-                                                zman.locations[zmanLocationIndex] = zmanLocation
-                                                // ...and add the zman to the location.
-                                                location.zmanim.append(zman)
-                                            }
-                                        }
-                                    }
-                                }
-                                // Combines zmanim with multiple locations into one zman.
-                                zmanim[tefillah] = tefillahZmanim.reduce([Zman]()) { result, currentZman in
-                                    // If there's a previous zman...
-                                    if let prevZman = result.last {
-                                        // ...and it's equal to the current one...
-                                        if prevZman == currentZman {
-                                            // ...add the current zman's locations to the previous zman...
-                                            prevZman.locations += currentZman.locations
-                                            // ...and only return the previous zman.
-                                            return result
-                                        }
-                                    }
-                                    // If there's no previous zman or it's not equal to the current one, add it to the array.
-                                    return result + [currentZman]
-                                }
-                            }
-                        }
+                    // If fetched zmanim successfully...
+                    case .success(let zmanim):
+                        let configuredZmanim = configure(zmanim, with: locations)
                         // Send to observers.
-                        observers.forEach { $0.zmanimDidChange(zmanim) }
+                        observers.forEach { $0.zmanimDidChange(configuredZmanim) }
                         observers.forEach { $0.locationsDidChange(locations) }
-                        completed?(.success(zmanim))
+                        completed?(.success(configuredZmanim))
                     case .failure(let error):
                         completed?(.failure(error))
                     }
@@ -164,12 +164,69 @@ struct ZmanimAPIClient {
         }
     }
     
+    ///Configures zmanim together with locations.
+    private static func configure(_ zmanim: Zmanim, with locations: [Location]) -> Zmanim {
+        var configuredZmanim = zmanim
+        // For each tefillah...
+        for tefillah in Tefillah.allTefillos {
+            if let tefillahZmanim = zmanim[tefillah] {
+                // ...and each zman...
+                for zman in tefillahZmanim {
+                    // ...for each zman's raw location...
+                    for (zmanLocationIndex, var zmanLocation) in zman.locations.enumerated() {
+                        // ...for each location from before...
+                        for location in locations {
+                            // ...if the zman's raw location matches the location...
+                            if zmanLocation.title.contains(location.title) {
+                                // ...change `zmanLocation` to the location...
+                                zmanLocation = location
+                                // FIXME: REFERENCE CYCLE
+                                // ...assign the location to the zman...
+                                zman.locations[zmanLocationIndex] = zmanLocation
+                                // ...and add the zman to the location.
+                                location.zmanim.append(zman)
+                            }
+                        }
+                    }
+                }
+                // Combines zmanim with multiple locations into one zman.
+                configuredZmanim[tefillah] = tefillahZmanim.reduce([Zman]()) { result, currentZman in
+                    // If there's a previous zman...
+                    if let prevZman = result.last {
+                        // ...and it's equal to the current one...
+                        if prevZman == currentZman {
+                            // ...add the current zman's locations to the previous zman...
+                            prevZman.locations += currentZman.locations
+                            // ...and only return the previous zman.
+                            return result
+                        }
+                    }
+                    // If there's no previous zman or it's not equal to the current one, add it to the array.
+                    return result + [currentZman]
+                }
+            }
+        }
+        return configuredZmanim
+    }
+    
     // MARK: - Locations
     /**
      Fetches locations and parses to `Location` objects without respective `Zman` objects from API and calls `completed` upon returning with result.
     */
     static func fetchLocations(_ completed: @escaping (_ result: APIResult<[Location]>) -> Void) {
-        let url = Constants.baseAPIURL.locations
+        guard let baseURL = self.baseURL else {
+            getBaseURL {
+                if self.baseURL != nil {
+                    fetchLocations(completed)
+                } else {
+                    completed(.failure(APIError.badBaseURL))
+                    return
+                }
+            }
+            return
+        }
+        
+        let url = baseURL.api.locations
         Alamofire.request(url).responseJSON { response in
             switch response.result {
             case .success:
@@ -192,7 +249,19 @@ struct ZmanimAPIClient {
     // MARK: - Local Zmanim
     /// Fetches local zmanim from API and calls `completed` upon returning with result.
     static func fetchLocalZmanim(for date: Date, completed: @escaping (_ result: APIResult<[LocalZman]>) -> Void) {
-        let url = Constants.baseAPIURL.zmanim + "/\(date.apiFormat)"
+        guard let baseURL = self.baseURL else {
+            getBaseURL {
+                if self.baseURL != nil {
+                    fetchLocalZmanim(for: date, completed: completed)
+                } else {
+                    completed(.failure(APIError.badBaseURL))
+                    return
+                }
+            }
+            return
+        }
+        
+        let url = baseURL.api.zmanim + "/\(date.apiFormat)"
         Alamofire.request(url).responseJSON { response in
             switch response.result {
             case .success:
@@ -230,6 +299,10 @@ private struct RawLocalZmanim: Decodable {
 }
 
 private extension String {
+    var api: String {
+        return self + "/api"
+    }
+    
     var tefillos: String {
         return self + "/tefillos"
     }
@@ -248,5 +321,16 @@ private extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         return dateFormatter.string(from: self)
+    }
+}
+
+// MARK: - References
+private extension DatabaseReference {
+    var api: DatabaseReference {
+        return child("api")
+    }
+    
+    var baseURL: DatabaseReference {
+        return child("baseURL")
     }
 }

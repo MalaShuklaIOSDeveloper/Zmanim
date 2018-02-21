@@ -7,4 +7,6 @@ target 'Zmanim' do
 
   # Pods for Zmanim
   pod 'Alamofire'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 end

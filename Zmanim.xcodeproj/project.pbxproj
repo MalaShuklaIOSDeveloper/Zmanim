@@ -55,6 +55,7 @@
 		5BF4A31F203520F000AEC616 /* LocalZmanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */; };
 		5BF4A33B203A621E00AEC616 /* ZmanNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A33A203A621E00AEC616 /* ZmanNotification.swift */; };
 		5BF4A33D203AA2FB00AEC616 /* MinutesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF4A33C203AA2FB00AEC616 /* MinutesCell.swift */; };
+		5BF9EC7A203D469100E14DFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BF9EC79203D469000E14DFF /* GoogleService-Info.plist */; };
 		5BFCC6501D5CC6AC00ACC3E3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */; };
 		5BFCE957203128C900A943FD /* SelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE956203128C900A943FD /* SelectionCollectionView.swift */; };
 		5BFCE95920312A1600A943FD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCE95820312A1600A943FD /* CalendarCell.swift */; };
@@ -134,6 +135,7 @@
 		5BF4A31E203520F000AEC616 /* LocalZmanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalZmanCell.swift; path = Cells/LocalZmanCell.swift; sourceTree = "<group>"; };
 		5BF4A33A203A621E00AEC616 /* ZmanNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZmanNotification.swift; sourceTree = "<group>"; };
 		5BF4A33C203AA2FB00AEC616 /* MinutesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MinutesCell.swift; path = Cells/MinutesCell.swift; sourceTree = "<group>"; };
+		5BF9EC79203D469000E14DFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BFCC64F1D5CC6AC00ACC3E3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = Extensions/URL.swift; sourceTree = "<group>"; };
 		5BFCE956203128C900A943FD /* SelectionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectionCollectionView.swift; path = Views/SelectionCollectionView.swift; sourceTree = "<group>"; };
 		5BFCE95820312A1600A943FD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Cells/CalendarCell.swift; sourceTree = "<group>"; };
@@ -243,13 +245,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5BF9EC76203C948700E14DFF /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Sounds;
-			sourceTree = "<group>";
-		};
 		5BFCC60C1D5BB89000ACC3E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,9 +291,9 @@
 				5B3C0EBB1BFCDC56005FB04C /* Main.storyboard */,
 				5B3C0EC01BFCDC56005FB04C /* LaunchScreen.storyboard */,
 				5B3C0EC31BFCDC56005FB04C /* Info.plist */,
+				5BF9EC79203D469000E14DFF /* GoogleService-Info.plist */,
 				5B3C0EBE1BFCDC56005FB04C /* Assets.xcassets */,
 				5B3C0EC91BFCDCFD005FB04C /* Images */,
-				5BF9EC76203C948700E14DFF /* Sounds */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -390,6 +385,7 @@
 				5B3C0EBF1BFCDC56005FB04C /* Assets.xcassets in Resources */,
 				5B3C0EBD1BFCDC56005FB04C /* Main.storyboard in Resources */,
 				5B61452D1C029FF1007530F7 /* YU.jpg in Resources */,
+				5BF9EC7A203D469100E14DFF /* GoogleService-Info.plist in Resources */,
 				5BCC11F01D6CF667005B6379 /* Morg Lounge.jpg in Resources */,
 				5BCC11E81D6CF5EB005B6379 /* Sefardi Beit Midrash.jpg in Resources */,
 				5B2BAF001C30A9BF00669AB9 /* Annex.jpg in Resources */,
@@ -408,10 +404,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Zmanim/Pods-Zmanim-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
