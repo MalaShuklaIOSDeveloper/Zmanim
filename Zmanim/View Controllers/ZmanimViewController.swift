@@ -119,6 +119,15 @@ class ZmanimViewController: UIViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+        
+        // Highlight index path to be highlighted. Usually from notification.
+        if let highlightIndexPath = viewModel.highlightIndexPath {
+            tableView.selectRow(at: highlightIndexPath, animated: false, scrollPosition: .middle)
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { timer in
+                self.tableView.deselectRow(at: highlightIndexPath, animated: true)
+            }
+            viewModel.clearHighlight()
+        }
     }
     
     // MARK: - Navigation

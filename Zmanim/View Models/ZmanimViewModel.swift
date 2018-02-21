@@ -11,6 +11,8 @@ import UserNotifications
 
 struct ZmanimViewModelData {
     let tefillah: Tefillah
+    var highlightZmanDate: Date?
+    var highlightLocationTitle: String?
 }
 
 enum ZmanCellIdentifier: String {
@@ -24,8 +26,12 @@ enum GetZmanimResult {
 }
 
 class ZmanimViewModel {
+    private var data: ZmanimViewModelData
+    
     /// The tefillah to display zmanim for.
-    var tefillah: Tefillah!
+    var tefillah: Tefillah {
+        return data.tefillah
+    }
     
     /// The zmanim to display.
     private var zmanim: [Zman]?
@@ -60,8 +66,18 @@ class ZmanimViewModel {
         return []
     }
     
+    var highlightIndexPath: IndexPath? {
+        if let zmanDate = data.highlightZmanDate,
+            let zman = zman(for: zmanDate),
+            let locationTitle = data.highlightLocationTitle,
+            let location = zman.locations.first(where: { $0.title == locationTitle }) {
+            return indexPath(forZman: zman, location: location)
+        }
+        return nil
+    }
+    
     init(data: ZmanimViewModelData) {
-        self.tefillah = data.tefillah
+        self.data = data
     }
     
     func getZmanim(completed: @escaping ((GetZmanimResult) -> Void)) {
@@ -106,12 +122,22 @@ class ZmanimViewModel {
         return zmanim?[section].locations.count ?? 0
     }
     
+    func indexPath(forZman zman: Zman, location: Location) -> IndexPath? {
+        if let zmanim = self.zmanim {
+            if let section = zmanim.index(of: zman),
+                let row = zman.locations.index(of: location) {
+                return IndexPath(row: row, section: section)
+            }
+        }
+        return nil
+    }
+    
     func zman(for index: Int) -> Zman? {
         return zmanim?[index]
     }
     
     func zman(for date: Date) -> Zman? {
-        if let zmanim = zmanim {
+        if let zmanim = self.zmanim {
             for zman in zmanim {
                 if zman.date == date {
                     return zman
@@ -128,7 +154,7 @@ class ZmanimViewModel {
     }
     
     func notificationMinutes(for indexPath: IndexPath) -> [ZmanNotificationMinutes] {
-        if let zmanim = zmanim {
+        if let zmanim = self.zmanim {
             let zman = zmanim[indexPath.section]
             return ZmanNotificationMinutes.allMinutes.filter { $0.date(before: zman.date)!.timeIntervalSinceNow > 0 }
         }
@@ -136,7 +162,7 @@ class ZmanimViewModel {
     }
     
     func notification(forIndexPath indexPath: IndexPath, minutes: ZmanNotificationMinutes) -> ZmanNotification? {
-        if let zmanim = zmanim {
+        if let zmanim = self.zmanim {
             let zman = zmanim[indexPath.section]
             let location = zman.locations[indexPath.row]
             return UserDataStore.shared.notification(forZman: zman, location: location, minutes: minutes)
@@ -178,5 +204,11 @@ class ZmanimViewModel {
             }
         }
         return false
+    }
+    
+    /// Call when finished highlighting index path.
+    func clearHighlight() {
+        data.highlightZmanDate = nil
+        data.highlightLocationTitle = nil
     }
 }

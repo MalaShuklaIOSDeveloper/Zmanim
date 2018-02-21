@@ -136,7 +136,7 @@ class HomeViewController: UIViewController {
         switch sender {
         case let tefillahItem as TefillahHomeItem:
             if let zmanimViewController = segue.destination as? ZmanimViewController {
-                zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
+                zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah, highlightZmanDate: viewModel.highlightZmanDate, highlightLocationTitle: viewModel.highlightLocationTitle)
             }
         case let barButtonItem as UIBarButtonItem:
             if barButtonItem == mapButton {
@@ -244,7 +244,7 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
                 case .tefillah:
                     let tefillahItem = item as! TefillahHomeItem
                     if let zmanimViewController = storyboard?.instantiateViewController(withIdentifier: ZmanimViewController.storyboardID) as? ZmanimViewController {
-                        zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah)
+                        zmanimViewController.viewModelData = ZmanimViewModelData(tefillah: tefillahItem.tefillah, highlightZmanDate: viewModel.highlightZmanDate, highlightLocationTitle: viewModel.highlightLocationTitle)
                         return zmanimViewController
                     }
                 case .zmanim:

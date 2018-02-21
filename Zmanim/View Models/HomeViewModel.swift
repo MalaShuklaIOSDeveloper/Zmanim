@@ -36,7 +36,10 @@ class HomeViewModel {
     
     /// The initial tefillah to be displayed given a notification.
     var initialIndexPath: IndexPath? {
-        if let tefillah = data.notification?.tefillah, let row = Tefillah.allTefillos.index(of: tefillah) {
+        if let notification = data.notification,
+            let tefillah = data.notification?.tefillah,
+            let row = Tefillah.allTefillos.index(of: tefillah),
+            notification.zmanDate.isToday {
             return IndexPath(row: row, section: 0)
         }
         return nil
@@ -60,6 +63,14 @@ class HomeViewModel {
             }
         }
         return dates
+    }
+    
+    var highlightZmanDate: Date? {
+        return data.notification?.zmanDate
+    }
+    
+    var highlightLocationTitle: String? {
+        return data.notification?.locationTitle
     }
     
     init(data: HomeViewModelData) {
