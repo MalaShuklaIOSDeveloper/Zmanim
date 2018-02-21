@@ -90,7 +90,7 @@
 		5B3A86A51D24254500860C8D /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = "View Controllers/LocationsViewController.swift"; sourceTree = "<group>"; };
 		5B3B6EFA1E2C607D0042F61B /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Extensions/Date.swift; sourceTree = "<group>"; };
 		5B3C0EB41BFCDC56005FB04C /* Zmanim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmanim.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Zmanim/AppDelegate.swift; sourceTree = "<group>"; };
+		5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B3C0EBE1BFCDC56005FB04C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B3C0ECC1BFCE51E005FB04C /* ZmanimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimViewController.swift; path = "View Controllers/ZmanimViewController.swift"; sourceTree = "<group>"; };
 		5B419F571D19DD3E0018F1C7 /* ZmanimViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimViewModel.swift; path = "View Models/ZmanimViewModel.swift"; sourceTree = "<group>"; };
@@ -108,10 +108,10 @@
 		5B929FA9203DE88400E0D9DF /* Shabbos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shabbos.swift; path = Zmanim/Models/Shabbos.swift; sourceTree = "<group>"; };
 		5B929FAA203DE88400E0D9DF /* Tefillah.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tefillah.swift; path = Zmanim/Models/Tefillah.swift; sourceTree = "<group>"; };
 		5B929FAB203DE88400E0D9DF /* ZmanNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanNotification.swift; path = Zmanim/Models/ZmanNotification.swift; sourceTree = "<group>"; };
-		5B929FB4203DEA0B00E0D9DF /* ZmanimDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimDataStore.swift; path = "Zmanim/Data Stores/ZmanimDataStore.swift"; sourceTree = "<group>"; };
-		5B929FB5203DEA0B00E0D9DF /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDataStore.swift; path = "Zmanim/Data Stores/UserDataStore.swift"; sourceTree = "<group>"; };
-		5B929FB8203DEA1700E0D9DF /* ZmanimAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZmanimAPIClient.swift; path = Zmanim/Helpers/ZmanimAPIClient.swift; sourceTree = "<group>"; };
-		5B929FB9203DEA1800E0D9DF /* LocationImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationImages.swift; path = Zmanim/Helpers/LocationImages.swift; sourceTree = "<group>"; };
+		5B929FB4203DEA0B00E0D9DF /* ZmanimDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimDataStore.swift; sourceTree = "<group>"; };
+		5B929FB5203DEA0B00E0D9DF /* UserDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		5B929FB8203DEA1700E0D9DF /* ZmanimAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZmanimAPIClient.swift; sourceTree = "<group>"; };
+		5B929FB9203DEA1800E0D9DF /* LocationImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationImages.swift; sourceTree = "<group>"; };
 		5B929FC1203DEAE700E0D9DF /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewModel.swift; path = "View Models/LocationViewModel.swift"; sourceTree = "<group>"; };
 		5B929FC3203DEB2300E0D9DF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Property Lists/Info.plist"; sourceTree = "<group>"; };
 		5B929FC4203DEB2300E0D9DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Property Lists/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -170,11 +170,6 @@
 		5B3C0EAB1BFCDC56005FB04C = {
 			isa = PBXGroup;
 			children = (
-				5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */,
-				5B929FB8203DEA1700E0D9DF /* ZmanimAPIClient.swift */,
-				5B929FB4203DEA0B00E0D9DF /* ZmanimDataStore.swift */,
-				5B929FB5203DEA0B00E0D9DF /* UserDataStore.swift */,
-				5B929FB9203DEA1800E0D9DF /* LocationImages.swift */,
 				5B3C0EB61BFCDC56005FB04C /* Zmanim */,
 				5B6FE7191CBE93A6002A09CA /* Frameworks */,
 				5B3C0EB51BFCDC56005FB04C /* Products */,
@@ -193,6 +188,11 @@
 		5B3C0EB61BFCDC56005FB04C /* Zmanim */ = {
 			isa = PBXGroup;
 			children = (
+				5B3C0EB71BFCDC56005FB04C /* AppDelegate.swift */,
+				5B929FB8203DEA1700E0D9DF /* ZmanimAPIClient.swift */,
+				5B929FB4203DEA0B00E0D9DF /* ZmanimDataStore.swift */,
+				5B929FB5203DEA0B00E0D9DF /* UserDataStore.swift */,
+				5B929FB9203DEA1800E0D9DF /* LocationImages.swift */,
 				5B929FB3203DE89D00E0D9DF /* Models */,
 				5B929FBE203DEA8000E0D9DF /* View Models */,
 				5BFCC60C1D5BB89000ACC3E3 /* View Controllers */,
@@ -622,7 +622,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LWC7S9F6VV;
-				INFOPLIST_FILE = Zmanim/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Zmanim/Property Lists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -648,7 +648,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LWC7S9F6VV;
-				INFOPLIST_FILE = Zmanim/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Zmanim/Property Lists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;

@@ -125,7 +125,7 @@ class LocationTableViewController: UITableViewController {
             self.openInGoogleMaps(with: coordinate)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            self.dismiss(animated: true, completion: nil)
+            navigationAlertController.dismiss(animated: true, completion: nil)
         }
         navigationAlertController.addAction(mapsAction)
         if URL.canOpen(Constants.wazeBaseURL) {

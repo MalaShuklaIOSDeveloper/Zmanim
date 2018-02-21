@@ -285,11 +285,22 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
             cell.locationLabel.text = location.title
             
             cell.didTapNotify = { cell in
-                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-                self.viewModel.selectedNotifyIndexPath = indexPath
-                self.minutesCollectionView.reloadData()
-                self.minutesCollectionView.contentOffset.x = 0
-                self.showMinutesView(true)
+                self.viewModel.canAddNotifications { canAdd in
+                    if canAdd {
+                        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                        self.viewModel.selectedNotifyIndexPath = indexPath
+                        self.minutesCollectionView.reloadData()
+                        self.minutesCollectionView.contentOffset.x = 0
+                        self.showMinutesView(true)
+                    } else {
+                        let alertController = UIAlertController(title: "😬 Oh no!", message: "There seems to be an issue adding an alert. Please check your settings and make sure we're allowed to!", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "👍", style: .default) { alert in
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        alertController.addAction(action)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
             }
         }
         
@@ -298,9 +309,9 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.notifyButton.isHidden = false
             if viewModel.isAnyMinutesSelected(at: indexPath) {
-                cell.notifyButton.setTitle("🔔", for: .normal)
+                cell.notifyButton.setTitle("👍", for: .normal)
             } else {
-                cell.notifyButton.setTitle("🔕", for: .normal)
+                cell.notifyButton.setTitle("🔔", for: .normal)
             }
         }
         

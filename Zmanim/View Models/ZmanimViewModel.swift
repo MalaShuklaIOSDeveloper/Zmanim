@@ -121,6 +121,12 @@ class ZmanimViewModel {
         return nil
     }
     
+    func canAddNotifications(completed: @escaping (Bool) -> Void) {
+        UserDataStore.shared.doesAllowNotifications { doesAllow in
+            completed(doesAllow)
+        }
+    }
+    
     func notificationMinutes(for indexPath: IndexPath) -> [ZmanNotificationMinutes] {
         if let zmanim = zmanim {
             let zman = zmanim[indexPath.section]

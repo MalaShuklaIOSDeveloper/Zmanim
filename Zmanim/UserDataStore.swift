@@ -24,6 +24,18 @@ class UserDataStore {
     
     private init() {}
     
+    func doesAllowNotifications(completed: @escaping (Bool) -> Void) {
+        notificationCenter.getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .authorized {
+                    completed(true)
+                } else {
+                    completed(false)
+                }
+            }
+        }
+    }
+    
     func getNotifications() {
         notificationCenter.getPendingNotificationRequests { requests in
             let data = requests.flatMap { return $0.content.userInfo[ZmanNotification.userInfoKey] as? Data }
