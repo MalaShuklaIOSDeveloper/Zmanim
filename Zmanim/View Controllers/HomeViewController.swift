@@ -152,6 +152,7 @@ class HomeViewController: UIViewController {
     }
     
     func showCalendarView() {
+        calendarView.frame = CGRect(x: 0, y: -Constants.calendarViewHeight, width: tableView.frame.width, height: Constants.calendarViewHeight)
         tableView.addSubview(calendarView)
         tableView.contentInset.top = Constants.calendarViewHeight
         tableView.contentOffset.y = defaultTableViewContentYOffset
