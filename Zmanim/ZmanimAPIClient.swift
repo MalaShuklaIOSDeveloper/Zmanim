@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Firebase
 import FirebaseDatabase
 
 typealias JSON = [String : Any]
@@ -53,7 +54,7 @@ struct ZmanimAPIClient {
     /// The shared Firebase database reference.
     private static let database = Database.database().reference()
     
-    // MARK: - API
+    // MARK: - Meta
     private static var baseURL: String?
     
     /// Starts the observer for changes to the base API URL.
@@ -280,6 +281,38 @@ struct ZmanimAPIClient {
                 completed(.failure(error))
             }
         }
+    }
+    
+    // MARK: - Analytics
+    static func logDidTapTefillah(_ tefillah: Tefillah) {
+        Analytics.logEvent("didTapTefillah", parameters: [
+            "dateTapped": Date().description(with: .current),
+            "tefillah": tefillah.title
+        ])
+    }
+    
+    static func logDidTapZman(_ zman: Zman, location: Location) {
+        Analytics.logEvent("didTapZman", parameters: [
+            "dateTapped": Date().description(with: .current),
+            "tefillah": zman.tefillah.title,
+            "date": zman.date.description(with: .current),
+            "location": location.title
+        ])
+    }
+    
+    static func logDidSetNotification(for zman: Zman, location: Location) {
+        Analytics.logEvent("didSetNotification", parameters: [
+            "dateSet": Date().description(with: .current),
+            "tefillah": zman.tefillah.title,
+            "zmanDate": zman.date.description(with: .current),
+            "location": location.title
+        ])
+    }
+    
+    static func logDidTapShnayim() {
+        Analytics.logEvent("didTapShnayim", parameters: [
+            "dateTapped": Date().description(with: .current)
+        ])
     }
 }
 

@@ -209,6 +209,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func didTapShnayimViewButton(_ sender: UIButton) {
         URL.open(Constants.shnayimAppStore)
+        viewModel.logDidTapShnayim()
     }
 }
 
@@ -234,6 +235,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         switch item.key {
         case .tefillah:
             performSegue(withIdentifier: SegueIdentifier.showZmanim.rawValue, sender: item)
+            if let tefillahItem = item as? TefillahHomeItem {
+                viewModel.logDidTapTefillah(with: tefillahItem)
+            }
         case .zmanim:
             performSegue(withIdentifier: SegueIdentifier.showLocalZmanim.rawValue, sender: item)
         case .more:

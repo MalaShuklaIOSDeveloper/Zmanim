@@ -306,6 +306,7 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
                         self.minutesCollectionView.reloadData()
                         self.minutesCollectionView.contentOffset.x = 0
                         self.showMinutesView(true)
+                        self.viewModel.log(.didSetNotification, at: indexPath)
                     } else {
                         let alertController = UIAlertController(title: "😬 Oh no!", message: "There seems to be an issue adding an alert. Please check your settings and make sure we're allowed to!", preferredStyle: .alert)
                         let action = UIAlertAction(title: "👍", style: .default) { alert in
@@ -360,6 +361,7 @@ extension ZmanimViewController: UITableViewDataSource, UITableViewDelegate {
                 performSegue(withIdentifier: SegueIdentifier.showLocation.rawValue, sender: indexPath)
             }
         }
+        viewModel.log(.didTapZman, at: indexPath)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -25,6 +25,11 @@ enum GetZmanimResult {
     case error
 }
 
+enum ZmanimLog {
+    case didTapZman
+    case didSetNotification
+}
+
 class ZmanimViewModel {
     private var data: ZmanimViewModelData
     
@@ -210,5 +215,18 @@ class ZmanimViewModel {
     func clearHighlight() {
         data.highlightZmanDate = nil
         data.highlightLocationTitle = nil
+    }
+    
+    func log(_ log: ZmanimLog, at indexPath: IndexPath) {
+        if let zmanim = self.zmanim {
+            let zman = zmanim[indexPath.section]
+            let location = zman.locations[indexPath.row]
+            switch log {
+            case .didTapZman:
+                ZmanimAPIClient.logDidTapZman(zman, location: location)
+            case .didSetNotification:
+                ZmanimAPIClient.logDidSetNotification(for: zman, location: location)
+            }
+        }
     }
 }

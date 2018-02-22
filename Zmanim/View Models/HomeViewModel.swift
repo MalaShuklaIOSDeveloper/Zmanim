@@ -99,6 +99,14 @@ class HomeViewModel {
     func item(for indexPath: IndexPath) -> HomeItem? {
         return items[indexPath.row]
     }
+    
+    func logDidTapTefillah(with tefillahItem: TefillahHomeItem) {
+        ZmanimAPIClient.logDidTapTefillah(tefillahItem.tefillah)
+    }
+    
+    func logDidTapShnayim() {
+        ZmanimAPIClient.logDidTapShnayim()
+    }
 }
 
 struct TefillahHomeItem: HomeItem {
