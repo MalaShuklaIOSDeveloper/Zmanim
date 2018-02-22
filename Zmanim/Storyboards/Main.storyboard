@@ -74,6 +74,31 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="174" id="D8g-q8-g9v" customClass="DescriptionCell" customModule="Zmanim" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="315.33333333333337" width="375" height="174"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8g-q8-g9v" id="vmD-ak-hBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173.66666666666666"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qx-n4-vwu">
+                                            <rect key="frame" x="16" y="26" width="343" height="122"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9Qx-n4-vwu" firstAttribute="top" secondItem="vmD-ak-hBs" secondAttribute="topMargin" constant="15" id="J3X-bY-dkB"/>
+                                        <constraint firstItem="9Qx-n4-vwu" firstAttribute="bottom" secondItem="vmD-ak-hBs" secondAttribute="bottomMargin" constant="-15" id="c9d-Pz-N4O"/>
+                                        <constraint firstItem="9Qx-n4-vwu" firstAttribute="leading" secondItem="vmD-ak-hBs" secondAttribute="leadingMargin" id="lu7-Q5-GAv"/>
+                                        <constraint firstItem="9Qx-n4-vwu" firstAttribute="trailing" secondItem="vmD-ak-hBs" secondAttribute="trailingMargin" id="nHC-Ky-D5C"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="9Qx-n4-vwu" id="jRU-fB-2sQ"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="kVH-m2-Jg8" id="oZO-sZ-Qha"/>
@@ -311,7 +336,7 @@
                                 <action selector="didTapDateButton:" destination="u3x-Vs-ibj" id="4hA-TQ-58v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" image="Map" id="10s-dB-vRT">
+                        <barButtonItem key="rightBarButtonItem" image="Map" id="10s-dB-vRT">
                             <connections>
                                 <action selector="didTapMapButton:" destination="u3x-Vs-ibj" id="HuO-mi-1Hr"/>
                             </connections>
@@ -474,7 +499,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-Ee-1L4">
                                                     <rect key="frame" x="312" y="10.666666666666664" width="30" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <state key="normal" title="🔕"/>
+                                                    <state key="normal" title="🔔"/>
                                                     <connections>
                                                         <action selector="didTapNotify:" destination="hti-Zr-ujp" eventType="touchUpInside" id="Mcl-mJ-C5U"/>
                                                     </connections>
@@ -791,6 +816,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="74W-WQ-utv"/>
+        <segue reference="QFx-IB-F4s"/>
     </inferredMetricsTieBreakers>
 </document>
