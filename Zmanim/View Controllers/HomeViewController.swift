@@ -148,7 +148,7 @@ class HomeViewController: UIViewController {
     // MARK: -
     
     func setDateButtonText() {
-        dateButton.title = viewModel.selectedDate.isToday ? "Today" : viewModel.selectedDate.shortDateString
+        dateButton?.title = viewModel.selectedDate.isToday ? "Today" : viewModel.selectedDate.shortDateString
     }
     
     func showCalendarView() {
@@ -172,9 +172,17 @@ class HomeViewController: UIViewController {
     }
     
     func selectInitialIndexPath() {
-        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { timer in
-            if let indexPath = self.viewModel.initialIndexPath {
-                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        if let indexPath = viewModel.initialIndexPath {
+            // Go to today if at another date.
+            if !viewModel.selectedDate.isToday,
+                let today = viewModel.thisWeekDates.first {
+                viewModel.selectedDate = today
+                calendarCollectionView?.reloadData()
+                setDateButtonText()
+                viewModel.getZmanim()
+            }
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { timer in
                 self.tableView(self.tableView, didSelectRowAt: indexPath)
                 // Clear notification sent to app by user.
                 self.viewModelData.notification = nil
