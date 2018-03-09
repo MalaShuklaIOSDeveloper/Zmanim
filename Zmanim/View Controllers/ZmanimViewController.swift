@@ -220,7 +220,7 @@ class ZmanimViewController: UIViewController {
     }
     
     func setupNextButton() {
-        if let nextZman = viewModel.nextZman, nextZman.tefillah == viewModel.tefillah {
+        if let nextZman = viewModel.nextZman, nextZman.tefillah == viewModel.tefillah, nextZman.date.isToday {
             nextButton.isEnabled = true
         } else {
             nextButton.isEnabled = false
